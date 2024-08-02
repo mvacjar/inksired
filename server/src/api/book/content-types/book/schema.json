@@ -1,0 +1,113 @@
+{
+  "kind": "collectionType",
+  "collectionName": "books",
+  "info": {
+    "singularName": "book",
+    "pluralName": "books",
+    "displayName": "Books",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "publication_date": {
+      "type": "date",
+      "required": true
+    },
+    "publisher": {
+      "type": "string",
+      "required": true
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "condition": {
+      "type": "enumeration",
+      "enum": [
+        "New",
+        "Gold",
+        "Silver",
+        "Bronze"
+      ],
+      "required": true
+    },
+    "isbn": {
+      "type": "string",
+      "required": true
+    },
+    "literary_genres": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::literary-genre.literary-genre",
+      "mappedBy": "books"
+    },
+    "synopsis": {
+      "type": "richtext",
+      "required": true
+    },
+    "condition_details": {
+      "type": "richtext",
+      "required": false
+    },
+    "saga": {
+      "type": "string"
+    },
+    "forum_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::forum.forum",
+      "mappedBy": "title_books"
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "discount": {
+      "type": "integer"
+    },
+    "slug_title": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "slug_author": {
+      "type": "uid",
+      "targetField": "author",
+      "required": true
+    },
+    "release_date": {
+      "type": "date"
+    },
+    "language": {
+      "type": "enumeration",
+      "enum": [
+        "English",
+        "Spanish",
+        "Svenska"
+      ]
+    },
+    "page_number": {
+      "type": "integer"
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

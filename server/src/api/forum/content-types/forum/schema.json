@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "forums",
+  "info": {
+    "singularName": "forum",
+    "pluralName": "forums",
+    "displayName": "Forum",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "topic_title": {
+      "type": "string",
+      "required": true
+    },
+    "topic_comment": {
+      "type": "richtext",
+      "required": true
+    },
+    "last_update_date": {
+      "type": "datetime"
+    },
+    "State": {
+      "type": "enumeration",
+      "enum": [
+        "Active",
+        "Closed",
+        "Archived"
+      ],
+      "required": false
+    },
+    "title_books": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::book.book",
+      "inversedBy": "forum_categories"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "forum_comments"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "forum"
+    }
+  }
+}

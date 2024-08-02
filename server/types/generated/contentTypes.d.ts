@@ -742,7 +742,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -771,6 +770,23 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    firstname: Attribute.String;
+    lastname: Attribute.String;
+    forum: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::forum.forum'
+    >;
+    comments: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::comment.comment'
+    >;
+    books: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::book.book'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -781,6 +797,306 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::users-permissions.user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAddressAddress extends Schema.CollectionType {
+  collectionName: 'addresses';
+  info: {
+    singularName: 'address';
+    pluralName: 'addresses';
+    displayName: 'Address';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    name: Attribute.String & Attribute.Required;
+    address: Attribute.String & Attribute.Required;
+    country: Attribute.String & Attribute.Required;
+    city: Attribute.String & Attribute.Required;
+    region: Attribute.String & Attribute.Required;
+    postal_code: Attribute.String & Attribute.Required;
+    telephone: Attribute.String & Attribute.Required;
+    user: Attribute.Relation<
+      'api::address.address',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::address.address',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::address.address',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiBookBook extends Schema.CollectionType {
+  collectionName: 'books';
+  info: {
+    singularName: 'book';
+    pluralName: 'books';
+    displayName: 'Books';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    author: Attribute.String & Attribute.Required;
+    publication_date: Attribute.Date & Attribute.Required;
+    publisher: Attribute.String & Attribute.Required;
+    cover: Attribute.Media<'images'> & Attribute.Required;
+    condition: Attribute.Enumeration<['New', 'Gold', 'Silver', 'Bronze']> &
+      Attribute.Required;
+    isbn: Attribute.String & Attribute.Required;
+    literary_genres: Attribute.Relation<
+      'api::book.book',
+      'manyToMany',
+      'api::literary-genre.literary-genre'
+    >;
+    synopsis: Attribute.RichText & Attribute.Required;
+    condition_details: Attribute.RichText;
+    saga: Attribute.String;
+    forum_categories: Attribute.Relation<
+      'api::book.book',
+      'manyToMany',
+      'api::forum.forum'
+    >;
+    price: Attribute.Decimal & Attribute.Required;
+    discount: Attribute.Integer;
+    slug_title: Attribute.UID<'api::book.book', 'title'> & Attribute.Required;
+    slug_author: Attribute.UID<'api::book.book', 'author'> & Attribute.Required;
+    release_date: Attribute.Date;
+    language: Attribute.Enumeration<['English', 'Spanish', 'Svenska']>;
+    page_number: Attribute.Integer;
+    users_permissions_users: Attribute.Relation<
+      'api::book.book',
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCommentComment extends Schema.CollectionType {
+  collectionName: 'comments';
+  info: {
+    singularName: 'comment';
+    pluralName: 'comments';
+    displayName: 'Comments';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    user: Attribute.String & Attribute.Required;
+    comment_published: Attribute.Date;
+    user_comment: Attribute.RichText & Attribute.Required;
+    forum_comments: Attribute.Relation<
+      'api::comment.comment',
+      'manyToOne',
+      'api::forum.forum'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::comment.comment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::comment.comment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiForumForum extends Schema.CollectionType {
+  collectionName: 'forums';
+  info: {
+    singularName: 'forum';
+    pluralName: 'forums';
+    displayName: 'Forum';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    topic_title: Attribute.String & Attribute.Required;
+    topic_comment: Attribute.RichText & Attribute.Required;
+    last_update_date: Attribute.DateTime;
+    State: Attribute.Enumeration<['Active', 'Closed', 'Archived']>;
+    title_books: Attribute.Relation<
+      'api::forum.forum',
+      'manyToMany',
+      'api::book.book'
+    >;
+    comments: Attribute.Relation<
+      'api::forum.forum',
+      'oneToMany',
+      'api::comment.comment'
+    >;
+    user: Attribute.Relation<
+      'api::forum.forum',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::forum.forum',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::forum.forum',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLiteraryGenreLiteraryGenre extends Schema.CollectionType {
+  collectionName: 'literary_genres';
+  info: {
+    singularName: 'literary-genre';
+    pluralName: 'literary-genres';
+    displayName: 'LiteraryGenres';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    books: Attribute.Relation<
+      'api::literary-genre.literary-genre',
+      'manyToMany',
+      'api::book.book'
+    >;
+    slug_genres: Attribute.UID<'api::literary-genre.literary-genre', 'title'> &
+      Attribute.Required;
+    order: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::literary-genre.literary-genre',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::literary-genre.literary-genre',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOrderOrder extends Schema.CollectionType {
+  collectionName: 'orders';
+  info: {
+    singularName: 'order';
+    pluralName: 'orders';
+    displayName: 'Order';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    total_payment: Attribute.Decimal & Attribute.Required;
+    id_payment: Attribute.String;
+    shipping_address: Attribute.JSON & Attribute.Required;
+    products: Attribute.JSON & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiWishlistWishlist extends Schema.CollectionType {
+  collectionName: 'wishlists';
+  info: {
+    singularName: 'wishlist';
+    pluralName: 'wishlists';
+    displayName: 'Wishlist';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::wishlist.wishlist',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    book: Attribute.Relation<
+      'api::wishlist.wishlist',
+      'oneToOne',
+      'api::book.book'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::wishlist.wishlist',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::wishlist.wishlist',
       'oneToOne',
       'admin::user'
     > &
@@ -806,6 +1122,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::address.address': ApiAddressAddress;
+      'api::book.book': ApiBookBook;
+      'api::comment.comment': ApiCommentComment;
+      'api::forum.forum': ApiForumForum;
+      'api::literary-genre.literary-genre': ApiLiteraryGenreLiteraryGenre;
+      'api::order.order': ApiOrderOrder;
+      'api::wishlist.wishlist': ApiWishlistWishlist;
     }
   }
 }
