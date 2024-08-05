@@ -1,0 +1,114 @@
+@import '~/scss/index.scss';
+
+// Animation
+
+@keyframes text-pop-up-top {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.textPopUp {
+  text-align: center;
+  line-height: 1.5;
+  -webkit-animation: text-pop-up-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    forwards;
+  animation: text-pop-up-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+// Wrapper
+
+.wrapperSign {
+  background-color: $tertiary;
+  margin: 0;
+  border-radius: $border1;
+  padding: 2.5rem;
+}
+
+// Container
+
+.containerSignUp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+// Text
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paragraph {
+  color: $secondary;
+  line-height: 1.3;
+  max-width: 40vw;
+  overflow: scroll;
+  max-height: 40vh;
+}
+
+.highlightWord {
+  font-family: 'Bangla MN', sans-serif;
+  color: $text;
+}
+
+// Form
+
+.formSignUpWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.inputSign {
+  border: none;
+  border-radius: $border2;
+  background-color: $blurInput;
+  margin: 1rem 0;
+  min-width: 100%;
+  padding: 0.5rem 1rem;
+}
+
+.buttonSignUp {
+  background-color: $accent;
+  color: $background;
+  border-radius: $border2;
+  font-size: $small;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+}
+
+// Change to Sing in
+
+.questionIn {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  margin-top: 1rem;
+  font-size: $small;
+}
+
+.signInButtonContainer {
+  padding: 0;
+}
+
+.signInButton {
+  background-color: $tertiary;
+  color: $accent;
+  border-radius: $border2;
+  font-size: $small;
+  border: 2px solid $accent;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: transform ease 0.2s;
+  white-space: nowrap;
+}

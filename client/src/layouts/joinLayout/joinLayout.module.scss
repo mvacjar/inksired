@@ -1,0 +1,53 @@
+@import '~/scss/index.scss';
+
+.container {
+  max-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.topBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > a {
+    img {
+      height: 4rem;
+    }
+    > i {
+      font-size: $small;
+      color: $text;
+      margin: 0;
+    }
+  }
+}
+
+.containerBlocks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.blockLeft {
+  width: 50%;
+  min-width: 35vw;
+  width: 60vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blockRight {
+  background-image: url('/images/sign-up-image2.svg');
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 50%;
+}

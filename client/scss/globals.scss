@@ -51,10 +51,6 @@ button {
 a {
   text-decoration: none;
   color: $background;
-  background-color: $primary;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
-  &:hover {
-    background-color: $primary;
-  }
 }
