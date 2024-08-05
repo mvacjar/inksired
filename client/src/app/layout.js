@@ -1,4 +1,4 @@
-import '../scss/globals.scss';
+import '../../scss/globals.scss';
 
 export const metadata = {
   title: 'Inksired',
@@ -9,7 +9,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <link rel='icon' href='/favicon.ico' />
-
       <body>{children}</body>
     </html>
   );
