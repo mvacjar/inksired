@@ -1,0 +1,60 @@
+@import './index.scss';
+@import url('https://fonts.googleapis.com/css?family=Bangla%20MN:700|ABeeZee:400');
+
+* {
+  color: $text;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'ABeeZee';
+}
+
+html {
+  font-size: 100%; /* 16px */
+  background-color: $background;
+  font-style: normal;
+}
+
+body {
+  font-family: 'ABeeZee';
+  font-weight: 400;
+  height: 100vh;
+  width: 100vw; //auto¿?
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  position: relative; //check
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: flex-start;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Bangla MN';
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+button {
+  border: none;
+  border-radius: 0.25rem;
+  margin: 1rem 0;
+}
+
+a {
+  text-decoration: none;
+  color: $background;
+  background-color: $primary;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  &:hover {
+    background-color: $primary;
+  }
+}

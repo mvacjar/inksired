@@ -1,7 +1,4 @@
-import { Inter } from 'next/font/google';
-import '../styles/globals.css';
-
-const inter = Inter({ subsets: ['latin'] });
+import '../scss/globals.scss';
 
 export const metadata = {
   title: 'Inksired',
