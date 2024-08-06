@@ -1,8 +1,7 @@
 import styles from './joinLayout.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-
-import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
+import { Icon } from 'semantic-ui-react';
 
 export function JoinLayout({ children }) {
   return (
@@ -18,7 +17,7 @@ export function JoinLayout({ children }) {
             />
           </Link>
           <Link href='/'>
-            <CloseTwoToneIcon style={{ fill: '#2D2D2D', fontSize: 30 }} />
+            <Icon name='close' size='large' style={{ color: '#2D2D2D' }} />
           </Link>
         </div>
         <div className={styles.containerBlocks}>

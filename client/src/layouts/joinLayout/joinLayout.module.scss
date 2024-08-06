@@ -1,4 +1,4 @@
-@import '~/scss/index.scss';
+@import '@/scss/index.scss';
 
 .container {
   max-height: 100vh;
@@ -32,8 +32,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 4rem;
-  background-color: transparent;
+  background-color: $background;
 }
 
 .blockLeft {
@@ -43,7 +42,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
+  margin: 0 2rem;
 }
 
 .blockRight {

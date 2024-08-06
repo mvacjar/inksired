@@ -1,7 +1,6 @@
 import styles from './sign-in.module.scss';
 import { JoinLayout } from '../../../layouts/joinLayout';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function SignInPage() {
   return (

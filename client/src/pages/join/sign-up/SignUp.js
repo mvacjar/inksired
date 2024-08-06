@@ -3,7 +3,21 @@ import { JoinLayout } from '../../../layouts/joinLayout';
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { useFormik } from 'formik';
+import {
+  initialValues,
+  validationSchema,
+} from '@/components/Auth/RegisterForm.form';
+
 export default function SignUpPage() {
+  const formik = useFormik({
+    initialValues: initialValues(),
+    validationSchema: validationSchema(),
+    validationOnChange: false,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
   return (
     <>
       <JoinLayout>
@@ -34,30 +48,41 @@ export default function SignUpPage() {
             </article>
             <article className={styles.formSignUpWrapper}>
               <h1 className={styles.textPopUp}>Sign Up</h1>
-              <form className={styles.formContainer}>
+              <form
+                className={styles.formContainer}
+                onSubmit={formik.handleSubmit}
+              >
                 <input
                   name='username'
                   type='text'
                   placeholder='username'
                   className={styles.inputSign}
+                  onChange={formik.handleChange}
+                  value={formik.values.username}
                 />
                 <input
                   name='name'
                   type='text'
                   placeholder='name'
                   className={styles.inputSign}
+                  onChange={formik.handleChange}
+                  value={formik.values.name}
                 />
                 <input
-                  name='useremail'
+                  name='email'
                   type='email'
                   placeholder='email'
                   className={styles.inputSign}
+                  onChange={formik.handleChange}
+                  value={formik.values.email}
                 />
                 <input
                   name='password'
                   type='password'
                   placeholder='password'
                   className={styles.inputSign}
+                  onChange={formik.handleChange}
+                  value={formik.values.password}
                 />
                 <input
                   name='confirmPassword'
