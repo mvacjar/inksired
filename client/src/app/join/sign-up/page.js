@@ -34,42 +34,56 @@ export default function SignUpPage() {
             </article>
             <article className={styles.formSignUpWrapper}>
               <h1 className={styles.textPopUp}>Sign Up</h1>
-              <div className={styles.formContainer}>
+              <form className={styles.formContainer}>
                 <input
+                  name='username'
+                  type='text'
+                  placeholder='username'
+                  className={styles.inputSign}
+                />
+                <input
+                  name='name'
+                  type='text'
+                  placeholder='name'
+                  className={styles.inputSign}
+                />
+                <input
+                  name='useremail'
                   type='email'
                   placeholder='email'
                   className={styles.inputSign}
                 />
                 <input
+                  name='password'
                   type='password'
                   placeholder='password'
                   className={styles.inputSign}
                 />
                 <input
+                  name='confirmPassword'
                   type='password'
                   placeholder='confirm password'
                   className={styles.inputSign}
                 />
                 <button className={styles.buttonSignUp} type='submit'>
-                  Submit
+                  Register
                 </button>
+              </form>
+              <div className={styles.questionContainer}>
+                <div className={styles.questionIn}>
+                  <div>
+                    <p>Do you already have an account?</p>
+                  </div>
+                  <Link
+                    href='/join/sign-in'
+                    className={styles.signInButtonLink}
+                  >
+                    <button className={styles.signInButton}>Sign In</button>
+                  </Link>
+                </div>
               </div>
             </article>
           </section>
-
-          <div className={styles.questionIn}>
-            <div>
-              <p>Do you already have an account?</p>
-            </div>
-            <div>
-              <Link
-                href='/join/sign-in'
-                className={styles.signInButtonContainer}
-              >
-                <button className={styles.signInButton}>Sign In</button>
-              </Link>
-            </div>
-          </div>
         </main>
       </JoinLayout>
     </>
