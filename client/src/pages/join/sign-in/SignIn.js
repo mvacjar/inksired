@@ -22,7 +22,8 @@ export default function SignInPage() {
                   className={styles.inputSign}
                 />
                 <button className={styles.buttonSignIn} type='submit'>
-                  Send
+                  Sign In
+                  {/* {formik.isSubmitting ? 'Loading...' : 'Sign In'} */}
                 </button>
               </form>
               <div className={styles.questionContainer}>

@@ -10,7 +10,7 @@ export function JoinLayout({ children }) {
         <div className={styles.imageWrapper}>
           <Image
             src='/images/join-background.svg'
-            alt='Sign Up Image'
+            alt='Join Background'
             layout='fill'
             objectFit='cover'
           />
@@ -23,6 +23,7 @@ export function JoinLayout({ children }) {
               width={150}
               height={78}
               className={styles.logo}
+              priority={true}
             />
           </Link>
           <Link href='/'>
