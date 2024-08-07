@@ -5,9 +5,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: $background;
 }
 
-.topBar {
+.navJoin {
   position: absolute;
   top: 0;
   left: 0;
@@ -28,27 +29,30 @@
   }
 }
 
-.containerBlocks {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $background;
-}
-
-.blockLeft {
+.logo {
   width: 50%;
-  min-width: 35vw;
-  width: 60vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 2rem;
+  height: 50%;
 }
 
-.blockRight {
-  background-image: url('/images/sign-up-image2.svg');
-  background-position: center;
-  background-size: cover;
+.containerBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  width: 50%;
+  width: 100vw;
+}
+
+.block {
+  width: 60vw;
+  min-width: 35vw;
+  height: 30vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .block {
+    width: 75vw;
+  }
 }

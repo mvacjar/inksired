@@ -1,62 +1,44 @@
 @import '@/scss/index.scss';
 
-// Animation
-
-@keyframes text-pop-up-top {
-  0% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.textPopUp {
-  text-align: center;
-  line-height: 1.5;
-  font-size: $h4;
-  -webkit-animation: text-pop-up-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    forwards;
-  animation: text-pop-up-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
 // Wrapper
 
 .wrapperSign {
-  background-color: $tertiary;
+  background-color: $background;
   margin: 0;
   border-radius: $border1;
   padding: 2.5rem;
+  z-index: 10;
+  box-shadow: 0px 5px 15px 0px #40516a4f;
 }
 
 // Container
 
-.containerSignUp {
+.articleSignUp {
+  width: 50%;
+  padding-right: 1.5rem;
+}
+
+.containerSignUpText {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
-// Text
-
-.logoContainer {
+.containerSignUp {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.logo {
-  margin-bottom: 1.2rem;
-}
+// Text
 
 .paragraph {
   color: $secondary;
-  line-height: 1.5;
+  line-height: 2;
   max-width: 40vw;
   overflow-y: scroll;
   max-height: 40vh;
-  padding-right: 2rem;
+  text-align: center;
 
   &::-webkit-scrollbar {
     width: 0;
@@ -84,78 +66,35 @@
 .highlightWord {
   font-family: 'Bangla MN', sans-serif;
   color: $text;
+  font-size: $h6;
 }
 
-// Form
-
-.formSignUpWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-}
-
-.inputSign {
-  border: none;
-  border-radius: $border2;
-  background-color: $blurInput;
-  margin: 1rem 0;
-  min-width: 100%;
-  padding: 0.5rem 1rem;
-
-  &:hover {
-    background-color: $background;
+@media (max-width: 768px) {
+  .wrapperSign {
+    padding: 0rem;
+    z-index: 10;
+    box-shadow: 0px 5px 15px 0px #40516a4f;
   }
-}
 
-.buttonSignUp {
-  background-color: $accent;
-  color: $background;
-  border-radius: $border2;
-  font-size: $small;
-  border: none;
-  margin-top: 1rem;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  white-space: nowrap;
-}
+  .articleSignUp {
+    width: 100%;
+  }
 
-// Change to Sing in
+  .containerSignUp {
+    flex-direction: column;
+  }
 
-.questionContainer {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  width: 100%;
-  text-align: end;
-}
+  .paragraphContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
+  }
 
-.questionIn {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  flex-direction: column;
-  margin: 2rem 0 0 0;
-  padding: 0%;
-  font-size: $small;
-}
-
-.signInButtonLink {
-  padding: 0;
-}
-
-.signInButton {
-  background-color: transparent;
-  color: $accent;
-  border-radius: $border2;
-  font-size: $small;
-  border: 2px solid $accent;
-  cursor: pointer;
-  padding: 0.25rem 0.5rem;
-  margin-top: 1rem;
-  transition: transform ease 0.2s;
-}
-
-.signInButton:hover {
-  transform: translateY(-2px);
+  .paragraph {
+    line-height: 1.5;
+    overflow-y: scroll;
+    max-height: 20vh;
+    max-width: 60vw;
+    padding-left: 1rem;
+  }
 }
