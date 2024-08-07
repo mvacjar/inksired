@@ -1,6 +1,7 @@
 import styles from './sign-in.module.scss';
 import { JoinLayout } from '../../../layouts/joinLayout';
 import Link from 'next/link';
+import LoginForm from '@/components/Auth/LoginForm/LoginForm';
 
 export default function SignInPage() {
   return (
@@ -10,22 +11,7 @@ export default function SignInPage() {
           <section className={styles.containerSignIn}>
             <article className={styles.formSignInWrapper}>
               <h1 className={styles.textPopUp}>Sign In</h1>
-              <form className={styles.formContainer}>
-                <input
-                  type='email'
-                  placeholder='email'
-                  className={styles.inputSign}
-                />
-                <input
-                  type='password'
-                  placeholder='password'
-                  className={styles.inputSign}
-                />
-                <button className={styles.buttonSignIn} type='submit'>
-                  Sign In
-                  {/* {formik.isSubmitting ? 'Loading...' : 'Sign In'} */}
-                </button>
-              </form>
+              <LoginForm />
               <div className={styles.questionContainer}>
                 <div className={styles.questionUp}>
                   <div>

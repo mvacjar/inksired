@@ -1,15 +1,17 @@
 import styles from './RegisterForm.module.scss';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import {
   initialValues,
   validationSchema,
-} from '@/components/Auth/RegisterForm.form';
+} from '@/components/Auth/RegisterForm/RegisterForm.form';
 import { Auth } from '@/api';
 
 const authCtrl = new Auth();
 
 export default function RegisterForm() {
+  const router = useRouter();
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
@@ -18,6 +20,7 @@ export default function RegisterForm() {
       try {
         const result = await authCtrl.register(values);
         console.log('User registered', result);
+        router.push('/join/sign-in');
       } catch (error) {
         console.error('Error registering user:', error);
 

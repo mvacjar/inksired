@@ -1,24 +1,9 @@
 import styles from './sign-up.module.scss';
 
-import Image from 'next/image';
 import { JoinLayout } from '../../../layouts/joinLayout';
-import RegisterForm from '@/components/Auth/RegisterForm';
-
-// import { useFormik } from 'formik';
-// import {
-//   initialValues,
-//   validationSchema,
-// } from '@/components/Auth/RegisterForm.form';
+import RegisterForm from '@/components/Auth/RegisterForm/RegisterForm';
 
 export default function SignUpPage() {
-  // const formik = useFormik({
-  //   initialValues: initialValues(),
-  //   validationSchema: validationSchema(),
-  //   validationOnChange: false,
-  //   onSubmit: (values) => {
-  //     alert(JSON.stringify(values, null, 2));
-  //   },
-  // });
   return (
     <>
       <JoinLayout>
