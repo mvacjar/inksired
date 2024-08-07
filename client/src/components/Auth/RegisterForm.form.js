@@ -12,10 +12,12 @@ export function initialValues() {
 
 export function validationSchema() {
   return Yup.object({
-    email: Yup.string().email('Invalid email').required('Required'),
-    username: Yup.string().required('Required'),
-    name: Yup.string().required('Required'),
-    password: Yup.string().min(5, 'Too short').required('Required'),
-    confirmPassword: Yup.string().required('Required'),
+    email: Yup.string().email('Invalid email').required(true),
+    username: Yup.string().required(true),
+    name: Yup.string().required(true),
+    password: Yup.string().min(5, 'Too short').required(true),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password'), null], 'Passwords must match')
+      .required('Confirm Password is required'),
   });
 }

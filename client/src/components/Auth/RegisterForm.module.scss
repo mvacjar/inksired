@@ -50,6 +50,11 @@
   }
 }
 
+.errorMessage {
+  font-size: $small;
+  color: $primary;
+}
+
 .buttonSignUp {
   background-color: $accent;
   color: $background;
