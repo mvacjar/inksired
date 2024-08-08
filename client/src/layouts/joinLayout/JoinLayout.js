@@ -1,11 +1,11 @@
 import styles from './joinLayout.module.scss';
-import { Icon } from 'semantic-ui-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useAuth } from '@/hooks/useAuth';
 import { useRouter } from 'next/router';
 
-export function JoinLayout({ children }) {
+export function JoinLayout(props) {
+  const { children } = props;
   const { user } = useAuth();
   const router = useRouter();
   if (user) {
@@ -34,7 +34,7 @@ export function JoinLayout({ children }) {
             />
           </Link>
           <Link href='/'>
-            <Icon name='close' size='large' style={{ color: '#2D2D2D' }} />
+            <p>X</p>
           </Link>
         </div>
       </div>

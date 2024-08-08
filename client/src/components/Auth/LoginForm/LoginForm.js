@@ -10,7 +10,7 @@ const authCtrl = new Auth();
 export default function LoginForm() {
   const router = useRouter();
   const { login } = useAuth();
-  console.log(useAuth());
+  // console.log(useAuth());
 
   const formik = useFormik({
     initialValues: initialValues(),

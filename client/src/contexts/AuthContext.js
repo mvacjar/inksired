@@ -1,4 +1,9 @@
-import { createContext, useState, useEffect, use } from 'react';
+import { createContext, useState, useEffect } from 'react';
+import { Token } from '@/api';
+import { User } from '@/api';
+
+const tokenCtrl = new Token();
+const userCtrl = new User();
 
 export const AuthContext = createContext();
 
@@ -15,11 +20,14 @@ export function AuthProvider(props) {
 
   const login = async (token) => {
     try {
+      tokenCtrl.setToken(token);
+      const response = await userCtrl.getMe();
+      console.log(response);
+      setUser(response);
       setToken(token);
       setLoading(false);
-      setUser({ email: 'loki@gmail.com' });
     } catch (error) {
-      console.error('Error logging in:', error);
+      console.error(error);
       setLoading(false);
     }
   };

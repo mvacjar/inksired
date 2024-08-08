@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { Button } from 'semantic-ui-react';
 
 export default function Home() {
   return (
@@ -12,8 +11,6 @@ export default function Home() {
       </Head>
       <main>
         <h1>Inksired</h1>
-        <Button primary>Primary</Button>
-        <Button secondary>Secondary</Button>
       </main>
     </>
   );
