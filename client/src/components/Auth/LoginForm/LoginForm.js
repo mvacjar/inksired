@@ -3,20 +3,24 @@ import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './LoginForm.form';
 import { useRouter } from 'next/router';
 import { Auth } from '@/api';
+import { useAuth } from '@/hooks/useAuth';
 
 const authCtrl = new Auth();
 
 export default function LoginForm() {
   const router = useRouter();
+  const { login } = useAuth();
+  console.log(useAuth());
+
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
     validationOnChange: false,
     onSubmit: async (values) => {
       try {
-        const result = await authCtrl.login(values);
-        console.log('User registered', result);
-        router.push('/join/sign-in');
+        const response = await authCtrl.login(values);
+        login(response.jwt);
+        // router.push('/join/sign-in');
       } catch (error) {
         console.error('Error registering user:', error);
 

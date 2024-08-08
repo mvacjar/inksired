@@ -2,8 +2,15 @@ import styles from './joinLayout.module.scss';
 import { Icon } from 'semantic-ui-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useAuth } from '@/hooks/useAuth';
+import { useRouter } from 'next/router';
 
 export function JoinLayout({ children }) {
+  const { user } = useAuth();
+  const router = useRouter();
+  if (user) {
+    router.push('/');
+  }
   return (
     <>
       <div className={styles.container}>
@@ -11,8 +18,8 @@ export function JoinLayout({ children }) {
           <Image
             src='/images/join-background.svg'
             alt='Join Background'
-            layout='fill'
-            objectFit='cover'
+            fill
+            style={{ objectFit: 'cover' }}
           />
         </div>
         <div className={styles.navJoin}>
@@ -30,7 +37,6 @@ export function JoinLayout({ children }) {
             <Icon name='close' size='large' style={{ color: '#2D2D2D' }} />
           </Link>
         </div>
-        {/* <div className={styles.blockRight}></div> */}
       </div>
       <div className={styles.containerBlock}>
         <div className={styles.block}>{children}</div>
