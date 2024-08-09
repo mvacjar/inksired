@@ -33,8 +33,8 @@ export function JoinLayout(props) {
               priority={true}
             />
           </Link>
-          <Link href='/'>
-            <p>X</p>
+          <Link href='/' style={{ color: '$text', fontSize: '$h5' }}>
+            X
           </Link>
         </div>
       </div>

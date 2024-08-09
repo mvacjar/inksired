@@ -1,0 +1,78 @@
+@import '@/scss/index.scss';
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  max-width: 5rem;
+  height: 100%;
+  background-color: $text;
+  padding: 2rem 0;
+}
+
+.menuContainer {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.logoContainer {
+  height: 100%;
+  align-items: flex-start;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logo {
+  &:hover {
+    filter: drop-shadow(5px 2px 8px #010100);
+    animation: spin 0.5s ease-in-out;
+  }
+}
+
+.linksContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.link {
+  margin: 0.5rem 0;
+
+  &:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(5px 2px 8px #010100);
+  }
+  &:active {
+    transform: scale(1);
+  }
+}
+
+.titleNavContainer {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.titleNav {
+  transform: rotate(-90deg);
+  &:hover {
+    filter: drop-shadow(5px 2px 8px #010100);
+    transform: rotate(-90deg);
+  }
+  &:active {
+    transform: rotate(-90deg);
+  }
+}

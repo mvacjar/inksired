@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sagas",
+  "info": {
+    "singularName": "saga",
+    "pluralName": "sagas",
+    "displayName": "Saga",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "saga_name": {
+      "type": "uid",
+      "required": true,
+      "targetField": "saga_title"
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "saga_title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "saga_number": {
+      "type": "integer",
+      "required": false
+    },
+    "saga_relations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::book.book"
+    },
+    "books_relation": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::book.book",
+      "mappedBy": "sagas"
+    }
+  }
+}

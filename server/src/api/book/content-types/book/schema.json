@@ -20,10 +20,6 @@
       "type": "string",
       "required": true
     },
-    "publication_date": {
-      "type": "date",
-      "required": true
-    },
     "publisher": {
       "type": "string",
       "required": true
@@ -63,9 +59,6 @@
     "condition_details": {
       "type": "richtext",
       "required": false
-    },
-    "saga": {
-      "type": "string"
     },
     "forum_categories": {
       "type": "relation",
@@ -108,6 +101,15 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user"
+    },
+    "order_in_saga": {
+      "type": "integer"
+    },
+    "sagas": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::saga.saga",
+      "inversedBy": "books_relation"
     }
   }
 }

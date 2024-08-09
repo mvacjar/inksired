@@ -30,6 +30,7 @@
   align-items: center;
   padding: 2rem;
   width: 50%;
+  height: 50vh;
 }
 
 .inputSign {
@@ -110,5 +111,13 @@
 @media (max-width: 768px) {
   .formSignUpContainer {
     width: 90%;
+  }
+
+  .inputSign {
+    margin: 0.5rem 0;
+  }
+
+  .questionIn {
+    margin: 1rem 0 0 0;
   }
 }

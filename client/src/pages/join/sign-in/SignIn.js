@@ -1,5 +1,5 @@
 import styles from './sign-in.module.scss';
-import { JoinLayout } from '../../../layouts/joinLayout';
+import { JoinLayout } from '../../../layouts/JoinLayout';
 import Link from 'next/link';
 import LoginForm from '@/components/Auth/LoginForm/LoginForm';
 
@@ -17,10 +17,7 @@ export default function SignInPage() {
                   <div>
                     <p>Don't you already have an account?</p>
                   </div>
-                  <Link
-                    href='/join/sign-up'
-                    className={styles.signUpButtonContainer}
-                  >
+                  <Link href='/' className={styles.signUpButtonContainer}>
                     <button className={styles.signUpButton}>Sign Up</button>
                   </Link>
                 </div>

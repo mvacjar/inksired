@@ -860,7 +860,6 @@ export interface ApiBookBook extends Schema.CollectionType {
   attributes: {
     title: Attribute.String & Attribute.Required;
     author: Attribute.String & Attribute.Required;
-    publication_date: Attribute.Date & Attribute.Required;
     publisher: Attribute.String & Attribute.Required;
     cover: Attribute.Media<'images'> & Attribute.Required;
     condition: Attribute.Enumeration<['New', 'Gold', 'Silver', 'Bronze']> &
@@ -873,7 +872,6 @@ export interface ApiBookBook extends Schema.CollectionType {
     >;
     synopsis: Attribute.RichText & Attribute.Required;
     condition_details: Attribute.RichText;
-    saga: Attribute.String;
     forum_categories: Attribute.Relation<
       'api::book.book',
       'manyToMany',
@@ -891,6 +889,8 @@ export interface ApiBookBook extends Schema.CollectionType {
       'oneToMany',
       'plugin::users-permissions.user'
     >;
+    order_in_saga: Attribute.Integer;
+    sagas: Attribute.Relation<'api::book.book', 'manyToOne', 'api::saga.saga'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1064,6 +1064,44 @@ export interface ApiOrderOrder extends Schema.CollectionType {
   };
 }
 
+export interface ApiSagaSaga extends Schema.CollectionType {
+  collectionName: 'sagas';
+  info: {
+    singularName: 'saga';
+    pluralName: 'sagas';
+    displayName: 'Saga';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    saga_name: Attribute.UID<'api::saga.saga', 'saga_title'> &
+      Attribute.Required;
+    author: Attribute.String & Attribute.Required;
+    saga_title: Attribute.String & Attribute.Required;
+    description: Attribute.RichText & Attribute.Required;
+    saga_number: Attribute.Integer;
+    saga_relations: Attribute.Relation<
+      'api::saga.saga',
+      'oneToMany',
+      'api::book.book'
+    >;
+    books_relation: Attribute.Relation<
+      'api::saga.saga',
+      'oneToMany',
+      'api::book.book'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::saga.saga', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::saga.saga', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiWishlistWishlist extends Schema.CollectionType {
   collectionName: 'wishlists';
   info: {
@@ -1128,6 +1166,7 @@ declare module '@strapi/types' {
       'api::forum.forum': ApiForumForum;
       'api::literary-genre.literary-genre': ApiLiteraryGenreLiteraryGenre;
       'api::order.order': ApiOrderOrder;
+      'api::saga.saga': ApiSagaSaga;
       'api::wishlist.wishlist': ApiWishlistWishlist;
     }
   }
