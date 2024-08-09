@@ -1,6 +1,7 @@
 import styles from './navVertical.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
+import HamburgerMenu from '@/layouts/HamburguerMenu/HamburgerMenu';
 
 export default function Navbar() {
   return (
@@ -8,14 +9,7 @@ export default function Navbar() {
       <nav className={styles.navbar}>
         <div className={styles.menuContainer}>
           <div className={styles.logoContainer}>
-            <Link href='/menu'>
-              <Image
-                src='/images/logo.svg'
-                width={45}
-                height={45}
-                className={styles.logo}
-              />
-            </Link>
+            <HamburgerMenu />
           </div>
           <div className={styles.linksContainer}>
             <Link href='/profile' className={styles.links}>
@@ -23,6 +17,7 @@ export default function Navbar() {
                 src='/images/home.svg'
                 width={35}
                 height={35}
+                alt='icon-menu'
                 className={styles.link}
               />
             </Link>
@@ -31,6 +26,7 @@ export default function Navbar() {
                 src='/images/shelf.svg'
                 width={35}
                 height={35}
+                alt='icon-menu'
                 className={styles.link}
               />
             </Link>
@@ -39,6 +35,7 @@ export default function Navbar() {
                 src='/images/star.svg'
                 width={35}
                 height={35}
+                alt='icon-menu'
                 className={styles.link}
               />
             </Link>
@@ -47,6 +44,7 @@ export default function Navbar() {
                 src='/images/forum.png'
                 width={35}
                 height={40}
+                alt='icon-menu'
                 className={styles.link}
               />
             </Link>
@@ -54,9 +52,11 @@ export default function Navbar() {
           <div className={styles.titleNavContainer}>
             <Link href='/home'>
               <Image
-                src='/images/logo_dark_nospace.svg'
+                src='/images/logo_dark.svg'
                 width={120}
                 height={120}
+                alt='logo-menu'
+                priority
                 className={styles.titleNav}
               />
             </Link>

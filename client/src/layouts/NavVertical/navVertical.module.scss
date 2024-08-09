@@ -24,22 +24,6 @@
   align-items: flex-start;
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.logo {
-  &:hover {
-    filter: drop-shadow(5px 2px 8px #010100);
-    animation: spin 0.5s ease-in-out;
-  }
-}
-
 .linksContainer {
   display: flex;
   flex-direction: column;

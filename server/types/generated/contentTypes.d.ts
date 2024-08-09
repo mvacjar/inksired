@@ -770,8 +770,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    firstname: Attribute.String;
-    lastname: Attribute.String;
+    name: Attribute.String;
     forum: Attribute.Relation<
       'plugin::users-permissions.user',
       'manyToMany',

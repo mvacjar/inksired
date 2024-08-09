@@ -8,9 +8,12 @@ export function JoinLayout(props) {
   const { children } = props;
   const { user } = useAuth();
   const router = useRouter();
+
   if (user) {
     router.push('/');
+    return null;
   }
+
   return (
     <>
       <div className={styles.container}>
@@ -23,18 +26,25 @@ export function JoinLayout(props) {
           />
         </div>
         <div className={styles.navJoin}>
-          <Link href='/' className={styles.logoContainer}>
+          <Link href='#' className={styles.logoContainer}>
             <Image
-              src='/images/logo_light_nospace.svg'
+              src='/images/logo_light.svg'
               alt='Logo light'
               width={150}
               height={78}
               className={styles.logo}
-              priority={true}
+              priority
             />
           </Link>
-          <Link href='/' style={{ color: '$text', fontSize: '$h5' }}>
-            X
+          <Link href='#'>
+            <Image
+              src='/images/x.svg'
+              alt='Logo light'
+              width={20}
+              height={20}
+              className={styles.logoX}
+              priority
+            />
           </Link>
         </div>
       </div>

@@ -1,8 +1,11 @@
 import Navbar from '@/layouts/NavVertical/NavVertical';
 import NavHorizontal from '@/layouts/NavHorizontal/NavHorizontal';
 import Head from 'next/head';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function Home() {
+  const { user, logout } = useAuth();
+
   return (
     <>
       <Head>
