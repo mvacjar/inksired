@@ -40,8 +40,8 @@ export function JoinLayout(props) {
             <Image
               src='/images/x.svg'
               alt='Logo light'
-              width={20}
-              height={20}
+              width={17}
+              height={17}
               className={styles.logoX}
               priority
             />

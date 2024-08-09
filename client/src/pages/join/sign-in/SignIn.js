@@ -17,7 +17,10 @@ export default function SignInPage() {
                   <div>
                     <p>Don't you already have an account?</p>
                   </div>
-                  <Link href='/' className={styles.signUpButtonContainer}>
+                  <Link
+                    href='/join/sign-up'
+                    className={styles.signUpButtonContainer}
+                  >
                     <button className={styles.signUpButton}>Sign Up</button>
                   </Link>
                 </div>

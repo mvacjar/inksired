@@ -34,10 +34,9 @@
 
 .link {
   margin: 0.5rem 0;
-
+  filter: drop-shadow(5px 2px 8px #010100);
   &:hover {
     transform: scale(1.1);
-    filter: drop-shadow(5px 2px 8px #010100);
   }
   &:active {
     transform: scale(1);
@@ -52,8 +51,8 @@
 
 .titleNav {
   transform: rotate(-90deg);
+  filter: drop-shadow(5px 2px 8px #010100);
   &:hover {
-    filter: drop-shadow(5px 2px 8px #010100);
     transform: rotate(-90deg);
   }
   &:active {

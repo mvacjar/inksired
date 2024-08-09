@@ -43,7 +43,6 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  width: 100%;
   text-align: end;
 }
 
@@ -78,7 +77,11 @@
 }
 
 @media (max-width: 768px) {
+  .textPopUp {
+    font-size: $h5;
+  }
+
   .questionUp {
-    margin: 1rem 0 0 0;
+    margin: 0;
   }
 }

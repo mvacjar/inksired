@@ -30,7 +30,7 @@
   align-items: center;
   padding: 2rem;
   width: 50%;
-  height: 50vh;
+  height: 53vh;
 }
 
 .inputSign {
@@ -41,6 +41,7 @@
   min-width: 100%;
   padding: 0.5rem 1rem;
   transition: background-color 0.3s ease;
+  font-size: $small;
 
   &:hover {
     background-color: #556c8d3d;
@@ -83,7 +84,7 @@
   align-items: flex-end;
   justify-content: flex-end;
   flex-direction: column;
-  margin: 3rem 0 0 0;
+  margin: 1rem 0 0 0;
   padding: 0%;
   font-size: $small;
 }
@@ -111,6 +112,11 @@
 @media (max-width: 768px) {
   .formSignUpContainer {
     width: 90%;
+    height: 50vh;
+  }
+
+  .textPopUp {
+    font-size: $h5;
   }
 
   .inputSign {

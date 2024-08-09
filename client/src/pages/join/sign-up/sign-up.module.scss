@@ -31,6 +31,7 @@
   font-family: 'Bangla MN', sans-serif;
   font-size: $h5;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 .paragraph {
@@ -82,7 +83,8 @@
   }
 
   .titleSignUp {
-    font-size: $h5;
+    font-size: $h6;
+    margin-bottom: 0.5rem;
   }
 
   .paragraphContainer {
@@ -99,5 +101,6 @@
     max-height: 20vh;
     max-width: 60vw;
     padding-left: 1rem;
+    font-size: $small;
   }
 }
