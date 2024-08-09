@@ -5,7 +5,7 @@
   display: inline-block;
 }
 
-@keyframes spin {
+@keyframes spinRight {
   from {
     transform: rotate(0deg);
   }
@@ -14,12 +14,55 @@
   }
 }
 
-.spin {
-  animation: spin 0.5s ease-in-out;
+.spinRight {
+  animation: spinRight 0.5s ease-in-out;
+}
+
+@keyframes spinLeft {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.spinLeft {
+  animation: spinLeft 0.5s ease-in-out;
 }
 
 .logo {
   filter: drop-shadow(5px 2px 8px #010100);
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slideRight {
+  animation: slideRight 1s ease-out;
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.slideLeft {
+  animation: slideLeft 1s ease-out;
 }
 
 .dropdownMenu {
@@ -31,7 +74,7 @@
   margin: 0;
   padding: 0;
   background-color: $text;
-  box-shadow: 0 8px 16px #2d2d2d9a;
+  box-shadow: 5px 10px 20px #00000095;
   border: none;
   border-radius: $border2;
 }
@@ -55,4 +98,8 @@
 .link,
 .linkBottom {
   color: $background;
+}
+
+.hidden {
+  display: none;
 }
