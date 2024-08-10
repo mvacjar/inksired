@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './navHorizontal.module.scss';
-import Link from 'next/link';
 import Image from 'next/image';
 
 export default function NavHorizontal() {
   const [searchValue, setSearchValue] = useState('');
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [hidden, setHidden] = useState(false);
 
   const handleClearInput = (e) => {
     e.preventDefault();
@@ -15,17 +16,40 @@ export default function NavHorizontal() {
     e.preventDefault();
   };
 
+  const handleScroll = () => {
+    if (typeof window !== 'undefined') {
+      if (window.scrollY > lastScrollY && window.scrollY > 10) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+      setLastScrollY(window.scrollY);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll);
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
+  }, [lastScrollY]);
+
   return (
     <>
-      <nav className={styles.navbar}>
-        <form className={styles.searchForm} onSubmit={handleSearch}>
-          <input
-            type='text'
-            className={styles.searchInput}
-            placeholder='Search...'
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
+      <nav className={`${styles.navbar} ${hidden ? styles.hidden : ''}`}>
+        <div className={styles.searchContainer}>
+          <form className={styles.searchForm} onSubmit={handleSearch}>
+            <input
+              type='text'
+              className={styles.searchInput}
+              placeholder='Search...'
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </form>
           <button type='submit' className={styles.searchIconContainer}>
             <div className={styles.iconsSearch}>
               <Image
@@ -45,7 +69,8 @@ export default function NavHorizontal() {
               />
             </div>
           </button>
-        </form>
+        </div>
+
         <div className={styles.cartIconContainer}>
           <Image
             src='/images/cart.png'

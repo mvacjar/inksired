@@ -1,7 +1,7 @@
 import styles from './navVertical.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-import HamburgerMenu from '@/layouts/HamburguerMenu/HamburgerMenu';
+import HamburgerMenu from '@/components/Navbars/HamburguerMenu/HamburgerMenu';
 
 export default function Navbar() {
   return (
