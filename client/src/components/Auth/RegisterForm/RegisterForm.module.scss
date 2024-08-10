@@ -63,10 +63,14 @@
   border-radius: $border2;
   font-size: $small;
   border: none;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   cursor: pointer;
-  padding: 0.5rem 1rem;
+  padding: $paddingButton;
   white-space: nowrap;
+  transition: transform ease 0.2s;
+  &:hover {
+    transform: translateY(-2px);
+  }
 }
 
 // Change to Sing in
@@ -100,13 +104,12 @@
   font-size: $small;
   border: 2px solid $accent;
   cursor: pointer;
-  padding: 0.25rem 1rem;
+  padding: $paddingButton;
   margin-top: 0.5rem;
   transition: transform ease 0.2s;
-}
-
-.signInButton:hover {
-  transform: translateY(-2px);
+  &:hover {
+    transform: translateY(-2px);
+  }
 }
 
 @media (max-width: 768px) {
@@ -124,6 +127,12 @@
   }
 
   .questionIn {
-    margin: 1rem 0 0 0;
+    margin: 1.5rem 0 0 0;
+  }
+}
+
+@media (max-width: 468px) {
+  .textPopUp {
+    font-size: $h6;
   }
 }

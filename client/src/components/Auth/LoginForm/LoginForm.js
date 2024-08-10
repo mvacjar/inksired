@@ -67,7 +67,7 @@ export default function LoginForm() {
         )}
 
         <button
-          className={styles.buttonSignIn}
+          className={styles.signInButton}
           type='submit'
           disabled={formik.isSubmitting}
         >
