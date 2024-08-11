@@ -4,21 +4,17 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-left: 7rem;
+}
+
+.articleCarousel {
+  margin: 5rem 1rem 0 1rem;
   width: 90vw;
-  margin-left: 8rem;
-}
-
-.paragraph {
-  margin: 2.5rem 0rem;
-}
-
-.titlePopulars {
-  font-size: $h4;
 }
 
 @media (max-width: 1000px) {
   .body {
-    width: 85vw;
+    width: 80vw;
   }
 }
 
