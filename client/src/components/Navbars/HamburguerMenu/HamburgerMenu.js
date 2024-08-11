@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
+import router from 'next/router';
+import classNames from 'classnames';
 import styles from './hamburgerMenu.module.scss';
 import Image from 'next/image';
-import Link from 'next/link';
 
 export default function HamburgerMenu() {
-  const { logout } = useAuth();
+  const { user, logout } = useAuth();
   const [openMenu, setOpenMenu] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const menuRef = useRef(null);
@@ -34,6 +35,19 @@ export default function HamburgerMenu() {
     }
   }, [openMenu]);
 
+  const toLogin = () => {
+    router.push('/join/sign-in');
+  };
+
+  const toAccount = () => {
+    router.push('/account');
+  };
+
+  const toLogout = () => {
+    logout();
+    router.push('/');
+  };
+
   const toggleMenu = () => {
     setShouldAnimate(true);
     setOpenMenu((prevOpenMenu) => !prevOpenMenu);
@@ -59,22 +73,31 @@ export default function HamburgerMenu() {
         }`}
       >
         <section className={styles.menuContainer}>
-          <Link href='#' className={styles.linkTop}>
-            Profile
-          </Link>
-          <span className={styles.line}></span>
-          <Link href='#' className={styles.link}>
-            Contact
-          </Link>
-          <span className={styles.line}></span>
-          <Link
-            href='/join/sign-in'
-            className={styles.linkBottom}
-            onClick={logout}
-          >
-            Logout
-          </Link>
-          <span className={styles.line}></span>
+          <div className={classNames({ [styles.linkTop]: user })}>
+            <p
+              className={styles.linkTitle}
+              name='user'
+              onClick={user ? toAccount : toLogin}
+            >
+              {user ? 'My profile' : 'Sign In'}
+            </p>
+            <span className={styles.line}></span>
+          </div>
+
+          <div className={styles.linkTop}>
+            <p className={styles.linkTitle}>Contact</p>
+            <span className={styles.line}></span>
+          </div>
+
+          <div className={classNames({ [styles.linkTop]: user })}>
+            <p
+              className={styles.linkTitle}
+              name='user'
+              onClick={user ? toLogout : ''}
+            >
+              {user ? 'Log Out' : ''}
+            </p>
+          </div>
         </section>
       </nav>
     </div>
