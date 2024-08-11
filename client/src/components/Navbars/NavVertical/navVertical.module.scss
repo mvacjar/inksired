@@ -18,13 +18,12 @@
   position: fixed;
   top: 0;
   left: 0;
-  padding-left: 0.5rem;
+  margin-left: 1rem;
   max-width: 5rem;
   height: 100%;
   z-index: 15;
-  box-shadow: -45px -75px 40px 50px #3d322880;
+  box-shadow: 0px -100px 20px 0px #3d322880;
   animation: slideDown 1.5s ease-out;
-  left: 0.24rem;
 
   &::after {
     content: '';
@@ -34,7 +33,6 @@
     border-left: 2.5rem solid transparent;
     border-right: 2.5rem solid transparent;
     border-bottom: 2.5rem solid $background;
-    left: 0.24rem;
   }
 }
 
