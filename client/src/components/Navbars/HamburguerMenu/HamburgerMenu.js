@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import styles from './hamburgerMenu.module.scss';
 import Image from 'next/image';
 
-export default function HamburgerMenu() {
+export default function HamburgerMenu({ isSpan }) {
   const { user, logout } = useAuth();
   const [openMenu, setOpenMenu] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
@@ -34,10 +34,6 @@ export default function HamburgerMenu() {
       };
     }
   }, [openMenu]);
-
-  const toLogin = () => {
-    router.push('/join/sign-in');
-  };
 
   const toAccount = () => {
     router.push('/account');
@@ -77,11 +73,12 @@ export default function HamburgerMenu() {
             <p
               className={styles.linkTitle}
               name='user'
-              onClick={user ? toAccount : toLogin}
+              onClick={user ? toAccount : () => {}} // Cambiar '' por () => {}
             >
-              {user ? 'My profile' : 'Sign In'}
+              {user ? 'My profile' : ''}
             </p>
-            <span className={styles.line}></span>
+
+            {user && <span className={styles.line}></span>}
           </div>
 
           <div className={styles.linkTop}>
@@ -89,11 +86,16 @@ export default function HamburgerMenu() {
             <span className={styles.line}></span>
           </div>
 
+          <div className={styles.linkTop}>
+            <p className={styles.linkTitle}>About Us</p>
+            {user && <span className={styles.line}></span>}
+          </div>
+
           <div className={classNames({ [styles.linkTop]: user })}>
             <p
               className={styles.linkTitle}
               name='user'
-              onClick={user ? toLogout : ''}
+              onClick={user ? toLogout : () => {}} // Aquí también se usa una función vacía como fallback
             >
               {user ? 'Log Out' : ''}
             </p>

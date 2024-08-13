@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import styles from './navHorizontal.module.scss';
 import Image from 'next/image';
 import router from 'next/router';
-import classNames from 'classnames';
 import { useAuth } from '@/hooks/useAuth';
 
 export default function NavHorizontal() {
@@ -10,6 +9,7 @@ export default function NavHorizontal() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hidden, setHidden] = useState(false);
   const { user } = useAuth();
+  console.log('User value:', user);
 
   const handleClearInput = (e) => {
     e.preventDefault();
@@ -42,8 +42,11 @@ export default function NavHorizontal() {
   }, [lastScrollY]);
 
   const toCart = () => {
-    if (!user) toLogin();
-    else router.push('/cart');
+    router.push('/cart');
+  };
+
+  const toLogin = () => {
+    router.push('/join/sign-in');
   };
 
   return (
@@ -97,10 +100,12 @@ export default function NavHorizontal() {
                 height={45}
                 alt='cart-icon'
                 className={styles.cartIcon}
-                onClick={user ? 'toCart' : ''}
+                onClick={toCart}
               />
             ) : (
-              ''
+              <button className={styles.signInButton} onClick={toLogin}>
+                Sign In
+              </button>
             )}
           </div>
         </div>

@@ -1,9 +1,9 @@
+import HamburgerMenu from '@/components/Navbars/HamburguerMenu/HamburgerMenu';
 import styles from './navVertical.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-import HamburgerMenu from '@/components/Navbars/HamburguerMenu/HamburgerMenu';
 
-export default function Navbar() {
+export default function NavVertical() {
   return (
     <>
       <div className={styles.navbarContainer}>
