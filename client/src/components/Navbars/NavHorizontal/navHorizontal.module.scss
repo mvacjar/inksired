@@ -64,6 +64,7 @@
   background: none;
   border: none;
   padding: 0;
+  width: 50%;
 }
 
 .xIcon,
@@ -99,11 +100,13 @@
 
 .cartIconContainer {
   display: flex;
+  width: 100%;
 }
 
 .cartIcon {
-  margin-right: 5rem;
-  margin-top: 1rem;
+  position: absolute;
+  top: 1rem;
+  right: 4rem;
 }
 
 .signInButton {
@@ -114,9 +117,8 @@
   color: $background;
   padding: $paddingButton;
   transition: background-color 0.3s ease;
-  margin-right: 5rem;
   top: 0.6rem;
-  right: 4rem;
+  right: 6rem;
 
   &:hover {
     background-color: $primary;
@@ -142,12 +144,11 @@
   }
 
   .cartIcon {
-    margin-right: 3rem;
-    margin-top: -0.5rem;
+    right: 3rem;
   }
 
   .signInButton {
-    right: -1rem;
+    right: 3rem;
     top: 0.8rem;
   }
 }
@@ -172,12 +173,12 @@
   }
 
   .cartIcon {
-    margin-right: 1rem;
-    margin-top: 0rem;
+    top: 0.8rem;
+    right: 1.5rem;
   }
 
   .signInButton {
-    right: -3rem;
+    right: 1.5rem;
     top: 0.4rem;
   }
 }
