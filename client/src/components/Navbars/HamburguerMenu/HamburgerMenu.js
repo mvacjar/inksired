@@ -10,6 +10,7 @@ export default function HamburgerMenu({ isSpan }) {
   const [openMenu, setOpenMenu] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const menuRef = useRef(null);
+  const clickOutRef = useRef(null);
 
   useEffect(() => {
     if (!openMenu && menuRef.current) {
@@ -35,6 +36,21 @@ export default function HamburgerMenu({ isSpan }) {
     }
   }, [openMenu]);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (clickOutRef.current && !clickOutRef.current.contains(event.target)) {
+        setOpenMenu(false);
+        setShouldAnimate(true);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const toAccount = () => {
     router.push('/account');
   };
@@ -50,7 +66,7 @@ export default function HamburgerMenu({ isSpan }) {
   };
 
   return (
-    <div className={styles.hamburgerMenu}>
+    <div className={styles.hamburgerMenu} ref={clickOutRef}>
       <Image
         src='/images/logo.svg'
         width={45}
@@ -73,7 +89,7 @@ export default function HamburgerMenu({ isSpan }) {
             <p
               className={styles.linkTitle}
               name='user'
-              onClick={user ? toAccount : () => {}} // Cambiar '' por () => {}
+              onClick={user ? toAccount : () => {}}
             >
               {user ? 'My profile' : ''}
             </p>
@@ -95,7 +111,7 @@ export default function HamburgerMenu({ isSpan }) {
             <p
               className={styles.linkTitle}
               name='user'
-              onClick={user ? toLogout : () => {}} // Aquí también se usa una función vacía como fallback
+              onClick={user ? toLogout : () => {}}
             >
               {user ? 'Log Out' : ''}
             </p>
