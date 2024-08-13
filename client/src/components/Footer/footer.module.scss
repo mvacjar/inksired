@@ -1,0 +1,75 @@
+@import '@/scss/index.scss';
+
+.footerWrapper {
+  background-color: $quaternary;
+  border-radius: $border2;
+  color: $background;
+  padding: 2rem;
+  margin: 2rem 0;
+  width: 91vw;
+}
+
+.titleContainer {
+  text-align: center;
+  padding: 1rem 2rem;
+}
+
+.line {
+  display: block;
+  text-decoration: none;
+  color: $background;
+  border-bottom: 1px solid #fffbef66;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+.linksContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 0;
+}
+
+.iconsContainer {
+  display: flex;
+  align-items: flex-end;
+}
+
+.signedContainer {
+  margin: 1rem 0 0;
+}
+
+.signed {
+  text-align: center;
+  font-size: $h6;
+  margin: 1.5rem 0 0;
+}
+
+@media (max-width: 1600px) {
+  .footerWrapper {
+    width: 89vw;
+  }
+}
+
+@media (max-width: 1300px) {
+  .footerWrapper {
+    width: 86vw;
+  }
+}
+
+@media (max-width: 1000px) {
+  .footerWrapper {
+    width: 82vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .footerWrapper {
+    width: 73vw;
+  }
+}
