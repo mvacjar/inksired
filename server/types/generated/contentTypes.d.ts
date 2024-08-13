@@ -998,15 +998,15 @@ export interface ApiLiteraryGenreLiteraryGenre extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     books: Attribute.Relation<
       'api::literary-genre.literary-genre',
       'manyToMany',
       'api::book.book'
     >;
+    order: Attribute.Integer;
     slug_genres: Attribute.UID<'api::literary-genre.literary-genre', 'title'> &
       Attribute.Required;
-    order: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

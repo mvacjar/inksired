@@ -14,7 +14,8 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "books": {
       "type": "relation",
@@ -22,13 +23,13 @@
       "target": "api::book.book",
       "inversedBy": "literary_genres"
     },
+    "order": {
+      "type": "integer"
+    },
     "slug_genres": {
       "type": "uid",
       "targetField": "title",
       "required": true
-    },
-    "order": {
-      "type": "integer"
     }
   }
 }
