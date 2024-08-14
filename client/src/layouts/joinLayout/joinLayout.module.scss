@@ -16,26 +16,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  > a {
-    img {
-      height: 4rem;
-    }
-    > i {
-      font-size: $small;
-      color: $text;
-      margin: 0;
-    }
-  }
 }
 
 .logo {
   width: 50%;
   height: 50%;
+  margin: 2rem 3rem;
 }
 
 .logoX {
-  margin: 0 1rem;
+  margin: 2rem;
 }
 
 .containerBlock {

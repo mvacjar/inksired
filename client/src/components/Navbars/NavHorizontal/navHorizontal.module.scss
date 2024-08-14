@@ -1,5 +1,7 @@
 @import '@/scss/index.scss';
 
+// Navbar body
+
 .navbar {
   position: fixed;
   display: flex;
@@ -14,6 +16,8 @@
   transform: translateY(-100px);
 }
 
+// Background image
+
 .imageWrapper {
   display: flex;
   align-items: center;
@@ -22,6 +26,8 @@
   margin-bottom: 0.5rem;
   width: 100vw;
 }
+
+// Search bar
 
 .searchContainer {
   display: flex;
@@ -53,6 +59,8 @@
     outline: none;
   }
 }
+
+// Search icons
 
 .searchIconContainer {
   position: absolute;
@@ -108,16 +116,26 @@
   right: 8rem;
 }
 
+// Sign in and sign up buttons
+
+.buttonsContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: row;
+  width: 50%;
+  position: relative;
+  right: -30rem;
+}
+
 .signInButton {
-  position: absolute;
   border: none;
   border-radius: $border2;
   background-color: $primary;
   color: $background;
   padding: $paddingButton;
   transition: background-color 0.3s ease;
-  top: 0.6rem;
-  right: 6rem;
+  margin-right: 0.5rem;
 
   &:hover {
     background-color: $primary;
@@ -128,26 +146,58 @@
   }
 }
 
+.signUpButton {
+  border: none;
+  border-radius: $border2;
+  background-color: $primary;
+  color: $background;
+  padding: $paddingButton;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $primary;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@media (max-width: 1600px) {
+  .buttonsContainer {
+    right: -20rem;
+  }
+}
+
+@media (max-width: 1300px) {
+  .buttonsContainer {
+    right: -8rem;
+  }
+}
+
 @media (max-width: 1000px) {
   .navbar {
     left: -1rem;
   }
 
   .searchContainer {
-    margin-left: 4rem;
+    margin-left: 2rem;
+  }
+
+  .searchInput {
+    width: 18rem;
   }
 
   .searchIconContainer {
-    left: 31rem;
+    left: 22rem;
   }
 
   .cartIcon {
     right: 8rem;
   }
 
-  .signInButton {
-    right: 3rem;
-    top: 0.8rem;
+  .buttonsContainer {
+    right: -6rem;
   }
 }
 
@@ -169,14 +219,37 @@
     left: 19.5rem;
   }
 
+  .buttonsContainer {
+    right: -4rem;
+  }
+
   .signInButton {
-    right: 1.5rem;
-    top: 0.4rem;
+    font-size: $small;
+  }
+
+  .signUpButton {
+    font-size: $small;
   }
 }
 
-@media (max-width: 568px) {
+@media (max-width: 600px) {
+  .searchContainer {
+    margin-left: 0rem;
+  }
+
+  .searchInput {
+    width: 14rem;
+  }
+
+  .searchIconContainer {
+    left: 16rem;
+  }
+
   .cartIcon {
     right: 8.5rem;
+  }
+
+  .buttonsContainer {
+    right: -1.5rem;
   }
 }

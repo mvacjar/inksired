@@ -49,6 +49,10 @@ export default function NavHorizontal() {
     router.push('/join/sign-in');
   };
 
+  const toSignUp = () => {
+    router.push('/join/sign-up');
+  };
+
   return (
     <>
       <nav className={`${styles.navbar} ${hidden ? styles.hidden : ''}`}>
@@ -103,9 +107,14 @@ export default function NavHorizontal() {
                 onClick={toCart}
               />
             ) : (
-              <button className={styles.signInButton} onClick={toLogin}>
-                Sign In
-              </button>
+              <div className={styles.buttonsContainer}>
+                <button className={styles.signInButton} onClick={toLogin}>
+                  Sign In
+                </button>
+                <button className={styles.signUpButton} onClick={toSignUp}>
+                  Sign Up
+                </button>
+              </div>
             )}
           </div>
         </div>

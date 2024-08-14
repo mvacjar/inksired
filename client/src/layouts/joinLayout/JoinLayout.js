@@ -1,8 +1,8 @@
 import styles from './joinLayout.module.scss';
-import Link from 'next/link';
 import Image from 'next/image';
 import { useAuth } from '@/hooks/useAuth';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export function JoinLayout(props) {
   const { children } = props;
@@ -13,6 +13,10 @@ export function JoinLayout(props) {
     router.push('/');
     return null;
   }
+
+  const toHome = () => {
+    router.push('/');
+  };
 
   return (
     <>
@@ -26,7 +30,7 @@ export function JoinLayout(props) {
           />
         </div>
         <div className={styles.navJoin}>
-          <Link href='#' className={styles.logoContainer}>
+          <div className={styles.logoContainer} onClick={toHome}>
             <Image
               src='/images/logo_light.svg'
               alt='Logo light'
@@ -35,8 +39,8 @@ export function JoinLayout(props) {
               className={styles.logo}
               priority
             />
-          </Link>
-          <Link href='#'>
+          </div>
+          <div onClick={toHome}>
             <Image
               src='/images/x.svg'
               alt='Logo light'
@@ -45,7 +49,7 @@ export function JoinLayout(props) {
               className={styles.logoX}
               priority
             />
-          </Link>
+          </div>
         </div>
       </div>
       <div className={styles.containerBlock}>

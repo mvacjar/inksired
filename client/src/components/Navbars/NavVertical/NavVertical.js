@@ -52,7 +52,7 @@ export default function NavVertical() {
               </Link>
             </div>
             <div className={styles.titleNavContainer}>
-              <Link href='/home'>
+              <Link href='/'>
                 <Image
                   src='/images/logo_dark.svg'
                   width={120}

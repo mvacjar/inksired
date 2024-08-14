@@ -1,0 +1,58 @@
+@import '@/scss/index.scss';
+
+.body {
+  height: 100vh;
+  margin: 5rem 3rem 3rem 10rem;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 3rem;
+  background-color: $quaternary;
+  border-radius: $border2;
+}
+
+.catImage {
+  margin: 2rem;
+  background-color: $tertiary;
+  border-radius: $border2;
+  padding: 2rem;
+}
+
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.titleUsername {
+  font-size: $h4;
+}
+
+.tabContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 3rem;
+}
+
+.valuesContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+}
+
+.ordersContainer,
+.wishlistContainer,
+.addressesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
