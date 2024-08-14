@@ -15,9 +15,9 @@ export function validationSchema() {
     email: Yup.string().email('Invalid email').required(true),
     username: Yup.string().required(true),
     name: Yup.string().required(true),
-    password: Yup.string().min(5, 'Too short').required(true),
+    password: Yup.string().min(3, 'Too short').required(true),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password'), null], 'Passwords must match')
-      .required('Confirm Password is required'),
+      .required('Confirm password is required'),
   });
 }

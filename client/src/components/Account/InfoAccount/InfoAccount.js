@@ -1,10 +1,12 @@
 import styles from './infoAccount.module.scss';
+import { Settings } from '@/components/Account/Settings';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
 import { DateTime } from 'luxon';
 import { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
@@ -13,7 +15,7 @@ function MyOrders() {
   return <div>My orders content goes here.</div>;
 }
 
-function Wishlist() {
+function MyWishlist() {
   return <div>Wishlist content goes here.</div>;
 }
 
@@ -21,12 +23,19 @@ function MyAddresses() {
   return <div>My addresses content goes here.</div>;
 }
 
-function Settings() {
-  return <div>Settings content goes here.</div>;
+function MySettings() {
+  return (
+    <>
+      <Settings.ChangeName />
+      <Settings.ChangeEmail />
+      <Settings.ChangePassword />
+    </>
+  );
 }
 
 export default function InfoAccount() {
   const [value, setValue] = useState(0);
+  const isSmallScreen = useMediaQuery('(max-width:768px)');
   const { user } = useAuth();
   const router = useRouter();
 
@@ -35,7 +44,7 @@ export default function InfoAccount() {
     return null;
   }
 
-  const handleChange = (newValue) => {
+  const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
@@ -63,7 +72,8 @@ export default function InfoAccount() {
           />
           <article className={styles.dataContainer}>
             <h1 className={styles.titleUsername}>{user.username}</h1>
-            <p>{user.email}</p>
+            <h3 className={styles.titleName}>Name: {user.name}</h3>
+            <p>e-Mail: {user.email}</p>
             <p>
               Member since:{' '}
               {DateTime.fromISO(user.createdAt, { locale: 'en' }).toFormat(
@@ -72,14 +82,14 @@ export default function InfoAccount() {
             </p>
           </article>
         </section>
-        <section className={styles.tabContainer}>
+        <section className={styles.tabsWrapper}>
           <ThemeProvider theme={theme}>
             <Tabs
-              aria-label='disabled tabs example'
               value={value}
               onChange={handleChange}
               textColor='secondary'
               indicatorColor='primary'
+              orientation={isSmallScreen ? 'vertical' : 'horizontal'}
             >
               <Tab label='My orders' />
               <Tab label='Wishlist' />
@@ -88,12 +98,10 @@ export default function InfoAccount() {
             </Tabs>
 
             <Box className={styles.valuesContainer}>
-              {value === 0 && <MyOrders className={styles.ordersContainer} />}
-              {value === 1 && <Wishlist className={styles.wishlistContainer} />}
-              {value === 2 && (
-                <MyAddresses className={styles.addressesContainer} />
-              )}
-              {value === 3 && <Settings className={styles.ordersSettings} />}
+              {value === 0 && <MyOrders />}
+              {value === 1 && <MyWishlist />}
+              {value === 2 && <MyAddresses />}
+              {value === 3 && <MySettings />}
             </Box>
           </ThemeProvider>
         </section>

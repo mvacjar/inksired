@@ -2,7 +2,7 @@
 
 .body {
   height: 100vh;
-  margin: 5rem 3rem 3rem 10rem;
+  margin: 5rem 3rem 3rem 8rem;
 }
 
 .infoContainer {
@@ -28,13 +28,18 @@
   align-items: flex-start;
   justify-content: center;
   padding: 2rem;
+  white-space: nowrap;
 }
 
 .titleUsername {
   font-size: $h4;
 }
 
-.tabContainer {
+.titleName {
+  font-size: $h6;
+}
+
+.tabsWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,16 +48,58 @@
 }
 
 .valuesContainer {
+  padding: 3rem;
   display: flex;
   flex-direction: column;
-  padding: 3rem;
 }
 
 .ordersContainer,
 .wishlistContainer,
-.addressesContainer {
+.addressesContainer,
+.settingsContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .infoContainer {
+    flex-direction: column;
+  }
+
+  .catImage {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .tabsWrapper {
+    margin-top: 3rem;
+  }
+
+  .tabContainer {
+    margin: 3rem;
+  }
+
+  .dataContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .ordersContainer,
+  .wishlistContainer,
+  .addressesContainer,
+  .settingsContainer {
+    flex-basis: 48%;
+    width: 48%;
+    margin-bottom: 1rem;
+  }
+
+  .valuesContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
