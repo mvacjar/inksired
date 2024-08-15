@@ -1,6 +1,6 @@
 import styles from './infoAccount.module.scss';
-import { Settings, Address } from '@/components/Account';
 import Image from 'next/image';
+import { Settings, Address } from '@/components/Account';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
 import { DateTime } from 'luxon';
@@ -19,10 +19,11 @@ function MyWishlist() {
   return <div>Wishlist content goes here.</div>;
 }
 
-function MyAddresses() {
+function MyAddresses({ reload, onReload }) {
   return (
     <>
-      <Address.NewAddress />
+      <Address.NewAddress onReload={onReload} />
+      <Address.ListAddresses reload={reload} onReload={onReload} />
     </>
   );
 }
@@ -39,9 +40,12 @@ function MySettings() {
 
 export default function InfoAccount() {
   const [value, setValue] = useState(2);
+  const [reload, setReload] = useState(false);
   const isSmallScreen = useMediaQuery('(max-width:768px)');
   const { user } = useAuth();
   const router = useRouter();
+
+  const onReload = () => setReload((prevState) => !prevState);
 
   if (!user) {
     router.push('/join/sign-in');
@@ -104,7 +108,9 @@ export default function InfoAccount() {
             <Box className={styles.valuesContainer}>
               {value === 0 && <MyOrders />}
               {value === 1 && <MyWishlist />}
-              {value === 2 && <MyAddresses />}
+              {value === 2 && (
+                <MyAddresses reload={reload} onReload={onReload} />
+              )}
               {value === 3 && <MySettings />}
             </Box>
           </ThemeProvider>

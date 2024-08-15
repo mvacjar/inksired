@@ -32,22 +32,18 @@
       "type": "string",
       "required": true
     },
-    "region": {
-      "type": "string",
-      "required": true
-    },
-    "postal_code": {
-      "type": "string",
-      "required": true
-    },
-    "telephone": {
-      "type": "string",
-      "required": true
-    },
     "user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "postal_code": {
+      "type": "integer",
+      "required": true
+    },
+    "telephone": {
+      "type": "integer",
+      "required": true
     }
   }
 }

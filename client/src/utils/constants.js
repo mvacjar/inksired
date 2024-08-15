@@ -6,6 +6,7 @@ export const ENV = {
     USERS_ME: 'users/me',
     USERS: 'users',
     LITERARY_GENRES: 'literary-genres',
+    ADDRESS: 'addresses',
   },
   TOKEN: 'token',
 };

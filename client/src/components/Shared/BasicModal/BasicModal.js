@@ -2,7 +2,14 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { useState } from 'react';
+
+const styleTitle = {
+  color: '#fffbef',
+  textAlign: 'center',
+  fontFamily: 'Bangla MN',
+  pb: 0,
+  pt: 2,
+};
 
 const styleModal = {
   position: 'absolute',
@@ -18,6 +25,9 @@ const styleModal = {
   p: 3,
   '&:active': {
     border: 'none',
+  },
+  '@media (max-width: 768px)': {
+    width: '80%',
   },
 };
 
@@ -38,20 +48,23 @@ const styleButton = {
     transform: 'scale(1.05)',
   },
 };
-
-export function BasicModal({ children, title }) {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+export function BasicModal({ open, onClose, children, title }) {
   return (
     <div>
-      <Button onClick={handleOpen} sx={styleButton}>
-        Create
-      </Button>
-      <Modal open={open} onClose={handleClose}>
+      <div
+        style={{
+          display: 'flex',
+          alignContent: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Button onClick={() => onClose(true)} sx={styleButton}>
+          Create
+        </Button>
+      </div>
+      <Modal open={open} onClose={() => onClose(false)}>
         <Box sx={styleModal}>
-          <Typography variant='h6' component='h2'>
+          <Typography variant='h6' component='h2' sx={styleTitle}>
             {title}
           </Typography>
           <Typography sx={{ mt: 2 }}>{children}</Typography>

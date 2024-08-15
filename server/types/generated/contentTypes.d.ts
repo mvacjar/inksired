@@ -820,14 +820,13 @@ export interface ApiAddressAddress extends Schema.CollectionType {
     address: Attribute.String & Attribute.Required;
     country: Attribute.String & Attribute.Required;
     city: Attribute.String & Attribute.Required;
-    region: Attribute.String & Attribute.Required;
-    postal_code: Attribute.String & Attribute.Required;
-    telephone: Attribute.String & Attribute.Required;
     user: Attribute.Relation<
       'api::address.address',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    postal_code: Attribute.Integer & Attribute.Required;
+    telephone: Attribute.Integer & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
