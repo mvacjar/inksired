@@ -1,4 +1,5 @@
 import { ENV, authFetch } from '@/utils';
+import { method } from 'lodash';
 
 export class Address {
   async create(data, userId) {
@@ -48,6 +49,52 @@ export class Address {
       return result;
     } catch (error) {
       console.error('Catch Error:', error);
+      throw error;
+    }
+  }
+
+  async update(data, addressId) {
+    try {
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}/${addressId}`;
+      const params = {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ data }),
+      };
+
+      const response = await authFetch(url, params);
+      const result = await response.json();
+
+      if (!response.ok) {
+        console.error('Error:', result);
+        throw result;
+      }
+
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async delete(addressId) {
+    try {
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}/${addressId}`;
+      const params = {
+        method: 'DELETE',
+      };
+
+      const response = await authFetch(url, params);
+      const result = await response.json();
+
+      if (!response.ok) {
+        console.error('Error:', result);
+        throw result;
+      }
+
+      return result;
+    } catch (error) {
       throw error;
     }
   }
