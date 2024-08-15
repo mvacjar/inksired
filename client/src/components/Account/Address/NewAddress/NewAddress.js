@@ -1,6 +1,7 @@
 import { BasicModal } from '@/components/Shared/BasicModal/BasicModal';
 import { AddressForm } from '../AddressForm';
 import { useState } from 'react';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
 export function NewAddress(props) {
@@ -12,7 +13,6 @@ export function NewAddress(props) {
   };
 
   const styleButton = {
-    display: 'inline-block',
     bgcolor: '#96503e',
     color: '#fffbef',
     borderRadius: 10,
@@ -22,20 +22,29 @@ export function NewAddress(props) {
     padding: '0.5rem 1rem',
     marginTop: '0',
     whiteSpace: 'nowrap',
+    maxWidth: '12rem',
+    width: '100%',
     transition: 'transform ease 0.2s',
-    width: 'auto',
 
     '&:hover': {
-      backgroundColor: '#96503e',
+      bgcolor: '#96503e',
       transform: 'scale(1.05)',
     },
   };
 
+  const containerStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+
   return (
     <>
-      <Button onClick={() => handleOpenClose(true)} sx={styleButton}>
-        Create
-      </Button>
+      <Box sx={containerStyle}>
+        <Button onClick={() => handleOpenClose(true)} sx={styleButton}>
+          Create
+        </Button>
+      </Box>
 
       <BasicModal open={open} onClose={handleOpenClose} title='New Address'>
         <AddressForm

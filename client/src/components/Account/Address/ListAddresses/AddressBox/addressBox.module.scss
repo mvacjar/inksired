@@ -3,7 +3,7 @@
 .boxWrapper {
   display: flex;
   position: relative;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .boxContainer {
@@ -38,8 +38,11 @@
   justify-content: center;
   background-color: $secondary;
   border-top-right-radius: $border2;
+  transition: background-color 0.3s ease, transform 0.3s ease; // Añadir transición
+
   &:hover {
     background-color: $accent;
+    transform: scale(1.05);
   }
 }
 
@@ -52,7 +55,10 @@
   border-bottom-right-radius: $border2;
   background-color: $primary;
   padding: 0.4rem;
+  transition: background-color 0.3s ease, transform 0.3s ease; // Añadir transición
+
   &:hover {
     background-color: $accent;
+    transform: scale(1.05);
   }
 }
