@@ -14,10 +14,10 @@ export function ChangeName() {
     validateOnChange: false,
     validateOnBlur: false,
     onSubmit: async (values) => {
+      console.log('Submitting values:', values);
       try {
         await userCtrl.updateMe(user.id, values);
-        updateUser('username', values.username);
-        updateUser('name', values.name);
+        updateUser({ username: values.username, name: values.name });
       } catch (error) {
         console.error(error);
       }
@@ -29,7 +29,7 @@ export function ChangeName() {
       <form onSubmit={formik.handleSubmit} className={styles.formContainer}>
         <input
           type='text'
-          className={styles.inputUser}
+          className={styles.input}
           name='username'
           placeholder={formik.values.username}
           onChange={formik.handleChange}
@@ -37,7 +37,7 @@ export function ChangeName() {
         />
         <input
           type='text'
-          className={styles.inputName}
+          className={styles.input}
           name='name'
           placeholder={formik.values.name || ''}
           onChange={formik.handleChange}

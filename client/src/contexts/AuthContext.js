@@ -52,8 +52,11 @@ export function AuthProvider(props) {
     setUser(null);
   };
 
-  const updateUser = (key, value) => {
-    setUser({ ...user, [key]: value });
+  const updateUser = (updatedFields) => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      ...updatedFields,
+    }));
   };
 
   const data = {

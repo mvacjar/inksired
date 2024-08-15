@@ -11,15 +11,13 @@
   flex-direction: column;
 }
 
-.inputUser,
-.inputName {
+.input {
   border: none;
   border-radius: $border2;
   background-color: $blurInput;
   margin: 1rem 0;
   padding: 0.5rem 1rem;
   transition: background-color 0.3s ease;
-  margin-right: 1rem;
 
   &:hover {
     background-color: #556c8d3d;
@@ -41,7 +39,6 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  text-align: right;
 }
 
 .saveButton {
@@ -68,7 +65,13 @@
   }
 
   .input {
-    width: 15rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
+    font-size: $small;
+    &:nth-child(1) {
+      width: 8rem;
+    }
+    &:nth-child(2) {
+      width: 8rem;
+    }
   }
 }

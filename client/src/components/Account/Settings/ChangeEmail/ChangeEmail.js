@@ -16,7 +16,7 @@ export function ChangeEmail() {
     onSubmit: async (values) => {
       try {
         await userCtrl.updateMe(user.id, { email: values.email });
-        updateUser('email', values.email);
+        updateUser({ email: values.email, repeatEmail: values.email });
       } catch (error) {
         console.error(error);
       }
@@ -27,16 +27,13 @@ export function ChangeEmail() {
     <>
       <form onSubmit={formik.handleSubmit} className={styles.formContainer}>
         <input
-          type='email'
+          type='text'
           className={styles.input}
           name='email'
-          placeholder='Enter your email'
+          placeholder={formik.values.email}
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.email}
-          aria-invalid={formik.errors.email ? 'true' : 'false'}
+          error={formik.errors.email ? 'true' : 'false'}
         />
-
         <input
           type='email'
           className={styles.input}
@@ -45,7 +42,7 @@ export function ChangeEmail() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.repeatEmail}
-          aria-invalid={formik.errors.repeatEmail ? 'true' : 'false'}
+          error={formik.errors.repeatEmail ? 'true' : 'false'}
         />
 
         <div className={styles.buttonContainer}>

@@ -8,7 +8,7 @@ import { User } from '@/api';
 const userCtrl = new User();
 
 export function ChangePassword() {
-  const { user, updateUser } = useAuth();
+  const { user, logout, updateUser } = useAuth();
   const formik = useFormik({
     initialValues: initialValues(user.password),
     validationSchema: validationSchema(),
@@ -16,8 +16,9 @@ export function ChangePassword() {
     validateOnBlur: true,
     onSubmit: async (values) => {
       try {
-        await userCtrl.updateMe(user.id, { email: values.password });
+        await userCtrl.updateMe(user.id, { password: values.password });
         updateUser('email', values.password);
+        logout();
       } catch (error) {
         console.error(error);
       }
@@ -31,7 +32,8 @@ export function ChangePassword() {
           type='password'
           className={styles.input}
           name='password'
-          placeholder={formik.values.password}
+          placeholder='New password'
+          value={formik.values.password}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.errors.password ? 'true' : 'false'}
