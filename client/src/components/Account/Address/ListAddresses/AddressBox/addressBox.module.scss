@@ -1,0 +1,57 @@
+@import '@/scss/index.scss';
+
+.boxWrapper {
+  display: flex;
+  position: relative;
+  margin-bottom: 3rem;
+  margin-right: 2rem;
+}
+
+.boxContainer {
+  padding: 3rem 8rem 3rem 3rem;
+  background-color: $tertiary;
+  border-radius: $border2;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  &:hover {
+    border: 2px solid $quaternary;
+  }
+}
+
+.iconsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  height: 100%;
+}
+
+.iconEdit {
+  background-color: $primary;
+  padding: 0.3rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $secondary;
+  border-top-right-radius: $border2;
+  &:hover {
+    background-color: $accent;
+  }
+}
+
+.iconDelete {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary;
+  border-bottom-right-radius: $border2;
+  background-color: $primary;
+  padding: 0.4rem;
+  &:hover {
+    background-color: $accent;
+  }
+}
