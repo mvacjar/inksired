@@ -1,15 +1,23 @@
 import styles from './addressForm.module.scss';
 import { useFormik } from 'formik';
+import { Address } from '@/api';
+import { useAuth } from '@/hooks';
 import { initialValues, validationSchema } from './AddressForm.form';
 
+const addressCtrl = new Address();
+
 export function AddressForm(props) {
+  const { onClose, onReload } = props;
+  const { user } = useAuth();
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
     validateOnChange: false,
     onSubmit: async (values) => {
       try {
-        console.log(values);
+        await addressCtrl.create(values, user.id);
+        formik.handleReset();
+        onReload();
         onClose();
       } catch (error) {
         console.error(error);
@@ -17,41 +25,34 @@ export function AddressForm(props) {
     },
   });
 
-  const { onClose } = props;
   return (
-    <>
-      <form className={styles.formContainer} onSubmit={formik.handleSubmit}>
-        <div className={styles.inputsContainer}>
-          <input
-            type='text'
-            name='title'
-            className={styles.inputSmall}
-            placeholder='Title'
-            value={formik.values.title}
-            onChange={formik.handleChange}
-            error={formik.errors.title ? 'true' : 'false'}
-          />
-          <input
-            type='text'
-            name='name'
-            className={styles.inputSmall}
-            placeholder='Address name'
-            value={formik.values.name}
-            onChange={formik.handleChange}
-            error={formik.errors.name ? 'true' : 'false'}
-          />
-        </div>
+    <form className={styles.formContainer} onSubmit={formik.handleSubmit}>
+      <div className={styles.inputsContainer}>
         <input
           type='text'
-          name='address'
-          className={styles.input}
-          placeholder='Your address'
-          value={formik.values.address}
+          name='title'
+          className={styles.inputSmall}
+          placeholder='Title'
+          value={formik.values.title}
           onChange={formik.handleChange}
-          error={formik.errors.address ? 'true' : 'false'}
         />
-      </form>
-
+        <input
+          type='text'
+          name='name'
+          className={styles.inputSmall}
+          placeholder='Address name'
+          value={formik.values.name}
+          onChange={formik.handleChange}
+        />
+      </div>
+      <input
+        type='text'
+        name='address'
+        className={styles.input}
+        placeholder='Your address'
+        value={formik.values.address}
+        onChange={formik.handleChange}
+      />
       <div className={styles.inputsContainer}>
         <input
           type='text'
@@ -60,7 +61,6 @@ export function AddressForm(props) {
           placeholder='City'
           value={formik.values.city}
           onChange={formik.handleChange}
-          error={formik.errors.city ? 'true' : 'false'}
         />
         <input
           type='text'
@@ -69,7 +69,6 @@ export function AddressForm(props) {
           placeholder='Country'
           value={formik.values.country}
           onChange={formik.handleChange}
-          error={formik.errors.country ? 'true' : 'false'}
         />
       </div>
       <div className={styles.inputsContainer}>
@@ -80,7 +79,6 @@ export function AddressForm(props) {
           placeholder='Postal code'
           value={formik.values.postal_code}
           onChange={formik.handleChange}
-          error={formik.errors.postal_code ? 'true' : 'false'}
         />
         <input
           type='number'
@@ -89,10 +87,8 @@ export function AddressForm(props) {
           placeholder='Phone number'
           value={formik.values.telephone}
           onChange={formik.handleChange}
-          error={formik.errors.telephone ? 'true' : 'false'}
         />
       </div>
-
       <div className={styles.buttonContainer}>
         <button
           type='submit'
@@ -102,6 +98,6 @@ export function AddressForm(props) {
           Send
         </button>
       </div>
-    </>
+    </form>
   );
 }

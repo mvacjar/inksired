@@ -60,3 +60,14 @@
     transform: translateY(-2px);
   }
 }
+
+@media (max-width: 768px) {
+  .inputsContainer {
+    flex-direction: column;
+  }
+
+  .input,
+  .inputSmall {
+    width: 90%;
+  }
+}
