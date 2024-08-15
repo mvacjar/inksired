@@ -1,5 +1,5 @@
 import styles from './infoAccount.module.scss';
-import { Settings } from '@/components/Account/Settings';
+import { Settings, Address } from '@/components/Account';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
@@ -20,7 +20,11 @@ function MyWishlist() {
 }
 
 function MyAddresses() {
-  return <div>My addresses content goes here.</div>;
+  return (
+    <>
+      <Address.NewAddress />
+    </>
+  );
 }
 
 function MySettings() {
@@ -34,7 +38,7 @@ function MySettings() {
 }
 
 export default function InfoAccount() {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(2);
   const isSmallScreen = useMediaQuery('(max-width:768px)');
   const { user } = useAuth();
   const router = useRouter();
