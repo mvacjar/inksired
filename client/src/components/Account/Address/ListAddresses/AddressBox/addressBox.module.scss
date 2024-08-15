@@ -4,7 +4,6 @@
   display: flex;
   position: relative;
   margin-bottom: 3rem;
-  margin-right: 2rem;
 }
 
 .boxContainer {
@@ -13,6 +12,8 @@
   border-radius: $border2;
   box-sizing: border-box;
   border: 2px solid transparent;
+  white-space: wrap;
+  min-width: 23rem;
   &:hover {
     border: 2px solid $quaternary;
   }
