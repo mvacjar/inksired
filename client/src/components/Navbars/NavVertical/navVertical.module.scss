@@ -1,20 +1,78 @@
 @import '@/scss/index.scss';
+// Logo
+
+@keyframes pullDown {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(15%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.pullDown {
+  animation: pullDown 0.3s ease-in-out;
+}
+
+@keyframes pullUp {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(-15%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.pullUp {
+  animation: pullUp 0.3s ease-in-out;
+}
+
+.logoContainer {
+  position: fixed;
+  padding: 1rem 2.1rem;
+  z-index: 20;
+}
+
+.logo {
+  cursor: pointer;
+  filter: drop-shadow(5px 2px 8px #010100);
+}
+
+// BookMark
+
+.navWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
 
 @keyframes slideDown {
   0% {
-    transform: translateY(-100%);
-    opacity: 0;
+    transform: translateY(-76%);
   }
-  80% {
-    opacity: 1;
-  }
-
   100% {
     transform: translateY(0);
   }
 }
 
-.navbarContainer {
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-76%);
+  }
+}
+
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -22,10 +80,11 @@
   max-width: 5rem;
   height: 100%;
   z-index: 15;
+  background-color: $text;
   box-shadow: 0px -100px 20px 0px #3d322880;
-  animation: slideDown 1.5s ease-out;
 
   &::after {
+    background: transparent;
     content: '';
     position: absolute;
     bottom: 0;
@@ -36,20 +95,12 @@
   }
 }
 
-.navbar {
-  height: 100%;
-  background-color: $text;
-  padding: 2rem 0;
+.navbar.slideDown {
+  animation: slideDown 1.5s ease-out forwards;
 }
 
-.bookmarkForm {
-  position: fixed;
-  top: 0;
-  left: 0;
-  max-width: 5rem;
-  height: 100%;
-  background-color: transparent;
-  left: 0.24rem;
+.navbar.slideUp {
+  animation: slideUp 1.5s ease-out forwards;
 }
 
 .menuContainer {
@@ -57,32 +108,32 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   height: 100%;
-}
-
-.logoContainer {
-  height: 100%;
-  align-items: flex-start;
 }
 
 .linksContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  margin-top: 12rem;
 }
 
-.link {
+.icon {
   margin: 0.5rem 0;
   filter: drop-shadow(5px 2px 8px #010100);
+  transition: transform ease 0.2s;
   &:hover {
-    transform: scale(1.1);
+    transform: translateY(-2px);
   }
   &:active {
     transform: scale(1);
   }
+}
+
+.titleNavContainer {
+  margin-top: auto;
+  padding: 20px;
+  text-align: center;
 }
 
 .titleNavContainer {
@@ -92,7 +143,7 @@
 }
 
 .titleNav {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.7rem;
   margin-right: 0.3rem;
   transform: rotate(-90deg);
   filter: drop-shadow(5px 2px 8px #010100);

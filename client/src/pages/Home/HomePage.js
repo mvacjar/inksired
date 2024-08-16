@@ -15,12 +15,14 @@ export default function HomePage() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className={styles.body}>
+      <main className={styles.bodyContainer}>
         <NavVertical />
         <NavHorizontal />
-        <section>
-          <article className={styles.articleCarousel}>
+        <article className={styles.mainContainer}>
+          <section className={styles.carouselContainer}>
             <CarouselGenres />
+          </section>
+          <section className={styles.text}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
             iure repellat molestiae magni suscipit nihil dolore excepturi
             debitis atque, consequatur est tempore incidunt tenetur id,
@@ -111,9 +113,11 @@ export default function HomePage() {
             adipisicing elit. Mollitia iure repellat molestiae magni suscipit
             nihil dolore excepturi debitis atque, consequatur est tempore
             incidunt tenetur
+          </section>
+          <section className={styles.footerContainer}>
             <Footer />
-          </article>
-        </section>
+          </section>
+        </article>
       </main>
     </>
   );

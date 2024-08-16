@@ -23,8 +23,7 @@ export default function CarouselGenres(props) {
   }, []);
 
   return (
-    <div>
-      <h1 className={styles.titleSection}>Literary Genres</h1>
+    <div className={styles.carouselContainer}>
       <section className={styles.carousel}>
         <div className={styles.carouselItems}>
           {map(genres, (genre) => (

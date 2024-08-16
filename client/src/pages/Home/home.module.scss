@@ -1,25 +1,40 @@
 @import '@/scss/index.scss';
 
-.body {
+.bodyContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 7rem;
 }
 
-.articleCarousel {
-  margin: 5rem 1rem 0 1rem;
-  width: 90vw;
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (max-width: 1000px) {
-  .body {
-    width: 70vw;
-  }
+.carouselContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (max-width: 768px) {
-  .body {
-    width: 70vw;
-  }
+.text {
+  margin: 2rem 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+// @media (max-width: 1000px) {
+//   .body {
+//     width: 70vw;
+//   }
+// }
+
+// @media (max-width: 768px) {
+//   .body {
+//     width: 70vw;
+//   }
+// }
