@@ -3,6 +3,7 @@ import Head from 'next/head';
 import NavVertical from '@/components/Navbars/NavVertical/NavVertical';
 import NavHorizontal from '@/components/Navbars/NavHorizontal/NavHorizontal';
 import CarouselGenres from '@/components/CarouselGenres/CarouselGenres';
+import { LastBookPublished } from '@/components/Home/LastBookPublished';
 import Footer from '@/components/Footer/Footer';
 
 export default function HomePage() {
@@ -22,7 +23,8 @@ export default function HomePage() {
           <section className={styles.carouselContainer}>
             <CarouselGenres />
           </section>
-          <section className={styles.text}>
+          <section className={styles.lastBookPublishedContainer}>
+            <LastBookPublished />
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
             iure repellat molestiae magni suscipit nihil dolore excepturi
             debitis atque, consequatur est tempore incidunt tenetur id,

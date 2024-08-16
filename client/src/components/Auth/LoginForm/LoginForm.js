@@ -10,7 +10,6 @@ const authCtrl = new Auth();
 export default function LoginForm() {
   const router = useRouter();
   const { login } = useAuth();
-  // console.log(useAuth());
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -20,10 +19,7 @@ export default function LoginForm() {
       try {
         const response = await authCtrl.login(values);
         login(response.jwt);
-        // router.push('/join/sign-in');
       } catch (error) {
-        console.error('Error registering user:', error);
-
         if (error.message === 'Email or Username incorrect') {
           alert('The email or password is incorrect.');
         } else {

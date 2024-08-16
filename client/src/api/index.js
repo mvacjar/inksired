@@ -3,3 +3,4 @@ export * from './token';
 export * from './user';
 export * from './literaryGenres';
 export * from './address';
+export * from './book';

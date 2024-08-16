@@ -14,7 +14,6 @@ export function ChangeName() {
     validateOnChange: false,
     validateOnBlur: false,
     onSubmit: async (values) => {
-      console.log('Submitting values:', values);
       try {
         await userCtrl.updateMe(user.id, values);
         updateUser({ username: values.username, name: values.name });

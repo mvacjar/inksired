@@ -78,11 +78,6 @@
       "targetField": "title",
       "required": true
     },
-    "slug_author": {
-      "type": "uid",
-      "targetField": "author",
-      "required": true
-    },
     "release_date": {
       "type": "date"
     },
@@ -110,6 +105,16 @@
       "relation": "manyToOne",
       "target": "api::saga.saga",
       "inversedBy": "books_relation"
+    },
+    "publication_date": {
+      "type": "date",
+      "required": true
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::author.author",
+      "mappedBy": "book"
     }
   }
 }

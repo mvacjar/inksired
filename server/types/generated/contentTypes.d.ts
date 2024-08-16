@@ -844,6 +844,48 @@ export interface ApiAddressAddress extends Schema.CollectionType {
   };
 }
 
+export interface ApiAuthorAuthor extends Schema.CollectionType {
+  collectionName: 'authors';
+  info: {
+    singularName: 'author';
+    pluralName: 'authors';
+    displayName: 'Author';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name_author: Attribute.String & Attribute.Required;
+    books: Attribute.Relation<
+      'api::author.author',
+      'oneToMany',
+      'api::book.book'
+    >;
+    book: Attribute.Relation<
+      'api::author.author',
+      'manyToOne',
+      'api::book.book'
+    >;
+    author_slug: Attribute.UID<'api::author.author', 'name_author'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::author.author',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::author.author',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBookBook extends Schema.CollectionType {
   collectionName: 'books';
   info: {
@@ -878,7 +920,6 @@ export interface ApiBookBook extends Schema.CollectionType {
     price: Attribute.Decimal & Attribute.Required;
     discount: Attribute.Integer;
     slug_title: Attribute.UID<'api::book.book', 'title'> & Attribute.Required;
-    slug_author: Attribute.UID<'api::book.book', 'author'> & Attribute.Required;
     release_date: Attribute.Date;
     language: Attribute.Enumeration<['English', 'Spanish', 'Svenska']>;
     page_number: Attribute.Integer;
@@ -889,6 +930,12 @@ export interface ApiBookBook extends Schema.CollectionType {
     >;
     order_in_saga: Attribute.Integer;
     sagas: Attribute.Relation<'api::book.book', 'manyToOne', 'api::saga.saga'>;
+    publication_date: Attribute.Date & Attribute.Required;
+    authors: Attribute.Relation<
+      'api::book.book',
+      'oneToMany',
+      'api::author.author'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1159,6 +1206,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::address.address': ApiAddressAddress;
+      'api::author.author': ApiAuthorAuthor;
       'api::book.book': ApiBookBook;
       'api::comment.comment': ApiCommentComment;
       'api::forum.forum': ApiForumForum;

@@ -9,7 +9,7 @@ export default function NavHorizontal() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hidden, setHidden] = useState(false);
   const { user } = useAuth();
-  console.log('User value:', user);
+  // console.log('User value:', user);
 
   const handleClearInput = (e) => {
     e.preventDefault();

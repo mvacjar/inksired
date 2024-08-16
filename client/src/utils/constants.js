@@ -7,6 +7,7 @@ export const ENV = {
     USERS: 'users',
     LITERARY_GENRES: 'literary-genres',
     ADDRESS: 'addresses',
+    BOOKS: 'books',
   },
   TOKEN: 'token',
 };
