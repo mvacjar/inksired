@@ -25,7 +25,7 @@ export default function HomePage() {
           </section>
           <section className={styles.lastBookPublishedContainer}>
             <LastBookPublished />
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
+            {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
             iure repellat molestiae magni suscipit nihil dolore excepturi
             debitis atque, consequatur est tempore incidunt tenetur id,
             veritatis eveniet temporibus rerum cupiditate. Lorem ipsum dolor sit
@@ -114,7 +114,7 @@ export default function HomePage() {
             temporibus rerum cupiditate. Lorem ipsum dolor sit amet consectetur
             adipisicing elit. Mollitia iure repellat molestiae magni suscipit
             nihil dolore excepturi debitis atque, consequatur est tempore
-            incidunt tenetur
+            incidunt tenetur */}
           </section>
           <section className={styles.footerContainer}>
             <Footer />

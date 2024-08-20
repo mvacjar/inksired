@@ -9,7 +9,6 @@ const genresCtrl = new LiteraryGenres();
 export default function CarouselGenres(props) {
   const { isOpenSearch } = props;
   const [genres, setGenres] = useState(null);
-  console.log('genres', genres);
 
   useEffect(() => {
     (async () => {

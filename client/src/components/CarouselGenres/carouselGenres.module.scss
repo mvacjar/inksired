@@ -1,8 +1,16 @@
 @import '@/scss/index.scss';
 
+// @mixin white-gradient {
+//   background: linear-gradient(
+//     to right,
+//     rgba(255, 251, 239, 1) 0%,
+//     rgba(255, 251, 239, 0) 100%
+//   );
+// }
+
 .carouselContainer {
-  margin: 7rem 0 0;
-  width: 85vw;
+  margin: 7rem 0 0 0;
+  width: 100vw;
   height: auto;
   display: flex;
   align-items: center;
@@ -11,7 +19,7 @@
 }
 
 .carousel {
-  width: 100%;
+  width: 100vw;
   padding: 2rem 0;
   overflow-x: auto;
   white-space: nowrap;
@@ -37,6 +45,27 @@
       border-radius: 4px;
     }
   }
+
+  // &::before,
+  // &::after {
+  //   @include white-gradient;
+  //   content: '';
+  //   height: 100px;
+  //   position: absolute;
+  //   width: 200px;
+  //   z-index: 2;
+  // }
+
+  // &::after {
+  //   right: 0;
+  //   top: 7rem;
+  //   transform: rotateZ(180deg);
+  // }
+
+  // &::before {
+  //   left: 0;
+  //   top: 7rem;
+  // }
 }
 
 .carouselItems {
