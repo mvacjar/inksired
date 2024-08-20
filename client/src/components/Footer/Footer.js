@@ -18,10 +18,18 @@ export default function Footer() {
         </div>
         <section className={styles.footerContainer}>
           <article className={styles.linksContainer}>
-            <Link href='#'>Conditions and Terms</Link>
-            <Link href='#'>Privacy Policy</Link>
-            <Link href='#'>Contact</Link>
-            <Link href='#'>FAQS</Link>
+            <Link href='#' className={styles.link}>
+              Conditions and Terms
+            </Link>
+            <Link href='#' className={styles.link}>
+              Privacy Policy
+            </Link>
+            <Link href='#' className={styles.link}>
+              Contact
+            </Link>
+            <Link href='#' className={styles.link}>
+              FAQS
+            </Link>
           </article>
           <article className={styles.iconsContainer}>
             <Link
@@ -34,6 +42,7 @@ export default function Footer() {
                 width={40}
                 height={40}
                 alt='github'
+                className={styles.icon}
               />
             </Link>
             <Link
@@ -46,14 +55,17 @@ export default function Footer() {
                 width={40}
                 height={40}
                 alt='linkdein'
+                className={styles.icon}
               />
             </Link>
           </article>
-        </section>
+        </section>{' '}
         <div className={styles.linesContainer}>
           <span className={styles.line}></span>
-
           <h3 className={styles.signed}>Coded with 🦾🤎 by Mvacjar</h3>
+          <h3 className={styles.copyright}>
+            Copyright © 2024 Inksired - All rights reserved
+          </h3>
         </div>
       </section>
     </>

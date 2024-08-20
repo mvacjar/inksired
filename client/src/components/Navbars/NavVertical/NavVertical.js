@@ -62,6 +62,7 @@ export default function NavVertical() {
                 alt='icon-menu'
                 className={styles.icon}
                 onClick={toHome}
+                title='Home'
               />
             </Link>
             <Link href='/forum' className={styles.link}>
@@ -71,6 +72,7 @@ export default function NavVertical() {
                 height={40}
                 alt='icon-menu'
                 className={styles.icon}
+                title='Forum'
               />
             </Link>
             <Link href='/bookshelf' className={styles.link}>
@@ -81,6 +83,7 @@ export default function NavVertical() {
                   height={35}
                   alt='icon-menu'
                   className={styles.icon}
+                  title='My Bookshelf'
                 />
               ) : (
                 ''
@@ -94,6 +97,7 @@ export default function NavVertical() {
                   height={35}
                   alt='icon-menu'
                   className={styles.icon}
+                  title='My Favourites'
                 />
               ) : (
                 ''
@@ -111,6 +115,7 @@ export default function NavVertical() {
                   height={35}
                   alt='icon-menu'
                   className={styles.icon}
+                  title='Settings'
                 />
               ) : (
                 ''
@@ -143,6 +148,7 @@ export default function NavVertical() {
                 alt='logo-menu'
                 priority
                 className={styles.titleNav}
+                title='Home Page'
               />
             </Link>
           </div>
