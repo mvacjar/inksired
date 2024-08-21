@@ -1,5 +1,23 @@
 @import '@/scss/index.scss';
 
+.background {
+  z-index: 1;
+}
+
+.titlePublished {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  padding: 0.5rem 0;
+}
+
+.titlePublished {
+  font-size: $h3;
+  color: $text;
+  text-shadow: 1px 1px 10px #00000019;
+}
+
 .wrapper {
   display: flex;
   justify-content: center;
@@ -13,7 +31,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 700px;
+  // height: 700px;
 }
 
 .cards {
@@ -32,52 +50,148 @@
   width: 300px;
   height: 500px;
   border-radius: $border2;
-  transition: transform 3s ease, opacity 0.6s ease; // Ajusta las duraciones para probar
+  transition: transform 1s ease, opacity 0.6s ease;
   cursor: pointer;
   backface-visibility: hidden;
-  z-index: 1; // Default z-index
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  &:hover .info {
+    opacity: 1;
+    width: 300px;
+    height: 470px;
+    padding: 0rem 1.5rem 0 0;
+    overflow-y: auto;
+  }
+}
+
+.card.active:hover .cover {
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
 }
 
 .card.active {
-  //   transform: translateZ(0) scale(1) rotateY(0deg);
-  //   opacity: 1;
-  //   z-index: 3; // Asegura que la tarjeta activa esté por encima
   transform: translatex(0) scale(1);
   opacity: 1;
-  z-index: 1;
-  box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
+  z-index: 2;
+  box-shadow: 10px 10px 30px 0px rgba(81, 81, 81, 0.68);
+  &:hover {
+    transform: scale(1.2);
+    transition: transform 0.5s ease-in-out;
+  }
+}
+
+.card.active:hover .cover {
+  filter: contrast(0.5);
+  filter: brightness(0.5);
 }
 
 .card.prev {
-  //   transform: translateX(-80%) scale(0.8) rotateY(15deg);
-  //   opacity: 0.6;
-  //   z-index: 2; // Tarjeta previa
-  transform: translatex(-80%) scale(0.8);
-  opacity: 0.4;
-  z-index: 0;
+  transform: translatex(-100%) scale(0.8);
+  filter: contrast(0.3);
+  z-index: 1;
+  box-shadow: 5px 5px 15px 0px rgba(81, 81, 81, 0.68);
 }
 
 .card.next {
-  //   transform: translateX(80%) scale(0.8) rotateY(-15deg);
-  //   opacity: 0.6;
-  //   z-index: 2; // Tarjeta siguiente
-  transform: translatex(80%) scale(0.8);
-  opacity: 0.4;
-  z-index: 0;
+  transform: translatex(100%) scale(0.8);
+  filter: contrast(0.3);
+
+  z-index: 1;
+  box-shadow: 5px 5px 15px 0px rgba(81, 81, 81, 0.68);
 }
 
 .card.behind {
   transform: translateZ(-200px) scale(0.8) rotateY(0deg);
-  opacity: 0.4;
-  z-index: 1; // Tarjeta detrás
+  filter: contrast(0.3);
+  opacity: 0;
+  z-index: 1;
 }
 
 .cover {
   border-radius: $border1;
+  object-fit: cover;
+  transition: filter 0.5s ease;
 }
 
-////
-.coverContainer {
-  display: flex;
-  flex-direction: row;
+.info {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  height: 470px;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.card.active:hover .info {
+  opacity: 1;
+}
+
+.card.prev .info,
+.card.next .info {
+  display: none;
+}
+
+.titleCover {
+  margin: 0;
+  color: $tertiary;
+  line-height: 2.5;
+  text-shadow: 1px 1px 6px #000000;
+}
+
+.synopsis {
+  margin: 0;
+  color: $tertiary;
+  text-shadow: 1px 1px 6px #000000;
+}
+
+@media (max-width: 1300px) {
+  .card.prev {
+    transform: translatex(-80%) scale(0.8);
+  }
+
+  .card.next {
+    transform: translatex(80%) scale(0.8);
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    height: 40vh;
+    width: 100%;
+  }
+
+  .titlePublished {
+    font-size: $h4;
+  }
+
+  .card {
+    width: 200px;
+    height: 310px;
+    &:hover .info {
+      opacity: 1;
+      width: 190px;
+      height: 300px;
+      padding: 0rem 1.5rem 0 0;
+      overflow-y: auto;
+    }
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+
+  .card.prev {
+    transform: translatex(-65%) scale(0.8);
+  }
+
+  .card.next {
+    transform: translatex(65%) scale(0.8);
+  }
+
+  .titleCover,
+  .synopsis {
+    font-size: $small;
+  }
 }
