@@ -10,6 +10,7 @@
   height: 9vh;
   left: -1rem;
   transition: transform 0.7s ease-in-out;
+  z-index: 100;
 }
 
 .hidden {
@@ -52,7 +53,7 @@
   box-sizing: border-box;
 
   &:hover {
-    background-color: #a0b1c8e2;
+    background-color: #fffbef;
   }
 
   &:focus {
