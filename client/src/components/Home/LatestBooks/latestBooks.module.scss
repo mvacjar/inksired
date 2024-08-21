@@ -1,0 +1,161 @@
+@import '@/scss/index.scss';
+
+.title {
+  padding: 0 3rem;
+  font-size: $h3;
+}
+
+.wrapper {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.gridContainer {
+  overflow: hidden;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  padding: 2rem;
+  margin: 0;
+  grid-gap: 1.5rem;
+  width: 85vw;
+  height: 85vh;
+  grid-template-areas:
+    'image1 image1 image2 image2 image3'
+    'image1 image1 image4 image5 image8'
+    'image6 image6 image4 image5 image7'
+    'image9 image9 image10 image5 image7';
+}
+
+.gridContainer > div {
+  background-size: cover;
+  background-position: center;
+  box-sizing: cover;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.image1 {
+  grid-area: image1;
+}
+.image2 {
+  grid-area: image2;
+}
+.image3 {
+  grid-area: image3;
+}
+.image4 {
+  grid-area: image4;
+}
+.image5 {
+  grid-area: image5;
+}
+.image6 {
+  grid-area: image6;
+}
+.image7 {
+  grid-area: image7;
+}
+.image8 {
+  grid-area: image8;
+}
+.image9 {
+  grid-area: image9;
+}
+.image10 {
+  grid-area: image10;
+}
+
+.image1,
+.image2,
+.image3,
+.image4,
+.image5,
+.image6,
+.image7,
+.image8,
+.image9,
+.image10 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: $border2;
+  transition: transform 0.3s ease-in-out, width 0.5s ease-in-out,
+    height 0.5s ease-in-out;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30vw;
+    height: 80vh;
+    box-sizing: content-box;
+    box-shadow: 10px 10px 30px 0px rgba(81, 81, 81, 0.68);
+    z-index: 10;
+  }
+
+  &:active {
+    transform: box-shadow 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    transform: scale(0.95);
+    box-shadow: 10px 10px 30px 0px rgba(81, 81, 81, 0.68);
+  }
+
+  &:active:hover {
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 1300px) {
+  .title {
+    padding: 0rem 3rem;
+  }
+  .gridContainer {
+    width: 100vw;
+    height: 90vh;
+    grid-gap: 0.8rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+      'image1 image2 image7 image7'
+      'image1 image3 image7 image7'
+      'image4 image3 image6 image6'
+      'image4 image3 image6 image6'
+      'image9 image5 image5 image5'
+      'image9 image8 image10 image10';
+  }
+
+  .image1,
+  .image2,
+  .image3,
+  .image4,
+  .image5,
+  .image6,
+  .image7,
+  .image8,
+  .image9,
+  .image10 {
+    &:hover {
+      width: 50vw;
+      height: 45vh;
+      box-sizing: content-box;
+    }
+  }
+}
+
+@media (max-width: 568px) {
+  .wrapper {
+    width: 100vw;
+  }
+  .gridContainer {
+    padding: 2rem;
+  }
+}
