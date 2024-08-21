@@ -1,9 +1,11 @@
 import styles from './home.module.scss';
 import Head from 'next/head';
+import { Separator, BarInfo } from '@/components/Shared';
 import NavVertical from '@/components/Navbars/NavVertical/NavVertical';
 import NavHorizontal from '@/components/Navbars/NavHorizontal/NavHorizontal';
 import CarouselGenres from '@/components/CarouselGenres/CarouselGenres';
 import { LastBookPublished } from '@/components/Home/LastBookPublished';
+import { LatestBooks } from '@/components/Home/LatestBooks';
 import Footer from '@/components/Footer/Footer';
 
 export default function HomePage() {
@@ -25,97 +27,16 @@ export default function HomePage() {
           </section>
           <section className={styles.lastBookPublishedContainer}>
             <LastBookPublished />
-            {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-            iure repellat molestiae magni suscipit nihil dolore excepturi
-            debitis atque, consequatur est tempore incidunt tenetur id,
-            veritatis eveniet temporibus rerum cupiditate. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Mollitia iure repellat molestiae
-            magni suscipit nihil dolore excepturi debitis atque, consequatur est
-            tempore incidunt tenetur id, veritatis eveniet temporibus rerum
-            cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Mollitia iure repellat molestiae magni suscipit nihil dolore
-            excepturi debitis atque, consequatur est tempore incidunt tenetur
-            id, veritatis eveniet temporibus rerum cupiditate. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Mollitia iure repellat
-            molestiae magni suscipit nihil dolore excepturi debitis atque,
-            consequatur est tempore incidunt tenetur id, veritatis eveniet
-            temporibus rerum cupiditate. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Mollitia iure repellat molestiae magni suscipit
-            nihil dolore excepturi debitis atque, consequatur est tempore
-            incidunt tenetur id, veritatis eveniet temporibus rerum cupiditate.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-            iure repellat molestiae magni suscipit nihil dolore excepturi
-            debitis atque, consequatur est tempore incidunt tenetur id,
-            veritatis eveniet temporibus rerum cupiditate. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Mollitia iure repellat molestiae
-            magni suscipit nihil dolore excepturi debitis atque, consequatur est
-            tempore incidunt tenetur id, veritatis eveniet temporibus rerum
-            cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Mollitia iure repellat molestiae magni suscipit nihil dolore
-            excepturi debitis atque, consequatur est tempore incidunt tenetur
-            id, veritatis eveniet temporibus rerum cupiditate. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Mollitia iure repellat
-            molestiae magni suscipit nihil dolore excepturi debitis atque,
-            consequatur est tempore incidunt tenetur id, veritatis eveniet
-            temporibus rerum cupiditate. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Mollitia iure repellat molestiae magni suscipit
-            nihil dolore excepturi debitis atque, consequatur est tempore
-            incidunt tenetur id, veritatis eveniet temporibus rerum cupiditate.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-            iure repellat molestiae magni suscipit nihil dolore excepturi
-            debitis atque, consequatur est tempore incidunt tenetur id,
-            veritatis eveniet temporibus rerum cupiditate. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Mollitia iure repellat molestiae
-            magni suscipit nihil dolore excepturi debitis atque, consequatur est
-            tempore incidunt tenetur id, veritatis eveniet temporibus rerum
-            cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Mollitia iure repellat molestiae magni suscipit nihil dolore
-            excepturi debitis atque, consequatur est tempore incidunt tenetur
-            id, veritatis eveniet temporibus rerum cupiditate. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Mollitia iure repellat
-            molestiae magni suscipit nihil dolore excepturi debitis atque,
-            consequatur est tempore incidunt tenetur id, veritatis eveniet
-            temporibus rerum cupiditate. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Mollitia iure repellat molestiae magni suscipit
-            nihil dolore excepturi debitis atque, consequatur est tempore
-            incidunt tenetur id, veritatis eveniet temporibus rerum cupiditate.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-            iure repellat molestiae magni suscipit nihil dolore excepturi
-            debitis atque, consequatur est tempore incidunt tenetur id,
-            veritatis eveniet temporibus rerum cupiditate. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Mollitia iure repellat molestiae
-            magni suscipit nihil dolore excepturi debitis atque, consequatur est
-            tempore incidunt tenetur id, veritatis eveniet temporibus rerum
-            cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Mollitia iure repellat molestiae magni suscipit nihil dolore
-            excepturi debitis atque, consequatur est tempore incidunt tenetur
-            id, veritatis eveniet temporibus rerum cupiditate. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Mollitia iure repellat
-            molestiae magni suscipit nihil dolore excepturi debitis atque,
-            consequatur est tempore incidunt tenetur id, veritatis eveniet
-            temporibus rerum cupiditate. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Mollitia iure repellat molestiae magni suscipit
-            nihil dolore excepturi debitis atque, consequatur est tempore
-            incidunt tenetur id, veritatis eveniet temporibus rerum cupiditate.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-            iure repellat molestiae magni suscipit nihil dolore excepturi
-            debitis atque, consequatur est tempore incidunt tenetur id,
-            veritatis eveniet temporibus rerum cupiditate. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Mollitia iure repellat molestiae
-            magni suscipit nihil dolore excepturi debitis atque, consequatur est
-            tempore incidunt tenetur id, veritatis eveniet temporibus rerum
-            cupiditate. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Mollitia iure repellat molestiae magni suscipit nihil dolore
-            excepturi debitis atque, consequatur est tempore incidunt tenetur
-            id, veritatis eveniet temporibus rerum cupiditate. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Mollitia iure repellat
-            molestiae magni suscipit nihil dolore excepturi debitis atque,
-            consequatur est tempore incidunt tenetur id, veritatis eveniet
-            temporibus rerum cupiditate. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Mollitia iure repellat molestiae magni suscipit
-            nihil dolore excepturi debitis atque, consequatur est tempore
-            incidunt tenetur */}
           </section>
+          <Separator height={100} />
+          <section className={styles.lastBookPublishedContainer}>
+            <LatestBooks title={`Read the latest!`} />
+          </section>
+          <Separator height={100} />
+          <section className={styles.barInfoContainer}>
+            <BarInfo />
+          </section>
+          <Separator height={100} />
           <section className={styles.footerContainer}>
             <Footer />
           </section>
