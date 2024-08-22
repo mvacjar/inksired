@@ -16,7 +16,6 @@ export function LastBookPublished() {
       try {
         const response = await bookCtrl.getLastBookPublished();
         setSaveLastBook(response.data.slice(0, 3));
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -43,7 +42,7 @@ export function LastBookPublished() {
           <Image
             src='/images/background.svg'
             alt='background'
-            layout='fill'
+            fill
             objectFit='cover'
             priority
           />

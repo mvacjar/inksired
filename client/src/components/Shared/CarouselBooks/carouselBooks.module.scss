@@ -1,0 +1,63 @@
+@import '@/scss/index.scss';
+
+.titleContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.title {
+  font-size: $h3;
+  padding-bottom: 1rem;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  &::before {
+    content: '';
+    height: 10%;
+    width: 100%;
+    display: block;
+    z-index: -5;
+    opacity: 30%;
+    position: absolute;
+    transition: all 0.3s ease;
+    background-color: $primary;
+  }
+  &:hover::before {
+    height: 20%;
+  }
+}
+
+.wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 1rem 0;
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.carouselContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  width: 90vw;
+  scroll-behavior: smooth;
+}
+
+.carouselItem {
+  display: inline-block;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.bookCover {
+  border-radius: $border1;
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  box-shadow: 5px 10px 10px rgba(81, 81, 81, 0.315);
+}
