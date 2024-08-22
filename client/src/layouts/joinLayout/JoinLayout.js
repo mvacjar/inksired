@@ -26,7 +26,7 @@ export function JoinLayout(props) {
             src='/images/join-background.svg'
             alt='Join Background'
             fill
-            style={{ objectFit: 'cover' }}
+            objectFit='cover'
           />
         </div>
         <div className={styles.navJoin}>

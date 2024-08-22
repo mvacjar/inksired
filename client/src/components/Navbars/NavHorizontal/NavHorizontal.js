@@ -61,6 +61,7 @@ export default function NavHorizontal() {
             src='/images/layer-horizontal.svg'
             alt='Join Background'
             fill
+            priority
             style={{
               objectFit: 'cover',
             }}
