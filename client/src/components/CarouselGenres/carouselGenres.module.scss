@@ -1,52 +1,68 @@
 @import '@/scss/index.scss';
 
-.carouselContainer {
-  margin: 7rem 0 0 0;
-  width: 100vw;
-  height: auto;
+.genresWrapper {
+  margin: 10rem 0 5rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.genresContent {
+  position: relative;
+  width: 80vw;
+  display: flex;
+  align-items: center;
+}
+
+.leftArrowWrapper,
+.rightArrowWrapper {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 80;
+}
+
+.leftArrowWrapper {
+  left: 0;
+}
+
+.rightArrowWrapper {
+  right: 0;
+}
+
+.leftArrowContainer,
+.rightArrowContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.carousel {
-  width: 80vw;
-  padding: 2rem 0;
-  overflow-x: auto;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+.leftArrowContainer {
+  justify-content: flex-start;
+  background: linear-gradient(90deg, #fffbef, #fffbef00);
 }
 
-.carouselWrapper::-webkit-scrollbar {
-  display: none;
+.rightArrowContainer {
+  justify-content: flex-end;
+  background: linear-gradient(90deg, #fffbef00, #fffbef);
 }
-// scroll-behavior: smooth;
-
-// &::-webkit-scrollbar {
-//   width: 0;
-//   height: 0;
-// }
-// &:hover {
-//   &::-webkit-scrollbar {
-//     width: 8px;
-//     height: 8px;
-//   }
-
-//   &::-webkit-scrollbar-thumb {
-//     background-color: #556c8d48;
-//     border-radius: 4px;
-//   }
-
-//   &::-webkit-scrollbar-track {
-//     background-color: #98503e0b;
-//     border-radius: 4px;
-//   }
-// }
 
 .carouselItems {
   display: inline-flex;
+  align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.carouselItems::-webkit-scrollbar {
+  display: none;
 }
 
 .carouselItem {
@@ -54,26 +70,17 @@
   color: $text;
   margin-right: 1rem;
   padding: $paddingButton;
+  white-space: nowrap;
   box-sizing: border-box;
   text-align: center;
   border-radius: $border2;
   border: 2px solid $quaternary;
   transition: background-color 0.3s ease-in-out;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
 
   &:hover {
     background-color: $quaternary;
     box-shadow: 1px 2px 8px #3d322823;
-  }
-}
-
-@media (max-width: 1000px) {
-  .carousel {
-    width: 93%;
-  }
-}
-
-@media (max-width: 598px) {
-  .carousel {
-    width: 80%;
   }
 }
