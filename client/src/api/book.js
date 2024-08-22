@@ -6,8 +6,11 @@ export class Book {
       const sort = 'sort=publishedAt:desc';
       const pagination = 'pagination[limit]=3';
       const populate = 'populate=*';
+      const urlParams = [pagination, sort, populate]
+        .filter((param) => param)
+        .join('&');
 
-      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.BOOKS}?${sort}&${pagination}&${populate}`;
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.BOOKS}?${urlParams}`;
 
       const response = await fetch(url);
       const result = await response.json();
