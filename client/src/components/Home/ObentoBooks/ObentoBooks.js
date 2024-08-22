@@ -1,4 +1,4 @@
-import styles from './latestBooks.module.scss';
+import styles from './obentoBooks.module.scss';
 import { Book } from '@/api';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const book = new Book();
 
-export function LatestBooks(props) {
+export function ObentoBooks(props) {
   const { title, limit = 10, literaryGenresId = null } = props;
   const [latestBooks, setLatestBooks] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);

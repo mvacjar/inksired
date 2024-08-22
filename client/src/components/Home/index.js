@@ -1,7 +1,7 @@
 import { LastBookPublished } from './LastBookPublished';
-import { LatestBooks } from './LatestBooks';
+import { ObentoBooks } from './ObentoBooks';
 
 export const HOME = {
   LastBookPublished,
-  LatestBooks,
+  ObentoBooks,
 };
