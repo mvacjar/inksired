@@ -1,7 +1,7 @@
 export const data = [
   {
     icon: 'dragon',
-    title: 'The Fastest shipping',
+    title: 'Fastest shipping',
     description: 'Delivery in 24h/48h',
     src: '/images/dragon.png',
   },

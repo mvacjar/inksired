@@ -1,12 +1,6 @@
 @import '@/scss/index.scss';
 
-.article {
-  background-color: $accent;
-  width: 100vw;
-}
-
 .section {
-  height: 15vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -18,16 +12,22 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
-  height: 50%;
-  border-right: 1px solid $quaternary;
-  &:nth-child(3) {
-    border-right: none;
-  }
+  max-width: 30vw;
+  background-color: $primary;
+  border-radius: $border2;
+  padding: 3rem;
+  margin: 1rem;
+  gap: 1rem;
 }
 
 .icon {
   margin: 1rem;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .titleContainer,
@@ -44,32 +44,18 @@
 }
 
 @media (max-width: 1300px) {
-  .article {
-    width: 100vw;
-    margin: 0;
+  .section {
+    flex-direction: column;
+  }
+
+  .infoContainer {
+    min-width: 40vw;
   }
 }
 
 @media (max-width: 900px) {
-  .section {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1rem 3rem;
-    margin: 0;
-  }
-
   .infoContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    border-bottom: 1px solid $quaternary;
-    border-right: none;
-    padding: 0 1rem;
-    &:nth-child(3) {
-      border-bottom: none;
-    }
+    min-width: 70vw;
+    flex-direction: column;
   }
 }
