@@ -2,21 +2,10 @@
 
 .labelDiscount {
   color: $background;
-  font-size: $small;
-  background-color: $primary;
+  font-size: 0.8rem;
+  background-color: $accent;
   position: absolute;
   border-radius: $border1;
-  padding: 3px 4px 1px 4px;
-  z-index: 2;
-
-  &::after {
-    border-radius: $border2;
-    transform: skewX(16deg);
-    width: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: -4px;
-    z-index: -1;
-  }
+  padding: $paddingButton;
+  box-shadow: 0.5px 2px 6px #122d50;
 }
