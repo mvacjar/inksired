@@ -1,0 +1,107 @@
+@import '@/scss/index.scss';
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  &:hover .gridItem:not(:hover) .bookCover {
+    opacity: 0.7;
+  }
+}
+
+.backgroundImage {
+  margin: 0;
+}
+
+.gridItem {
+  position: relative;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+
+  &:hover {
+    .bookCover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+}
+
+.bookContainer {
+  padding: 1rem 1rem 0 1rem;
+  z-index: 10;
+}
+
+.bookCover {
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  gap: 2rem;
+  box-shadow: 10px 10px 20px #866e5253;
+}
+
+.book {
+  width: 33.33%;
+
+  > div {
+    position: relative;
+
+    &:last-of-type {
+      padding-top: 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    > img {
+      width: 100%;
+      border-radius: $border1;
+      transition: opacity 0.3s ease;
+    }
+
+    .discount {
+      position: absolute;
+      top: -10px;
+      right: -15px;
+    }
+  }
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleBook {
+  font-size: $small;
+  margin-top: 10px;
+}
+
+.authorBook {
+  font-size: $small;
+  color: $primary;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.originalPrice {
+  font-size: $small;
+  color: #717070;
+  text-decoration: line-through;
+}
+
+.discountedPrice {
+  font-size: $h6;
+  color: $accent;
+  font-weight: bolder;
+}
+
+.regularPrice {
+  font-weight: bolder;
+  font-size: 0.9rem;
+}
