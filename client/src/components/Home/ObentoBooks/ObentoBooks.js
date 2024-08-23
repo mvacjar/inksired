@@ -16,7 +16,6 @@ export function ObentoBooks(props) {
       try {
         const response = await book.getLatestBooks({ limit, literaryGenresId });
         setLatestBooks(response.data);
-        console.log(response);
       } catch (error) {
         console.error(error);
       }

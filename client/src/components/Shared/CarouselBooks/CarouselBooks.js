@@ -20,7 +20,6 @@ export function CarouselBooks({ title, literaryGenresId, limit, genreId }) {
       try {
         const response = await book.getLatestBooks({ limit, literaryGenresId });
         setBooksByGenre(response.data);
-        console.log('Latest Books:', response.data);
       } catch (error) {
         console.error(error);
       }
