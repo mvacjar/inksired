@@ -48,4 +48,27 @@ export class Book {
       throw error;
     }
   }
+
+  async getByGenreSlug(slug, page) {
+    try {
+      const filters = `filters[literary_genres][slug_genres][$eq]=${slug}`;
+      const populate = `populate=*`;
+      const pagination = `pagination[page]=${page}&pagination[pageSize]=50`;
+
+      const urlParams = [filters, populate, pagination]
+        .filter((param) => param)
+        .join('&');
+
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.BOOKS}?${urlParams}`;
+
+      const response = await fetch(url);
+      const result = await response.json();
+
+      if (response.status !== 200) throw result;
+
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
