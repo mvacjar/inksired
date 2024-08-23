@@ -53,7 +53,7 @@ export class Book {
     try {
       const filters = `filters[literary_genres][slug_genres][$eq]=${slug}`;
       const populate = `populate=*`;
-      const pagination = `pagination[page]=${page}&pagination[pageSize]=50`;
+      const pagination = `pagination[page]=${page}&pagination[pageSize]=5`;
 
       const urlParams = [filters, populate, pagination]
         .filter((param) => param)

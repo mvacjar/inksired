@@ -2,10 +2,11 @@ import styles from './genrePage.module.scss';
 import { size } from 'lodash';
 import { BasicLayout } from '@/layouts';
 import Footer from '@/components/Footer/Footer';
-import { GridBooks, Separator } from '@/components/Shared';
+import { GridBooks, Separator, Pagination } from '@/components/Shared';
 
 export default function genrePage(props) {
   const { books, genres, pagination } = props;
+  console.log(pagination);
 
   const existProducts = size(books) > 0;
 
@@ -22,6 +23,8 @@ export default function genrePage(props) {
           {existProducts ? (
             <>
               <GridBooks books={books} />
+              <Separator height={50} />
+              <Pagination totalPages={pagination.pageCount} />
             </>
           ) : (
             <p className={styles.messageNotFound}>
