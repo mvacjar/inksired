@@ -2,7 +2,6 @@ import styles from './joinLayout.module.scss';
 import Image from 'next/image';
 import { useAuth } from '@/hooks/useAuth';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 export function JoinLayout(props) {
   const { children } = props;

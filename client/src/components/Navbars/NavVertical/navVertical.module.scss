@@ -43,6 +43,10 @@
 .logo {
   cursor: pointer;
   filter: drop-shadow(5px 2px 8px #010100);
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+  }
 }
 
 // BookMark
@@ -133,8 +137,8 @@
 
 .titleNavContainer {
   margin-top: auto;
-  padding: 20px;
   text-align: center;
+  padding-bottom: 2.5rem;
 }
 
 .titleNavContainer {
@@ -144,14 +148,14 @@
 }
 
 .titleNav {
-  margin-bottom: 1.7rem;
-  margin-right: 0.3rem;
   transform: rotate(-90deg);
   filter: drop-shadow(5px 2px 8px #010100);
   &:hover {
-    transform: rotate(-90deg);
+    transform: rotate(-90deg) scale(1.1);
+    transition: transform 0.3s ease-in-out;
   }
   &:active {
-    transform: rotate(-90deg);
+    transform: rotate(-90deg) scale(1.1);
+    transition: transform 0.3s ease-in-out;
   }
 }

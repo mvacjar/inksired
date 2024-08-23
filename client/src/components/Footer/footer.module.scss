@@ -91,9 +91,22 @@
     width: 90vw;
     margin: 1rem;
   }
+
   .signed,
   .copyright {
     white-space: wrap;
     line-height: 2;
+  }
+
+  .iconsContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 568px) {
+  .footerWrapper {
+    width: 100%;
+    margin: 1rem;
   }
 }

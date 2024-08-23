@@ -8,7 +8,6 @@
   align-items: center;
   justify-content: space-between;
   height: 9vh;
-  left: -1rem;
   transition: transform 0.7s ease-in-out;
   z-index: 100;
 }
@@ -165,6 +164,10 @@
 }
 
 @media (max-width: 1600px) {
+  .navbar {
+    width: 100%;
+  }
+
   .buttonsContainer {
     right: -20rem;
   }
@@ -178,6 +181,7 @@
 
 @media (max-width: 1000px) {
   .navbar {
+    width: 100%;
     left: -1rem;
   }
 
@@ -204,6 +208,7 @@
 
 @media (max-width: 768px) {
   .navbar {
+    width: 100%;
     left: 0rem;
   }
 
@@ -233,7 +238,11 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 7680px) {
+  .navbar {
+    width: 100%;
+  }
+
   .searchContainer {
     margin-left: 0rem;
   }
@@ -247,7 +256,7 @@
   }
 
   .cartIcon {
-    right: 8.5rem;
+    right: 2rem;
   }
 
   .buttonsContainer {
