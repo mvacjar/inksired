@@ -1,0 +1,93 @@
+@import '@/scss/index.scss';
+.wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 30rem;
+  width: 100vw;
+  padding: 3rem;
+  background-color: $quaternary;
+
+  &::after {
+    content: '';
+    background-color: $background;
+    position: absolute;
+    bottom: -1px;
+    height: 60px;
+    width: 100%;
+    clip-path: polygon(0 100%, 110% 100%, 0 0);
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.textContainer {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+  text-align: left;
+}
+
+.btn {
+  background-color: $background;
+  color: $accent;
+  border-radius: $border2;
+  font-size: $small;
+  border: none;
+  cursor: pointer;
+  width: 5rem;
+  padding: $paddingButton;
+  margin-top: 1rem;
+  transition: transform ease 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+    border: 2px solid $accent;
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+  order: 2;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  border-radius: $border2;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    position: relative;
+    width: 100vw;
+    height: 40rem;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .title,
+  .subtitle {
+    white-space: wrap;
+  }
+}

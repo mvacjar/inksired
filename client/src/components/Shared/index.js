@@ -4,3 +4,7 @@ export * from './Separator';
 export * from './Label';
 export * from './BarInfo';
 export * from './CarouselBooks';
+export * from './BannerAd';
+export * from './GridBooks';
+export * from './Pagination';
+export * from './TitleWeb';
