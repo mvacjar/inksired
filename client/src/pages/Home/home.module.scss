@@ -26,6 +26,13 @@
   justify-content: center;
 }
 
+.bannerAdContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+
 // @media (max-width: 1000px) {
 //   .body {
 //     width: 70vw;
