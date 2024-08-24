@@ -1,23 +1,17 @@
 import { useState, useEffect } from 'react';
 import styles from './navHorizontal.module.scss';
 import Image from 'next/image';
-import router from 'next/router';
+import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
 
 export default function NavHorizontal() {
+  const { user } = useAuth();
+  const router = useRouter();
   const [searchValue, setSearchValue] = useState('');
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hidden, setHidden] = useState(false);
-  const { user } = useAuth();
 
-  const handleClearInput = (e) => {
-    e.preventDefault();
-    setSearchValue('');
-  };
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-  };
+  // hide navbar on scroll
 
   const handleScroll = () => {
     if (typeof window !== 'undefined') {
@@ -40,6 +34,8 @@ export default function NavHorizontal() {
     }
   }, [lastScrollY]);
 
+  // routers
+
   const toCart = () => {
     router.push('/cart');
   };
@@ -52,6 +48,37 @@ export default function NavHorizontal() {
     router.push('/join/sign-up');
   };
 
+  // search functions
+
+  useEffect(() => {
+    setSearchValue(router.query.s || '');
+  }, [router.query]);
+
+  const handleSearchOnChange = (e) => setSearchValue(e.target.value);
+
+  const handleClearInput = (e) => {
+    e.preventDefault();
+    setSearchValue('');
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const trimmedValue = searchValue.trim();
+
+    if (trimmedValue) {
+      const capitalizedValue =
+        trimmedValue.charAt(0).toUpperCase() + trimmedValue.slice(1);
+      router.push({
+        pathname: '/search',
+        query: { s: capitalizedValue },
+      });
+    }
+  };
+
+  const handleOnChange = (e) => {
+    handleSearchOnChange(e);
+  };
+
   return (
     <>
       <nav className={`${styles.navbar} ${hidden ? styles.hidden : ''}`}>
@@ -61,40 +88,39 @@ export default function NavHorizontal() {
             alt='Join Background'
             fill
             priority
-            style={{
-              objectFit: 'cover',
-            }}
+            style={{ objectFit: 'cover' }}
             className={styles.horizontalBackground}
           />
           <div className={styles.searchContainer}>
             <form className={styles.searchForm} onSubmit={handleSearch}>
               <input
+                id='searchBar'
                 type='text'
                 className={styles.searchInput}
                 placeholder='Search...'
                 value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
+                onChange={handleOnChange}
               />
+              <button type='submit' className={styles.searchIconContainer}>
+                <div className={styles.iconsSearch}>
+                  <Image
+                    src='/images/x.svg'
+                    width={18}
+                    height={18}
+                    alt='clear-icon'
+                    className={styles.xIcon}
+                    onClick={handleClearInput}
+                  />
+                  <Image
+                    src='/images/loupe.svg'
+                    width={21}
+                    height={21}
+                    alt='loupe-icon'
+                    className={styles.searchIcon}
+                  />
+                </div>
+              </button>
             </form>
-            <button type='submit' className={styles.searchIconContainer}>
-              <div className={styles.iconsSearch}>
-                <Image
-                  src='/images/x.svg'
-                  width={18}
-                  height={18}
-                  alt='clear-icon'
-                  className={styles.xIcon}
-                  onClick={handleClearInput}
-                />
-                <Image
-                  src='/images/loupe.svg'
-                  width={21}
-                  height={21}
-                  alt='loupe-icon'
-                  className={styles.searchIcon}
-                />
-              </div>
-            </button>
           </div>
           <div className={styles.cartIconContainer}>
             {user ? (

@@ -8,6 +8,7 @@ export const ENV = {
     LITERARY_GENRES: 'literary-genres',
     ADDRESS: 'addresses',
     BOOKS: 'books',
+    AUTHORS: 'authors',
   },
   TOKEN: 'token',
 };

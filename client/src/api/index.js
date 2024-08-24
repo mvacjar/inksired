@@ -4,3 +4,4 @@ export * from './user';
 export * from './literaryGenres';
 export * from './address';
 export * from './book';
+export * from './author';

@@ -1,0 +1,15 @@
+@import '@/scss/index.scss';
+
+.containerBody {
+  padding: 2rem 7rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.messageNotFound {
+  font-size: $h5;
+  white-space: wrap;
+}

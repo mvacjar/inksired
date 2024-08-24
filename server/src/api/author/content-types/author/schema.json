@@ -16,20 +16,15 @@
       "type": "string",
       "required": true
     },
-    "books": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::book.book"
-    },
-    "book": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::book.book",
-      "inversedBy": "authors"
-    },
     "author_slug": {
       "type": "uid",
       "targetField": "name_author"
+    },
+    "books": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::book.book",
+      "mappedBy": "authors"
     }
   }
 }

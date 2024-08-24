@@ -112,9 +112,9 @@
     },
     "authors": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::author.author",
-      "mappedBy": "book"
+      "inversedBy": "books"
     }
   }
 }

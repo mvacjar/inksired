@@ -7,7 +7,6 @@ import {
   BarInfo,
   CarouselBooks,
   BannerAd,
-  TitleWeb,
 } from '@/components/Shared';
 import { LastBookPublished } from '@/components/Home/LastBookPublished';
 import { ObentoBooks } from '@/components/Home/ObentoBooks';

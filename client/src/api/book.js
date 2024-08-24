@@ -71,4 +71,26 @@ export class Book {
       throw error;
     }
   }
+
+  async searchBooks(text, page) {
+    try {
+      const filters = `filters[title][$contains]=${text}`;
+      const pagination = `pagination[page]=${page}&pagination[pageSize]=30`;
+      const populate = `populate=*`;
+
+      const urlParams = [filters, pagination, populate]
+        .filter((param) => param)
+        .join('&');
+
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.BOOKS}?${urlParams}`;
+      const response = await fetch(url);
+      const result = await response.json();
+
+      if (response.status !== 200) throw result;
+
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

@@ -4,8 +4,10 @@ import NavVertical from '@/components/Navbars/NavVertical/NavVertical';
 export function BasicLayout() {
   return (
     <>
-      <NavVertical />
-      <NavHorizontal />
+      <div>
+        <NavVertical />
+        <NavHorizontal />
+      </div>
     </>
   );
 }

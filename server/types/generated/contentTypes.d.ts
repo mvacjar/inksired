@@ -857,17 +857,12 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
   };
   attributes: {
     name_author: Attribute.String & Attribute.Required;
+    author_slug: Attribute.UID<'api::author.author', 'name_author'>;
     books: Attribute.Relation<
       'api::author.author',
-      'oneToMany',
+      'manyToMany',
       'api::book.book'
     >;
-    book: Attribute.Relation<
-      'api::author.author',
-      'manyToOne',
-      'api::book.book'
-    >;
-    author_slug: Attribute.UID<'api::author.author', 'name_author'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -933,7 +928,7 @@ export interface ApiBookBook extends Schema.CollectionType {
     publication_date: Attribute.Date & Attribute.Required;
     authors: Attribute.Relation<
       'api::book.book',
-      'oneToMany',
+      'manyToMany',
       'api::author.author'
     >;
     createdAt: Attribute.DateTime;

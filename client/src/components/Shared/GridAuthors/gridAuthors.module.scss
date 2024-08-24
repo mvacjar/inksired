@@ -1,10 +1,50 @@
 @import '@/scss/index.scss';
 
-.wrapper {
+.namecontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  font-size: $h3;
+  padding-bottom: 2rem;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  text-shadow: 1px 3px 3px #2d2d2d61;
+  &::before {
+    content: '';
+    height: 10%;
+    width: 100%;
+    display: block;
+    z-index: -5;
+    opacity: 30%;
+    position: absolute;
+    transition: all 0.3s ease;
+    background-color: $accent;
+  }
+  &:hover::before {
+    height: 40%;
+  }
+}
+
+.titleBookscontainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.titleBooks {
+  font-size: $h5;
+  margin: 1rem 1rem;
+  text-shadow: 1px 3px 3px #2d2d2d61;
+}
+
+.booksContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin: 0 2rem;
   &:hover .gridItem:not(:hover) .bookCover {
     opacity: 0.7;
   }

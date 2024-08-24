@@ -24,7 +24,10 @@ export default function genrePage(props) {
             <>
               <GridBooks books={books} />
               <Separator height={50} />
-              <Pagination totalPages={pagination.pageCount} />
+              <Pagination
+                totalPages={pagination.pageCount}
+                defaultPage={pagination.currentPage}
+              />
             </>
           ) : (
             <p className={styles.messageNotFound}>

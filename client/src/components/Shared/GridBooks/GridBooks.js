@@ -7,21 +7,10 @@ import Link from 'next/link';
 
 export function GridBooks(props) {
   const { books } = props;
+  console.log(books);
 
   return (
     <>
-      <div className={styles.background}>
-        <div style={{ zIndex: 1 }}>
-          <Image
-            src='/images/backgroundGrid.svg'
-            alt='background'
-            fill
-            objectFit='cover'
-            priority
-            className={styles.backgroundImage}
-          />
-        </div>
-      </div>
       <div className={styles.wrapper}>
         {map(books, (book, index) => {
           const originalPrice = book.attributes.price;

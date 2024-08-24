@@ -13,8 +13,6 @@ export async function getServerSideProps(context) {
 
   const bookCtrl = new Book();
   const responseBooks = await bookCtrl.getByGenreSlug(genre, page);
-  console.log('responseBooks:', responseBooks);
-  console.log('responseGenre:', responseGenre);
 
   return {
     props: {

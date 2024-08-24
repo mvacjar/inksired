@@ -8,7 +8,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export function Pagination(props) {
   const router = useRouter();
-  const { totalPages } = props;
+  const { totalPages, currentPage } = props;
 
   const onPageChange = (_, page) => {
     router.replace({ query: { ...router.query, page } });
@@ -20,7 +20,7 @@ export function Pagination(props) {
         <PaginationMUI
           count={totalPages}
           size='large'
-          defaultPage={1}
+          defaultPage={currentPage}
           boundaryCount={2}
           onChange={onPageChange}
           renderItem={(item) => (
