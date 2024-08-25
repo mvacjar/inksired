@@ -35,9 +35,11 @@
   align-items: center;
 }
 
-.titleBooks {
+.titleBooks,
+.sagaTitle {
   font-size: $h5;
-  margin: 1rem 1rem;
+  margin: 0.5rem 0 0.5rem 1rem;
+  white-space: wrap;
   text-shadow: 1px 3px 3px #2d2d2d61;
 }
 
@@ -45,30 +47,17 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  &:hover .gridItem:not(:hover) .bookCover {
-    opacity: 0.7;
-  }
-}
-
-.backgroundImage {
-  margin: 0;
+  align-items: center;
 }
 
 .gridItem {
   position: relative;
   transition: opacity 0.3s ease, transform 0.3s ease;
   opacity: 1;
-
-  &:hover {
-    .bookCover {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-  }
 }
 
 .bookContainer {
-  margin: 1rem 0 1rem 1rem;
+  margin: 1rem 0 1rem 2rem;
   z-index: 10;
   max-width: 200px;
 }
@@ -80,7 +69,7 @@
   opacity: 1;
   transition: opacity 0.3s ease, transform 0.3s ease;
   gap: 2rem;
-  box-shadow: 10px 10px 20px #866e5253;
+  box-shadow: 5px 5px 10px #866e5253;
 }
 
 .book {
@@ -88,14 +77,19 @@
     position: relative;
 
     > img {
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
     .discount {
       position: absolute;
       top: -0.5rem;
       right: -1rem;
+      transition: transform 0.3s ease;
     }
+  }
+
+  &:hover > div > img {
+    transform: scale(1.03);
   }
 }
 

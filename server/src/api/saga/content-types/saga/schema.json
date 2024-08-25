@@ -33,12 +33,13 @@
       "type": "integer",
       "required": false
     },
-    "saga_relations": {
+    "authors": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::book.book"
+      "relation": "manyToMany",
+      "target": "api::author.author",
+      "mappedBy": "sagas"
     },
-    "books_relation": {
+    "books": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::book.book",

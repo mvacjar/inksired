@@ -25,6 +25,12 @@
       "relation": "manyToMany",
       "target": "api::book.book",
       "mappedBy": "authors"
+    },
+    "sagas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::saga.saga",
+      "inversedBy": "authors"
     }
   }
 }

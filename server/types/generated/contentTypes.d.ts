@@ -863,6 +863,11 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
       'manyToMany',
       'api::book.book'
     >;
+    sagas: Attribute.Relation<
+      'api::author.author',
+      'manyToMany',
+      'api::saga.saga'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -894,7 +899,6 @@ export interface ApiBookBook extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
-    author: Attribute.String & Attribute.Required;
     publisher: Attribute.String & Attribute.Required;
     cover: Attribute.Media<'images'> & Attribute.Required;
     condition: Attribute.Enumeration<['New', 'Gold', 'Silver', 'Bronze']> &
@@ -924,13 +928,13 @@ export interface ApiBookBook extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     order_in_saga: Attribute.Integer;
-    sagas: Attribute.Relation<'api::book.book', 'manyToOne', 'api::saga.saga'>;
     publication_date: Attribute.Date & Attribute.Required;
     authors: Attribute.Relation<
       'api::book.book',
       'manyToMany',
       'api::author.author'
     >;
+    sagas: Attribute.Relation<'api::book.book', 'manyToOne', 'api::saga.saga'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1122,16 +1126,12 @@ export interface ApiSagaSaga extends Schema.CollectionType {
     saga_title: Attribute.String & Attribute.Required;
     description: Attribute.RichText & Attribute.Required;
     saga_number: Attribute.Integer;
-    saga_relations: Attribute.Relation<
+    authors: Attribute.Relation<
       'api::saga.saga',
-      'oneToMany',
-      'api::book.book'
+      'manyToMany',
+      'api::author.author'
     >;
-    books_relation: Attribute.Relation<
-      'api::saga.saga',
-      'oneToMany',
-      'api::book.book'
-    >;
+    books: Attribute.Relation<'api::saga.saga', 'oneToMany', 'api::book.book'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

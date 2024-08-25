@@ -1,4 +1,4 @@
-import { Book, Author } from '@/api';
+import { Book, Author, Saga } from '@/api';
 
 export { default } from './searchPage';
 
@@ -15,13 +15,19 @@ export async function getServerSideProps(context) {
   const responseAuthors = await authorCtrl.searchAuthors(s, page);
   console.log('Authors:', responseAuthors.data);
 
+  const sagaCtrl = new Saga();
+  const responseSagas = await sagaCtrl.allSagas(page, s);
+  console.log('Sagas:', responseSagas.data);
+
   return {
     props: {
+      searchText: s,
       books: responseBooks.data,
       booksPagination: responseBooks.meta.pagination,
-      searchText: s,
       authors: responseAuthors.data,
       authorsPagination: responseAuthors.meta.pagination,
+      sagas: responseSagas.data,
+      sagasPagination: responseSagas.meta.pagination,
     },
   };
 }

@@ -9,6 +9,7 @@ export const ENV = {
     ADDRESS: 'addresses',
     BOOKS: 'books',
     AUTHORS: 'authors',
+    SAGAS: 'sagas',
   },
   TOKEN: 'token',
 };

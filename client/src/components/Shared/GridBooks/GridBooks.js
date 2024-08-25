@@ -7,7 +7,6 @@ import Link from 'next/link';
 
 export function GridBooks(props) {
   const { books } = props;
-  console.log(books);
 
   return (
     <>
@@ -45,15 +44,15 @@ export function GridBooks(props) {
                   {discount > 0 ? (
                     <>
                       <span className={styles.originalPrice}>
-                        {originalPrice}€
+                        {originalPrice.toFixed(2)}€
                       </span>
                       <span className={styles.discountedPrice}>
-                        {finalPrice}€
+                        {finalPrice.toFixed(2)}€
                       </span>
                     </>
                   ) : (
                     <span className={styles.regularPrice}>
-                      {originalPrice}€
+                      {originalPrice.toFixed(2)}€
                     </span>
                   )}
                 </div>

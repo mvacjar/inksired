@@ -1,10 +1,14 @@
 @import '@/scss/index.scss';
 
+.infoTextContainer {
+  margin-left: 2rem;
+}
+
 .wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin: 0 2rem;
+  margin: 0;
   &:hover .gridItem:not(:hover) .bookCover {
     opacity: 0.7;
   }

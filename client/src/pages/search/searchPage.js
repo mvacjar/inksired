@@ -1,7 +1,6 @@
 import styles from './searchPage.module.scss';
 import { useEffect } from 'react';
 import { size } from 'lodash';
-import { useRouter } from 'next/router';
 import { BasicLayout } from '@/layouts';
 import {
   GridBooks,
@@ -10,14 +9,14 @@ import {
   Separator,
 } from '@/components/Shared';
 import Footer from '@/components/Footer/Footer';
+import GridSagas from '@/components/GridSagas/GridSagas';
 
 export default function searchPage(props) {
-  const router = useRouter();
-  const { books, authors, booksPagination, authorsPagination } = props;
-  const { s: searchValue } = router.query;
+  const { books, authors, sagas, booksPagination, authorsPagination } = props;
 
   const hasResultBooks = size(books) > 0;
   const hasResultAuthors = size(authors) > 0;
+  const hasResultSagas = size(sagas) > 0;
 
   useEffect(() => {
     document.getElementById('searchBar').focus();
@@ -42,6 +41,17 @@ export default function searchPage(props) {
         ) : hasResultAuthors ? (
           <>
             <GridAuthors authors={authors} />
+            <Separator height={50} />
+            <div className={styles.container}>
+              <Pagination
+                totalPages={authorsPagination.pageCount}
+                defaultPage={authorsPagination.currentPage}
+              />
+            </div>
+          </>
+        ) : hasResultSagas ? (
+          <>
+            <GridSagas sagas={sagas} />
             <Separator height={50} />
             <div className={styles.container}>
               <Pagination

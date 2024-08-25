@@ -1,12 +1,13 @@
 @import '@/scss/index.scss';
 
 .containerBody {
-  padding: 2rem 7rem;
+  padding: 2rem 7rem 0;
 }
 
 .container {
   display: flex;
   justify-content: center;
+  padding: 0;
 }
 
 .messageNotFound {

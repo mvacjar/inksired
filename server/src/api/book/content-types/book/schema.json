@@ -16,10 +16,6 @@
       "type": "string",
       "required": true
     },
-    "author": {
-      "type": "string",
-      "required": true
-    },
     "publisher": {
       "type": "string",
       "required": true
@@ -100,12 +96,6 @@
     "order_in_saga": {
       "type": "integer"
     },
-    "sagas": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::saga.saga",
-      "inversedBy": "books_relation"
-    },
     "publication_date": {
       "type": "date",
       "required": true
@@ -114,6 +104,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::author.author",
+      "inversedBy": "books"
+    },
+    "sagas": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::saga.saga",
       "inversedBy": "books"
     }
   }
