@@ -67,9 +67,9 @@ export default function NavVertical() {
             </Link>
             <Link href='/forum' className={styles.link}>
               <Image
-                src='/images/forum.png'
+                src='/images/pen.svg'
                 width={35}
-                height={40}
+                height={35}
                 alt='icon-menu'
                 className={styles.icon}
                 title='Forum'
@@ -128,9 +128,9 @@ export default function NavVertical() {
             >
               {user ? (
                 <Image
-                  src='/images/out.png'
-                  width={35}
-                  height={35}
+                  src='/images/logout.svg'
+                  width={33}
+                  height={33}
                   alt='icon-menu'
                   className={styles.icon}
                 />
@@ -151,6 +151,14 @@ export default function NavVertical() {
                 title='Home Page'
               />
             </Link>
+          </div>
+          <div className={styles.peakContainer}>
+            <Image
+              src='/images/peaknavbar.svg'
+              alt='peak'
+              width={80}
+              height={60}
+            />
           </div>
         </div>
       </nav>

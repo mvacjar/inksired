@@ -83,14 +83,6 @@ export default function NavHorizontal() {
     <>
       <nav className={`${styles.navbar} ${hidden ? styles.hidden : ''}`}>
         <div className={styles.imageWrapper}>
-          <Image
-            src='/images/layer-horizontal.svg'
-            alt='Join Background'
-            fill
-            priority
-            style={{ objectFit: 'cover' }}
-            className={styles.horizontalBackground}
-          />
           <div className={styles.searchContainer}>
             <form className={styles.searchForm} onSubmit={handleSearch}>
               <input
@@ -112,7 +104,7 @@ export default function NavHorizontal() {
                     onClick={handleClearInput}
                   />
                   <Image
-                    src='/images/loupe.svg'
+                    src='/images/search.svg'
                     width={21}
                     height={21}
                     alt='loupe-icon'
@@ -125,7 +117,7 @@ export default function NavHorizontal() {
           <div className={styles.cartIconContainer}>
             {user ? (
               <Image
-                src='/images/cart2.png'
+                src='/images/cart.svg'
                 width={45}
                 height={45}
                 alt='cart-icon'

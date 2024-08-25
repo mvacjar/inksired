@@ -23,16 +23,16 @@ export class Book {
     }
   }
 
-  async getLatestBooks({ limit = 10, literaryGenresId = null }) {
+  async getLatestBooks({ limit = 100, literaryGenresId = null }) {
     try {
       const pagination = `pagination[limit]=${limit}`;
       const sort = `sort[0]=publishedAt:desc`;
       const populate = `populate=*`;
-      const filterLiteraryGenres =
+      const filters =
         literaryGenresId &&
         `filters[literary-genres][id][$eq]=${literaryGenresId}`;
 
-      const urlParams = [sort, pagination, filterLiteraryGenres, populate]
+      const urlParams = [sort, pagination, filters, populate]
         .filter((param) => param)
         .join('&');
 

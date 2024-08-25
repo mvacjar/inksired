@@ -31,7 +31,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // height: 700px;
 }
 
 .cards {
@@ -89,14 +88,14 @@
 
 .card.prev {
   transform: translatex(-100%) scale(0.8);
-  filter: contrast(0.3);
+  filter: saturate(4) contrast(0.25) brightness(1.2);
   z-index: 1;
   box-shadow: 5px 5px 15px 0px rgba(81, 81, 81, 0.68);
 }
 
 .card.next {
   transform: translatex(100%) scale(0.8);
-  filter: contrast(0.3);
+  filter: saturate(4) contrast(0.25) brightness(1.2);
 
   z-index: 1;
   box-shadow: 5px 5px 15px 0px rgba(81, 81, 81, 0.68);

@@ -68,11 +68,13 @@
 }
 
 .bookCover {
+  max-width: 200px;
+  max-height: 300px;
   border-radius: $border1;
-  box-shadow: 10px 10px 20px #866e5253;
-  margin: 2rem 0.5rem;
-  transition: all 0.3s ease;
-  height: auto;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  gap: 2rem;
+  box-shadow: 5px 5px 10px #866e5253;
 }
 
 .leftArrowWrapper,
@@ -81,7 +83,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   z-index: 80;
 }
@@ -94,13 +96,29 @@
   right: 0;
 }
 
+.leftArrowWrapper,
+.rightArrowWrapper {
+  opacity: 0;
+  transform: translateX(-50px) translateY(-50%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.leftArrowWrapper.show,
+.rightArrowWrapper.show {
+  opacity: 1;
+  transform: translateX(0) translateY(-50%);
+}
+
 .leftArrowContainer,
 .rightArrowContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 50px;
-  height: 350px;
+  height: 340px;
   cursor: pointer;
   transition: opacity 1s ease-in-out;
 }
@@ -123,4 +141,96 @@
     rgba(255, 251, 239, 0) 0%,
     rgba(255, 251, 239, 0.8) 70%
   );
+}
+
+.backgroundImage {
+  margin: 0;
+}
+
+.gridItem {
+  position: relative;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+
+  &:hover {
+    .bookCover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+}
+
+.bookContainer {
+  margin: 1rem 0 1rem 2rem;
+  z-index: 10;
+  max-width: 200px;
+}
+
+.bookCover {
+  max-width: 200px;
+  max-height: 300px;
+  border-radius: $border1;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  gap: 2rem;
+  box-shadow: 5px 5px 10px #866e5253;
+}
+
+.book {
+  > div {
+    position: relative;
+
+    > img {
+      transition: opacity 0.3s ease;
+    }
+
+    .discount {
+      position: absolute;
+      top: -0.5rem;
+      right: -1rem;
+    }
+  }
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleBook {
+  font-size: $h6;
+  white-space: wrap;
+  margin-top: 10px;
+}
+
+.authorBook {
+  font-size: $small;
+  color: $primary;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.originalPrice {
+  font-size: $small;
+  color: #717070;
+  text-decoration: line-through;
+}
+
+.discountedPrice {
+  font-size: $h6;
+  color: $accent;
+  font-weight: bolder;
+}
+
+.regularPrice {
+  font-weight: bolder;
+  font-size: 0.9rem;
 }

@@ -22,7 +22,7 @@ export default function GridSagas({ sagas }) {
             >
               <div className={styles.infoTextContainer}>
                 <h1 className={styles.sagaTitle}>
-                  {saga.attributes.saga_title}
+                  Saga: {saga.attributes.saga_title}
                 </h1>
                 <h3 className={styles.sagaAuthor}>{saga.attributes.author}</h3>
               </div>
