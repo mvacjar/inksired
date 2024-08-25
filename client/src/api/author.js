@@ -6,8 +6,9 @@ export class Author {
       const filters = `filters[name_author][$contains]=${text}`;
       const pagination = `pagination[page]=${page}&pagination[pageSize]=10`;
       const populate = `populate[books][populate]=cover`;
+      const sort = `sort[name_author]=desc`;
 
-      const urlParams = [filters, pagination, populate]
+      const urlParams = [filters, pagination, populate, sort]
         .filter((param) => param)
         .join('&');
 
