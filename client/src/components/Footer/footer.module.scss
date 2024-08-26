@@ -40,8 +40,10 @@
 }
 
 .link {
+  color: $secondary;
   &:hover {
     text-decoration: underline;
+    color: $background;
   }
 }
 

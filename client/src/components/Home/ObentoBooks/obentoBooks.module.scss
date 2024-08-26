@@ -3,6 +3,24 @@
 .title {
   padding: 0 3rem;
   font-size: $h3;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  text-shadow: 1px 3px 3px #2d2d2d61;
+  &::before {
+    content: '';
+    height: 10%;
+    width: 77%;
+    display: block;
+    z-index: -5;
+    opacity: 30%;
+    position: absolute;
+    transition: all 0.3s ease;
+    background-color: $accent;
+  }
+  &:hover::before {
+    height: 50%;
+  }
 }
 
 .wrapper {

@@ -1,13 +1,14 @@
-import styles from './lastBookPublished.module.scss';
+import styles from './noveltyBooks.module.scss';
 import { useState, useEffect } from 'react';
 import { Book } from '@/api';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { Separator } from '@/components/Shared';
 
 const bookCtrl = new Book();
 
-export function LastBookPublished() {
+export function NoveltyBooks() {
   const [saveLastBook, setSaveLastBook] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -47,7 +48,8 @@ export function LastBookPublished() {
             priority
           />
         </div>
-        <div className={styles.titlePublished}>
+        <Separator height={50} />
+        <div className={styles.titlePublishedContainer}>
           <h1 className={styles.titlePublished}>Novelty</h1>
         </div>
         <div className={styles.wrapper}>

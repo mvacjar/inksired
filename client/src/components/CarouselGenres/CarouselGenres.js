@@ -14,6 +14,8 @@ export default function CarouselGenres() {
   const [showRightArrow, setShowRightArrow] = useState(true);
   const carouselRef = useRef(null);
 
+  // Get data
+
   useEffect(() => {
     (async () => {
       try {
@@ -25,6 +27,8 @@ export default function CarouselGenres() {
     })();
   }, []);
 
+  // Arrow visibility
+
   useEffect(() => {
     const handleScroll = () => {
       const carousel = carouselRef.current;
@@ -32,14 +36,31 @@ export default function CarouselGenres() {
       const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
 
       setShowLeftArrow(scrollLeft > 0);
-      setShowRightArrow(scrollLeft < maxScrollLeft);
+      setShowRightArrow(scrollLeft < maxScrollLeft - 1);
+    };
+
+    const updateArrowVisibility = () => {
+      const carousel = carouselRef.current;
+      if (carousel) {
+        const isScrollable = carousel.scrollWidth > carousel.clientWidth;
+        setShowRightArrow(isScrollable);
+        handleScroll();
+      }
     };
 
     const carousel = carouselRef.current;
-    carousel.addEventListener('scroll', handleScroll);
+    if (carousel) {
+      carousel.addEventListener('scroll', handleScroll);
+      updateArrowVisibility();
+    }
+
+    window.addEventListener('resize', updateArrowVisibility);
 
     return () => {
-      carousel.removeEventListener('scroll', handleScroll);
+      if (carousel) {
+        carousel.removeEventListener('scroll', handleScroll);
+      }
+      window.removeEventListener('resize', updateArrowVisibility);
     };
   }, []);
 

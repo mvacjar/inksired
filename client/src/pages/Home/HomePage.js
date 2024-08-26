@@ -8,7 +8,7 @@ import {
   CarouselBooks,
   BannerAd,
 } from '@/components/Shared';
-import { LastBookPublished } from '@/components/Home/LastBookPublished';
+import { NoveltyBooks } from '@/components/Home/NoveltyBooks';
 import { ObentoBooks } from '@/components/Home/ObentoBooks';
 import Footer from '@/components/Footer/Footer';
 
@@ -26,18 +26,18 @@ export default function HomePage() {
         <BasicLayout />
 
         <article className={styles.mainContainer}>
-          <Separator height={130} />
+          <Separator height={80} />
           <section className={styles.carouselContainer}>
             <CarouselGenres />
           </section>
 
           <Separator height={50} />
-          <section className={styles.lastBookPublishedContainer}>
-            <LastBookPublished />
+          <section className={styles.noveltyContainer}>
+            <NoveltyBooks />
           </section>
           <Separator height={100} />
 
-          <section className={styles.lastBookPublishedContainer}>
+          <section className={styles.obentoContainer}>
             <ObentoBooks title={`Read the latest!`} />
           </section>
           <Separator height={100} />
@@ -56,21 +56,22 @@ export default function HomePage() {
           <section className={styles.carouselBooksContainer}>
             <CarouselBooks genreId={2} title='Latest Fantasy Books' />
           </section>
-          <Separator height={100} />
+          <Separator height={50} />
 
           <section className={styles.carouselBooksContainer}>
             <CarouselBooks genreId={16} title='Latest Thriller Books' />
           </section>
-          <Separator height={100} />
+          <Separator height={50} />
 
           <section className={styles.barInfoContainer}>
             <BarInfo />
           </section>
-          <Separator height={100} />
+          <Separator height={50} />
 
           <section className={styles.footerContainer}>
             <Footer />
           </section>
+          <Separator height={50} />
         </article>
       </main>
     </>

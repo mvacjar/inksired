@@ -35,6 +35,14 @@ export default function NavVertical() {
 
   return (
     <div className={styles.navWrapper}>
+      <div className={styles.peakSuperiorContainerNotMove}>
+        <Image
+          src='/images/peak-superior.svg'
+          alt='peak'
+          width={90}
+          height={54}
+        />
+      </div>
       <div className={styles.logoContainer} onClick={handleToggle}>
         <Image
           src='/images/logo.svg'
@@ -52,6 +60,14 @@ export default function NavVertical() {
           isOpen ? styles.slideDown : styles.slideUp
         } `}
       >
+        <div className={styles.peakSuperiorContainerMove}>
+          <Image
+            src='/images/peak-superior.svg'
+            alt='peak'
+            width={90}
+            height={54}
+          />
+        </div>
         <div className={styles.menuContainer}>
           <div className={styles.linksContainer}>
             <Link href='/' className={styles.link}>
@@ -62,7 +78,7 @@ export default function NavVertical() {
                 alt='icon-menu'
                 className={styles.icon}
                 onClick={toHome}
-                title='Home'
+                title='Home Page'
               />
             </Link>
             <Link href='/forum' className={styles.link}>
@@ -133,6 +149,7 @@ export default function NavVertical() {
                   height={33}
                   alt='icon-menu'
                   className={styles.icon}
+                  title='Logout'
                 />
               ) : (
                 ''
@@ -152,9 +169,9 @@ export default function NavVertical() {
               />
             </Link>
           </div>
-          <div className={styles.peakContainer}>
+          <div className={styles.peakInferiorContainer}>
             <Image
-              src='/images/peaknavbar.svg'
+              src='/images/peak-inferior.svg'
               alt='peak'
               width={80}
               height={60}

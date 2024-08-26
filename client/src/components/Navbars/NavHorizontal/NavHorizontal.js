@@ -11,7 +11,7 @@ export default function NavHorizontal() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hidden, setHidden] = useState(false);
 
-  // hide navbar on scroll
+  // Hide navbar on scroll
 
   const handleScroll = () => {
     if (typeof window !== 'undefined') {
@@ -34,7 +34,7 @@ export default function NavHorizontal() {
     }
   }, [lastScrollY]);
 
-  // routers
+  // Routing for icons
 
   const toCart = () => {
     router.push('/cart');
@@ -48,7 +48,7 @@ export default function NavHorizontal() {
     router.push('/join/sign-up');
   };
 
-  // search functions
+  // Search bar functionality
 
   useEffect(() => {
     setSearchValue(router.query.s || '');
@@ -60,6 +60,12 @@ export default function NavHorizontal() {
     e.preventDefault();
     setSearchValue('');
   };
+
+  const handleOnChange = (e) => {
+    handleSearchOnChange(e);
+  };
+
+  // Clean search input and redirect to search page
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -75,65 +81,70 @@ export default function NavHorizontal() {
     }
   };
 
-  const handleOnChange = (e) => {
-    handleSearchOnChange(e);
-  };
-
   return (
     <>
       <nav className={`${styles.navbar} ${hidden ? styles.hidden : ''}`}>
         <div className={styles.imageWrapper}>
-          <div className={styles.searchContainer}>
-            <form className={styles.searchForm} onSubmit={handleSearch}>
-              <input
-                id='searchBar'
-                type='text'
-                className={styles.searchInput}
-                placeholder='Search...'
-                value={searchValue}
-                onChange={handleOnChange}
-              />
-              <button type='submit' className={styles.searchIconContainer}>
-                <div className={styles.iconsSearch}>
-                  <Image
-                    src='/images/x.svg'
-                    width={18}
-                    height={18}
-                    alt='clear-icon'
-                    className={styles.xIcon}
-                    onClick={handleClearInput}
+          <div className={styles.narbarWrapper}>
+            <div className={styles.narbarContainer}>
+              <div className={styles.searchContainer}>
+                <form className={styles.searchForm} onSubmit={handleSearch}>
+                  <input
+                    id='searchBar'
+                    type='text'
+                    className={styles.searchInput}
+                    placeholder='Search...'
+                    value={searchValue}
+                    onChange={handleOnChange}
                   />
-                  <Image
-                    src='/images/search.svg'
-                    width={21}
-                    height={21}
-                    alt='loupe-icon'
-                    className={styles.searchIcon}
-                  />
-                </div>
-              </button>
-            </form>
-          </div>
-          <div className={styles.cartIconContainer}>
-            {user ? (
-              <Image
-                src='/images/cart.svg'
-                width={45}
-                height={45}
-                alt='cart-icon'
-                className={styles.cartIcon}
-                onClick={toCart}
-              />
-            ) : (
-              <div className={styles.buttonsContainer}>
-                <button className={styles.signInButton} onClick={toLogin}>
-                  Sign In
-                </button>
-                <button className={styles.signUpButton} onClick={toSignUp}>
-                  Sign Up
-                </button>
+                  <div className={styles.searchIconWrapper}>
+                    <div className={styles.searchIconContainer}>
+                      <Image
+                        src='/images/x.svg'
+                        width={20}
+                        height={20}
+                        alt='clear-icon'
+                        className={styles.xIcon}
+                        onClick={handleClearInput}
+                        title='Delete'
+                      />
+                      <button type='submit' className={styles.searchButton}>
+                        <Image
+                          src='/images/search.svg'
+                          width={21}
+                          height={21}
+                          alt='loupe-icon'
+                          className={styles.searchIcon}
+                          title='Search'
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
-            )}
+              <div className={styles.cartIconContainer}>
+                {user ? (
+                  <Image
+                    src='/images/cart.svg'
+                    width={45}
+                    height={45}
+                    alt='cart-icon'
+                    className={styles.cartIcon}
+                    onClick={toCart}
+                    title='Shopping Cart'
+                  />
+                ) : (
+                  <div className={styles.buttonsContainer}>
+                    <button className={styles.signInButton} onClick={toLogin}>
+                      Sign In
+                    </button>
+                    <button className={styles.signUpButton} onClick={toSignUp}>
+                      Sign Up
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </nav>

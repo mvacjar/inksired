@@ -25,7 +25,7 @@ export default function searchPage(props) {
   return (
     <>
       <BasicLayout />
-      <Separator height={100} />
+      <Separator height={50} />
       <div className={styles.containerBody}>
         {hasResultBooks ? (
           <>

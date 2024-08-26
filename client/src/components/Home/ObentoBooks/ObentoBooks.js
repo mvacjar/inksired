@@ -30,7 +30,9 @@ export function ObentoBooks(props) {
 
   return (
     <>
-      <h3 className={styles.title}>{title}</h3>
+      <div>
+        <h3 className={styles.title}>{title}</h3>
+      </div>
       <div className={styles.wrapper}>
         <div className={styles.gridContainer}>
           {latestBooks.map((book, index) => (

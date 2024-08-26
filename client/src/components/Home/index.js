@@ -1,7 +1,7 @@
-import { LastBookPublished } from './LastBookPublished';
+import { NoveltyBooks } from './NoveltyBooks';
 import { ObentoBooks } from './ObentoBooks';
 
 export const Home = {
-  LastBookPublished,
+  NoveltyBooks,
   ObentoBooks,
 };
