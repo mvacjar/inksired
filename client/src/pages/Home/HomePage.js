@@ -59,7 +59,7 @@ export default function HomePage() {
           <Separator height={100} />
 
           <section className={styles.carouselBooksContainer}>
-            <CarouselBooks genreId={16} title='Latest Enemy to Lover Books' />
+            <CarouselBooks genreId={16} title='Latest Thriller Books' />
           </section>
           <Separator height={100} />
 

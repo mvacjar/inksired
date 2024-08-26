@@ -15,7 +15,7 @@ export function CarouselBooks({ title, literaryGenresId, limit, genreId }) {
   const [booksByGenre, setBooksByGenre] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
-  const [showRightArrow, setShowRightArrow] = useState(true);
+  const [showRightArrow, setShowRightArrow] = useState(false);
   const carouselRef = useRef(null);
 
   useEffect(() => {
@@ -44,16 +44,28 @@ export function CarouselBooks({ title, literaryGenresId, limit, genreId }) {
       setShowRightArrow(scrollLeft < maxScrollLeft - 1);
     };
 
+    const updateArrowVisibility = () => {
+      const carousel = carouselRef.current;
+      if (carousel) {
+        const isScrollable = carousel.scrollWidth > carousel.clientWidth;
+        setShowRightArrow(isScrollable);
+        handleScroll();
+      }
+    };
+
     const carousel = carouselRef.current;
     if (carousel) {
       carousel.addEventListener('scroll', handleScroll);
-      handleScroll();
+      updateArrowVisibility();
     }
+
+    window.addEventListener('resize', updateArrowVisibility);
 
     return () => {
       if (carousel) {
         carousel.removeEventListener('scroll', handleScroll);
       }
+      window.removeEventListener('resize', updateArrowVisibility);
     };
   }, []);
 
