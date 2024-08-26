@@ -28,9 +28,9 @@ export class Book {
       const pagination = `pagination[limit]=${limit}`;
       const sort = `sort[0]=publishedAt:desc`;
       const populate = `populate=*`;
-      const filters =
-        literaryGenresId &&
-        `filters[literary-genres][id][$eq]=${literaryGenresId}`;
+      const filters = literaryGenresId
+        ? `filters[literary-genres][id][$eq]=${literaryGenresId}`
+        : '';
 
       const urlParams = [sort, pagination, filters, populate]
         .filter((param) => param)

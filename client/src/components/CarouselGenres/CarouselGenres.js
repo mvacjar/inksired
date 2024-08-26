@@ -8,8 +8,7 @@ import { LiteraryGenres } from '@/api';
 
 const genresCtrl = new LiteraryGenres();
 
-export default function CarouselGenres(props) {
-  const { isOpenSearch } = props;
+export default function CarouselGenres() {
   const [genres, setGenres] = useState(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
