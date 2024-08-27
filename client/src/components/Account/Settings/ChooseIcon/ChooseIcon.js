@@ -13,12 +13,12 @@ export function ChooseIcon(props) {
   const { image, reload, onReload } = props;
   const { user, updateUser } = useAuth();
   const [icons, setIcons] = useState([]);
-  const [iconChosen, setIconChosen] = useState(null);
+  const [iconChosen, setIconChosen] = useState([]);
 
   const [selectedIcon, setSelectedIcon] = useState(user.icon || '');
   const [iconUrl, setIconUrl] = useState('/images/star.svg');
 
-  const hasIcon = '';
+  const hasIcon = user.icon || '';
 
   // Fetch list of icons
   useEffect(() => {
@@ -40,12 +40,15 @@ export function ChooseIcon(props) {
     fetchIcons();
   }, [user.icon]);
 
-  // Fetch chosen
+  // Fetch chosen icon
   useEffect(() => {
     const fetchChosenIcon = async () => {
       try {
         const response = await iconCtrl.getAllIcons(user.id);
-        setIconChosen(response.data);
+        console.log('Icon chosen response:', response.data);
+
+        const chosenIcon = response.data.find((icon) => icon.id === user.icon);
+        setIconChosen(chosenIcon || null);
       } catch (error) {
         console.error('Error fetching chosen icon:', error);
       }
@@ -81,7 +84,7 @@ export function ChooseIcon(props) {
     if (selectedIconData?.attributes?.icon?.data?.attributes?.url) {
       setIconUrl(selectedIconData.attributes.icon.data.attributes.url);
     } else {
-      setIconUrl('/images/star.svg');
+      setIconUrl('/images/star.svg'); // Valor por defecto
     }
 
     formik.setFieldValue('icon', iconId);
@@ -90,27 +93,27 @@ export function ChooseIcon(props) {
   return (
     <>
       <form onSubmit={formik.handleSubmit}>
-        {hasIcon && iconChosen && iconChosen.length > 0
-          ? iconChosen.map((image) => (
+        {hasIcon && iconChosen ? (
+          <Image
+            key={iconChosen.id}
+            src={iconChosen.attributes.icon.data.attributes.url}
+            alt={iconChosen.attributes.icon_name}
+            width={100}
+            height={100}
+            onReload={onReload}
+          />
+        ) : (
+          iconUrl && (
+            <div>
               <Image
-                key={image.id}
-                src={image.attributes.icon.data.attributes.url}
-                alt={image.attributes.icon_name}
+                src={iconUrl}
+                alt={selectedIcon || 'Selected Icon'}
                 width={100}
                 height={100}
-                onReload={onReload}
               />
-            ))
-          : iconUrl && (
-              <div>
-                <Image
-                  src={iconUrl}
-                  alt={selectedIcon || 'Selected Icon'}
-                  width={100}
-                  height={100}
-                />
-              </div>
-            )}
+            </div>
+          )
+        )}
         <div
           className={styles.buttonContainer}
           style={{ display: 'flex', flexDirection: 'column' }}
