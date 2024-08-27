@@ -1,4 +1,4 @@
-import { Separator } from '../Shared/Separator';
+import { Separator } from '@/components/Shared';
 import styles from './gridAuthors.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';

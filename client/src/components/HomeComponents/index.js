@@ -1,7 +1,9 @@
 import { NoveltyBooks } from './NoveltyBooks';
 import { ObentoBooks } from './ObentoBooks';
+import { CarouselGenres } from './CarouselGenres';
 
-export const Home = {
+export const HomeComponents = {
   NoveltyBooks,
   ObentoBooks,
+  CarouselGenres,
 };

@@ -4,7 +4,7 @@ import { Label, Separator } from '@/components/Shared';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function GridSagas({ sagas }) {
+export function GridSagas({ sagas }) {
   console.log('Sagas en GridSagas:', sagas);
 
   return (

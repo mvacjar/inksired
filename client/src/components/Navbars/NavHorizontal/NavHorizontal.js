@@ -100,7 +100,7 @@ export default function NavHorizontal() {
                   <div className={styles.searchIconWrapper}>
                     <div className={styles.searchIconContainer}>
                       <Image
-                        src='/images/xBrown.svg'
+                        src='/images/xBlue.svg'
                         width={20}
                         height={20}
                         alt='clear-icon'

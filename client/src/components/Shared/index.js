@@ -5,7 +5,6 @@ export * from './Label';
 export * from './BarInfo';
 export * from './CarouselBooks';
 export * from './BannerAd';
-export * from './GridBooks';
-export * from '../GridAuthors';
+export * from '../SearchComponents/GridBooks';
 export * from './Pagination';
 export * from './TitleWeb';

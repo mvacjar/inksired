@@ -2,15 +2,14 @@ import styles from './home.module.scss';
 import Head from 'next/head';
 import { useAuth } from '@/hooks';
 import { BasicLayout } from '@/layouts';
-import CarouselGenres from '@/components/CarouselGenres/CarouselGenres';
+import CarouselGenres from '@/components/HomeComponents/CarouselGenres/CarouselGenres';
 import {
   Separator,
   BarInfo,
   CarouselBooks,
   BannerAd,
 } from '@/components/Shared';
-import { NoveltyBooks } from '@/components/Home/NoveltyBooks';
-import { ObentoBooks } from '@/components/Home/ObentoBooks';
+import { HomeComponents } from '@/components/HomeComponents';
 import Footer from '@/components/Footer/Footer';
 
 export default function HomePage() {
@@ -40,17 +39,17 @@ export default function HomePage() {
         <article className={styles.mainContainer}>
           <Separator height={150} />
           <section className={styles.carouselContainer}>
-            <CarouselGenres />
+            <HomeComponents.CarouselGenres />
           </section>
 
           <Separator height={50} />
           <section className={styles.noveltyContainer}>
-            <NoveltyBooks />
+            <HomeComponents.NoveltyBooks />
           </section>
           <Separator height={100} />
 
           <section className={styles.obentoContainer}>
-            <ObentoBooks title={`Read the latest!`} />
+            <HomeComponents.ObentoBooks title={`Read the latest!`} />
           </section>
           <Separator height={100} />
 

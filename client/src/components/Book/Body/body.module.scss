@@ -1,0 +1,142 @@
+@import '@/scss/index.scss';
+
+.bookDescriptionContainer {
+  margin: 0 1rem;
+  padding: 2rem 2rem 2rem 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  border: 2px solid $quaternary;
+  border-radius: $border2;
+  box-shadow: 5px 5px 10px #866e522e;
+  max-width: 50rem;
+}
+
+.bookContainer {
+  z-index: 10;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.bookCover {
+  margin-bottom: 0rem;
+  max-width: 200px;
+  max-height: 300px;
+  border-radius: $border1;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 5px 5px 10px #866e522e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.discount {
+  position: relative;
+  bottom: 19rem;
+  left: 9.3rem;
+}
+
+.priceContainer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.originalPrice {
+  font-size: $small;
+  color: #717070;
+  text-decoration: line-through;
+}
+
+.discountedPrice {
+  font-size: $h6;
+  color: $accent;
+  font-weight: bolder;
+}
+
+.regularPrice {
+  font-weight: bolder;
+  font-size: 0.9rem;
+  font-size: $h6;
+}
+
+.descriptionContainer {
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.author,
+.genres {
+  color: $secondary;
+  &:hover {
+    cursor: pointer;
+    text-decoration: solid underline $secondary;
+  }
+}
+
+.sagaContainer,
+.saga {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+}
+
+.saga {
+  color: $secondary;
+  &:hover {
+    cursor: pointer;
+    text-decoration: solid underline $secondary;
+  }
+}
+
+.sagaOrder {
+  color: $secondary;
+}
+
+.genresContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  color: $quaternary;
+}
+
+@media (max-width: 768px) {
+  .bookDescriptionContainer {
+    flex-direction: column;
+  }
+  .bookContainer {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 568px) {
+  .bookDescriptionContainer {
+    padding: 2rem 2rem 2rem 3rem;
+  }
+
+  .bookCover {
+    width: 170px;
+    height: 250px;
+  }
+
+  .discount {
+    position: relative;
+    bottom: 16rem;
+    left: 7.5rem;
+  }
+
+  .descriptionContainer {
+    margin-left: 0;
+  }
+}

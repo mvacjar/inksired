@@ -2,14 +2,9 @@ import styles from './searchPage.module.scss';
 import { useEffect } from 'react';
 import { size } from 'lodash';
 import { BasicLayout } from '@/layouts';
-import {
-  GridBooks,
-  GridAuthors,
-  Pagination,
-  Separator,
-} from '@/components/Shared';
+import { Pagination, Separator } from '@/components/Shared';
 import Footer from '@/components/Footer/Footer';
-import GridSagas from '@/components/GridSagas/GridSagas';
+import { SearchComponents } from '@/components/SearchComponents';
 
 export default function searchPage(props) {
   const { books, authors, sagas, booksPagination, authorsPagination } = props;
@@ -25,11 +20,11 @@ export default function searchPage(props) {
   return (
     <>
       <BasicLayout />
-      <Separator height={50} />
+      <Separator height={150} />
       <div className={styles.containerBody}>
         {hasResultBooks ? (
           <>
-            <GridBooks books={books} />
+            <SearchComponents.GridBooks books={books} />
             <Separator height={50} />
             <div className={styles.container}>
               <Pagination
@@ -40,7 +35,7 @@ export default function searchPage(props) {
           </>
         ) : hasResultAuthors ? (
           <>
-            <GridAuthors authors={authors} />
+            <SearchComponents.GridAuthors authors={authors} />
             <Separator height={50} />
             <div className={styles.container}>
               <Pagination
@@ -51,7 +46,7 @@ export default function searchPage(props) {
           </>
         ) : hasResultSagas ? (
           <>
-            <GridSagas sagas={sagas} />
+            <SearchComponents.GridSagas sagas={sagas} />
             <Separator height={50} />
             <div className={styles.container}>
               <Pagination
