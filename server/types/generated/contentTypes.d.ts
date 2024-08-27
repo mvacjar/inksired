@@ -786,6 +786,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::book.book'
     >;
+    icon: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToOne',
+      'api::profile-icon.profile-icon'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1108,6 +1113,42 @@ export interface ApiOrderOrder extends Schema.CollectionType {
   };
 }
 
+export interface ApiProfileIconProfileIcon extends Schema.CollectionType {
+  collectionName: 'profile_icons';
+  info: {
+    singularName: 'profile-icon';
+    pluralName: 'profile-icons';
+    displayName: 'Icon';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    icon: Attribute.Media<'images', true>;
+    icon_name: Attribute.String;
+    user: Attribute.Relation<
+      'api::profile-icon.profile-icon',
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::profile-icon.profile-icon',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::profile-icon.profile-icon',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSagaSaga extends Schema.CollectionType {
   collectionName: 'sagas';
   info: {
@@ -1207,6 +1248,7 @@ declare module '@strapi/types' {
       'api::forum.forum': ApiForumForum;
       'api::literary-genre.literary-genre': ApiLiteraryGenreLiteraryGenre;
       'api::order.order': ApiOrderOrder;
+      'api::profile-icon.profile-icon': ApiProfileIconProfileIcon;
       'api::saga.saga': ApiSagaSaga;
       'api::wishlist.wishlist': ApiWishlistWishlist;
     }

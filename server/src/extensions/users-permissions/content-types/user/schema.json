@@ -83,6 +83,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::book.book"
+    },
+    "icon": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::profile-icon.profile-icon",
+      "inversedBy": "user"
     }
   }
 }
