@@ -168,6 +168,10 @@
 }
 
 @media (max-width: 1300px) {
+  .linksContainer {
+    margin-top: 2rem;
+  }
+
   .peakSuperiorContainerNotMove {
     position: relative;
     filter: drop-shadow(-3px 0px 10px #3d322880);
@@ -181,6 +185,10 @@
 }
 
 @media (max-width: 768px) {
+  .linksContainer {
+    margin-top: 3rem;
+  }
+
   .peakSuperiorContainerMove {
     top: -2.4rem;
   }

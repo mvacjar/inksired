@@ -11,6 +11,8 @@ export default function NavVertical() {
   const [openMenu, setOpenMenu] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
 
+  // Logic to keep wrap the navbar and move it then
+
   const handleToggle = () => {
     setIsOpen((prev) => !prev);
   };
@@ -19,6 +21,8 @@ export default function NavVertical() {
     setShouldAnimate(true);
     setOpenMenu((prevOpenMenu) => !prevOpenMenu);
   };
+
+  // Routers
 
   const toAccount = () => {
     router.push('/account');

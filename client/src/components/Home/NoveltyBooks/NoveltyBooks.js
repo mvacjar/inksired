@@ -83,7 +83,7 @@ export function NoveltyBooks() {
                         className={styles.cover}
                       />
                     </div>
-                    <Link href={`/books/${book.attributes.slug_title}`}>
+                    <Link href={`/${book.attributes.slug_title}`}>
                       <div className={styles.info}>
                         <h3 className={styles.titleCover}>
                           {book.attributes.title}

@@ -42,7 +42,7 @@ export function ObentoBooks(props) {
               style={{ position: 'relative' }}
               className={styles[`image${index + 1}`]}
             >
-              <Link href={`/books/${book.attributes.slug_title}`}>
+              <Link href={`/${book.attributes.slug_title}`}>
                 <Image
                   src={book.attributes.cover.data.attributes.url}
                   alt={`Image ${index + 1}`}

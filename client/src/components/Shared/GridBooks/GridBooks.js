@@ -19,7 +19,7 @@ export function GridBooks(props) {
           return (
             <div key={book.id} className={styles.bookContainer}>
               <Link
-                href={`/books/${book.attributes.slug_title}`}
+                href={`/${book.attributes.slug_title}`}
                 className={styles.book}
               >
                 <div className={styles.imageContainer}>

@@ -105,7 +105,7 @@ export function CarouselBooks({ title, literaryGenresId, limit, genreId }) {
                     className={styles.bookContainer}
                   >
                     <Link
-                      href={`/books/${book.attributes.slug_title}`}
+                      href={`/${book.attributes.slug_title}`}
                       className={styles.book}
                     >
                       <div className={styles.imageContainer}>
