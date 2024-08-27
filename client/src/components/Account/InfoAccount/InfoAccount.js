@@ -10,6 +10,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import { ChooseIcon } from '@/components/Account/Settings/ChooseIcon';
 
 function MyOrders() {
   return <div>My orders content goes here.</div>;
@@ -71,17 +72,18 @@ export default function InfoAccount() {
     <>
       <main className={styles.body}>
         <section className={styles.infoContainer}>
-          <Image
+          {/* <Image
             className={styles.catImage}
             src='/images/cat.png'
             width={120}
             height={120}
             alt='cat'
-          />
+          /> */}
+          <ChooseIcon reload={reload} onReload={onReload} />
           <article className={styles.dataContainer}>
             <h1 className={styles.titleUsername}>{user.username}</h1>
             <h3 className={styles.titleName}>Name: {user.name}</h3>
-            <p>e-Mail: {user.email}</p>
+            <p>e-mail: {user.email}</p>
             <p>
               Member since:{' '}
               {DateTime.fromISO(user.createdAt, { locale: 'en' }).toFormat(
