@@ -1192,7 +1192,7 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     user: Attribute.Relation<
@@ -1207,7 +1207,6 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::wishlist.wishlist',
       'oneToOne',

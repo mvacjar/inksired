@@ -11,6 +11,7 @@ export const ENV = {
     AUTHORS: 'authors',
     SAGAS: 'sagas',
     ICONS: 'profile-icons',
+    WISHLIST: 'wishlists',
   },
   TOKEN: 'token',
 };

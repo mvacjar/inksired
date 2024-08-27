@@ -8,3 +8,4 @@ export * from './BannerAd';
 export * from '../SearchComponents/GridBooks';
 export * from './Pagination';
 export * from './TitleWeb';
+export * from './WishListIcon';

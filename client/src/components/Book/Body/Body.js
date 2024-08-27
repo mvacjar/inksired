@@ -1,7 +1,8 @@
 import styles from './body.module.scss';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Label } from '@/components/Shared';
+import { WishListIcon } from '@/components/Shared';
+import CheckIcon from '@mui/icons-material/Check';
 
 export function Body(props) {
   const {
@@ -17,7 +18,8 @@ export function Body(props) {
 
   const hasSagaNumber = bookInfo.order_in_saga !== 0;
 
-  console.log('props', props);
+  // console.log('props', props);
+
   return (
     <>
       <article
@@ -58,10 +60,22 @@ export function Body(props) {
               </div>
             )}
           </div>
+          <div className={styles.btnContainer}>
+            <div className={styles.iconHeart}>
+              <WishListIcon bookId={bookId} />
+            </div>
+            <button className={styles.buyBtn}>Add to bag</button>
+          </div>
         </div>
 
         <div className={styles.descriptionContainer}>
-          <h2 className={styles.title}>{bookInfo.title}</h2>
+          <div className={styles.titleContainer}>
+            <h2 className={styles.title}>{bookInfo.title}</h2>
+            <div className={styles.stock}>
+              <CheckIcon fontSize='small' className={styles.checkIcon} /> In
+              stock
+            </div>
+          </div>
           <p className={styles.author}>
             {bookInfo.authors.data[0].attributes.name_author}
           </p>

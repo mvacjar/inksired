@@ -12,7 +12,8 @@ export default function BookPage(props) {
   const discount = book.attributes.discount;
   const sagaTitle = book.attributes.sagas.data.attributes.saga_title;
   const finalPrice = CalcDiscountPrice(originalPrice, discount);
-  console.log('props', props);
+  // console.log('props', props);
+
   return (
     <>
       <div className={styles.bodyBook}>
