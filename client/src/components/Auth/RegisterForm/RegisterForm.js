@@ -32,6 +32,7 @@ export default function RegisterForm() {
       }
     },
   });
+
   return (
     <>
       <article className={styles.formSignUpContainer}>
