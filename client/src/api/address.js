@@ -1,5 +1,4 @@
 import { ENV, authFetch } from '@/utils';
-import { method } from 'lodash';
 
 export class Address {
   async create(data, userId) {
@@ -33,13 +32,8 @@ export class Address {
       const filter = `filters[user][id][$eq]=${userId}`;
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}?${filter}`;
 
-      console.log('URL:', url);
-
       const response = await authFetch(url);
       const result = await response.json();
-
-      console.log('Response:', response);
-      console.log('Result:', result);
 
       if (!response.ok) {
         console.error('Error:', result);
@@ -89,7 +83,6 @@ export class Address {
       const result = await response.json();
 
       if (!response.ok) {
-        console.error('Error:', result);
         throw result;
       }
 

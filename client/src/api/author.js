@@ -13,7 +13,6 @@ export class Author {
         .join('&');
 
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.AUTHORS}?${urlParams}`;
-      console.log('Request URL:', url);
 
       const response = await fetch(url);
       const result = await response.json();
