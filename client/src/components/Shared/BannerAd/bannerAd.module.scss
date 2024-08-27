@@ -38,20 +38,22 @@
   justify-content: center;
   z-index: 2;
   text-align: left;
+  padding: 0rem 2.5rem;
+}
+
+.title,
+.subtitle {
+  white-space: wrap;
 }
 
 .btn {
   background-color: $background;
   color: $accent;
+  padding: $paddingButton;
   border-radius: $border2;
   font-size: $small;
-  border: none;
   cursor: pointer;
-  width: 5rem;
-  padding: $paddingButton;
-  margin-top: 1rem;
-  transition: transform ease 0.2s;
-
+  transition: all 0.2s ease-in-out;
   &:hover {
     transform: scale(1.05);
     border: 2px solid $accent;
@@ -70,9 +72,10 @@
 }
 
 .image {
-  max-width: 100%;
+  width: 400px;
   height: auto;
   border-radius: $border2;
+  margin: 2rem 0rem;
 }
 
 @media (max-width: 768px) {
@@ -86,8 +89,7 @@
     flex-direction: column;
   }
 
-  .title,
-  .subtitle {
-    white-space: wrap;
+  .image {
+    width: 350px;
   }
 }

@@ -2,11 +2,9 @@
 
 .navbar {
   z-index: 100;
-  position: sticky;
-}
-
-.hidden {
-  transform: translateY(-100px);
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .imageWrapper {
@@ -52,16 +50,31 @@
 .xIcon {
   z-index: 120;
   margin-right: 0.3rem;
+  filter: drop-shadow(1px 1px 2px #00152e69);
+  transition: transform 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .searchButton {
   z-index: 120;
   background: transparent;
+  filter: drop-shadow(1px 1px 2px #00152e69);
+  transition: transform 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .cartIconContainer {
   padding: 1.5rem 0;
   margin-right: 1rem;
+  filter: drop-shadow(1px 1px 5px #00152e93);
+  transition: transform 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 @media (max-width: 1300px) {

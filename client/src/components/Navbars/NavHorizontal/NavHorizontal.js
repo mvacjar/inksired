@@ -13,26 +13,26 @@ export default function NavHorizontal() {
 
   // Hide navbar on scroll
 
-  const handleScroll = () => {
-    if (typeof window !== 'undefined') {
-      if (window.scrollY > lastScrollY && window.scrollY > 10) {
-        setHidden(true);
-      } else {
-        setHidden(false);
-      }
-      setLastScrollY(window.scrollY);
-    }
-  };
+  // const handleScroll = () => {
+  //   if (typeof window !== 'undefined') {
+  //     if (window.scrollY > lastScrollY && window.scrollY > 10) {
+  //       setHidden(true);
+  //     } else {
+  //       setHidden(false);
+  //     }
+  //     setLastScrollY(window.scrollY);
+  //   }
+  // };
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', handleScroll);
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     window.addEventListener('scroll', handleScroll);
 
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }
-  }, [lastScrollY]);
+  //     return () => {
+  //       window.removeEventListener('scroll', handleScroll);
+  //     };
+  //   }
+  // }, [lastScrollY]);
 
   // Routing for icons
 
@@ -83,7 +83,7 @@ export default function NavHorizontal() {
 
   return (
     <>
-      <nav className={`${styles.navbar} ${hidden ? styles.hidden : ''}`}>
+      <nav className={styles.navbar}>
         <div className={styles.imageWrapper}>
           <div className={styles.narbarWrapper}>
             <div className={styles.narbarContainer}>
@@ -100,7 +100,7 @@ export default function NavHorizontal() {
                   <div className={styles.searchIconWrapper}>
                     <div className={styles.searchIconContainer}>
                       <Image
-                        src='/images/x.svg'
+                        src='/images/xBrown.svg'
                         width={20}
                         height={20}
                         alt='clear-icon'
@@ -113,7 +113,7 @@ export default function NavHorizontal() {
                           src='/images/search.svg'
                           width={21}
                           height={21}
-                          alt='loupe-icon'
+                          alt='search-icon'
                           className={styles.searchIcon}
                           title='Search'
                         />

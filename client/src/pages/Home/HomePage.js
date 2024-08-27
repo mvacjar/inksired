@@ -1,5 +1,6 @@
 import styles from './home.module.scss';
 import Head from 'next/head';
+import { useAuth } from '@/hooks';
 import { BasicLayout } from '@/layouts';
 import CarouselGenres from '@/components/CarouselGenres/CarouselGenres';
 import {
@@ -13,6 +14,17 @@ import { ObentoBooks } from '@/components/Home/ObentoBooks';
 import Footer from '@/components/Footer/Footer';
 
 export default function HomePage() {
+  const { user } = useAuth();
+
+  const titleBanner = user
+    ? 'Send us your best cover for a fantasy book and...'
+    : 'Register now and get a discount!';
+  const subtitleBanner = user
+    ? 'Get 5 books from your wishlist for free!✨'
+    : 'Get a notebook for free! ✨';
+  const btnTitleBanner = user ? 'Participate' : 'Sign up';
+  const btnLinkBanner = user ? '/account' : '/join/sign-up';
+
   return (
     <>
       <Head>
@@ -26,7 +38,7 @@ export default function HomePage() {
         <BasicLayout />
 
         <article className={styles.mainContainer}>
-          <Separator height={80} />
+          <Separator height={150} />
           <section className={styles.carouselContainer}>
             <CarouselGenres />
           </section>
@@ -44,10 +56,10 @@ export default function HomePage() {
 
           <section className={styles.bannerAdContainer}>
             <BannerAd
-              title='Register now and get a discount!'
-              subtitle='Get a notebook for free ✨'
-              btnTitle='Sign up'
-              btnLink='/account'
+              titleBanner={titleBanner}
+              subtitleBanner={subtitleBanner}
+              btnTitleBanner={btnTitleBanner}
+              btnLinkBanner={btnLinkBanner}
               image='/images/imgAd.png'
             />
           </section>

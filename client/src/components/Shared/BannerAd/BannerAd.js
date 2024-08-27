@@ -3,17 +3,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export function BannerAd(props) {
-  const { title, subtitle, btnTitle, btnLink, image } = props;
+  const { titleBanner, subtitleBanner, btnTitleBanner, btnLinkBanner, image } =
+    props;
 
   return (
     <>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.textContainer}>
-            <h1 className={styles.title}>{title}</h1>
-            <p className={styles.subtitle}>{subtitle}</p>
-            <Link href={btnLink} className={styles.btn}>
-              {btnTitle}
+            <h1 className={styles.title}>{titleBanner}</h1>
+            <p className={styles.subtitle}>{subtitleBanner}</p>
+            <Link href={btnLinkBanner} className={styles.btnContainer}>
+              <button className={styles.btn}>{btnTitleBanner}</button>
             </Link>
           </div>
           <div className={styles.imageContainer}>

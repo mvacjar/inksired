@@ -10,6 +10,7 @@ export const ENV = {
     BOOKS: 'books',
     AUTHORS: 'authors',
     SAGAS: 'sagas',
+    ICONS: 'profile-icons',
   },
   TOKEN: 'token',
 };

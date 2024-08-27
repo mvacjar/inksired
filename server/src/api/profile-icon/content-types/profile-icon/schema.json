@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "profile_icons",
+  "info": {
+    "singularName": "profile-icon",
+    "pluralName": "profile-icons",
+    "displayName": "Icon",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "icon": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "icon_name": {
+      "type": "string"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "icon"
+    }
+  }
+}
