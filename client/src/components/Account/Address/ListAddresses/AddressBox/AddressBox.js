@@ -47,7 +47,7 @@ export function AddressBox(props) {
             onClick={openCloseEdit}
           />
           <Image
-            src='/images/x.svg'
+            src='/images/xBeige.svg'
             alt='Delete'
             width={35}
             height={35}
