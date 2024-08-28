@@ -33,4 +33,25 @@ export class Saga {
       throw error;
     }
   }
+
+  async getSagaBySlug(slug) {
+    try {
+      const filter = `filters[saga_name][$eq]=${slug}`;
+      const populate = ``;
+
+      const urlParams = [filter, populate].filter((param) => param).join('&');
+
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.SAGAS}?${urlParams}`;
+
+      const response = await fetch(url);
+      const result = await response.json();
+
+      if (response.status !== 200) throw result;
+
+      return result.data[0];
+    } catch (error) {
+      console.error('Error fetching saga:', error);
+      throw error;
+    }
+  }
 }

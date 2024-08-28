@@ -99,10 +99,56 @@ export class Book {
       const filter = `filters[slug_title][$eq]=${slug}`;
       const populate =
         'populate[0]=cover&populate[1]=authors&populate[2]=sagas&populate[3]=literary_genres';
+
       const urlParams = [filter, populate].filter((param) => param).join('&');
+
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.BOOKS}?${urlParams}`;
+
       const response = await fetch(url);
       const result = await response.json();
+
+      if (response.status !== 200) throw result;
+
+      return result.data[0];
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getByAuthors(slug) {
+    try {
+      const filter = `filters[author][author_slug][$eq]=${slug}`;
+      const populate =
+        'populate[0]=books&populate[1]=cover&populate[2]=sagas&populate[3]=literary_genres';
+
+      const urlParams = [filter, populate].filter((param) => param).join('&');
+
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.BOOKS}?${urlParams}`;
+
+      const response = await fetch(url);
+      const result = await response.json();
+
+      if (response.status !== 200) throw result;
+
+      return result.data[0] || null; // Asegúrate de devolver null si no hay datos
+    } catch (error) {
+      console.error('Error fetching author data:', error);
+      return null; // En caso de error, devuelve null para evitar `undefined`
+    }
+  }
+
+  async getBySaga(slug) {
+    try {
+      const filter = `filters[saga][author_slug][$eq]=${slug}`;
+      const populate =
+        'populate[0]=cover&populate[1]=authors&populate[2]=sagas&populate[3]=literary_genres';
+
+      const urlParams = [filter, populate].filter((param) => param).join('&');
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.BOOKS}?${urlParams}`;
+
+      const response = await fetch(url);
+      const result = await response.json();
+
       if (response.status !== 200) throw result;
       return result.data[0];
     } catch (error) {

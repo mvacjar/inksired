@@ -31,6 +31,12 @@
       "relation": "manyToMany",
       "target": "api::saga.saga",
       "inversedBy": "authors"
+    },
+    "literary_genres": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::literary-genre.literary-genre",
+      "mappedBy": "author"
     }
   }
 }

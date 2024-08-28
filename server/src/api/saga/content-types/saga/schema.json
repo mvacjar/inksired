@@ -44,6 +44,12 @@
       "relation": "oneToMany",
       "target": "api::book.book",
       "mappedBy": "sagas"
+    },
+    "literary_genres": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::literary-genre.literary-genre",
+      "mappedBy": "sagases"
     }
   }
 }

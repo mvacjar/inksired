@@ -17,7 +17,6 @@ export function Body(props) {
     finalPrice,
   } = props;
 
-  console.log('props', bookInfo);
   const hasSagaNumber = bookInfo.order_in_saga !== 0;
   const hasSaga = bookInfo.sagas?.data?.attributes?.saga_title ?? '';
 

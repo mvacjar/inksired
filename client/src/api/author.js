@@ -25,4 +25,24 @@ export class Author {
       throw error;
     }
   }
+
+  async getAuthorBySlug(slug) {
+    try {
+      const filter = `filters[author_slug][$eq]=${slug}`;
+      const populate =
+        'populate[0]=literary_genres&populate[1]=literary-genres.title&populate[2]=books&populate[3]=books.cover&populate[4]=sagas&populate[5]=sagas.saga_title&populate[6]=books&populate[7]=books.sagas';
+      const urlParams = [filter, populate].filter((param) => param).join('&');
+
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.AUTHORS}?${urlParams}`;
+
+      const response = await fetch(url);
+      const result = await response.json();
+
+      if (response.status !== 200) throw result;
+
+      return result.data[0];
+    } catch (error) {
+      throw error;
+    }
+  }
 }

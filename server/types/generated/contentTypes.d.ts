@@ -873,6 +873,11 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
       'manyToMany',
       'api::saga.saga'
     >;
+    literary_genres: Attribute.Relation<
+      'api::author.author',
+      'oneToMany',
+      'api::literary-genre.literary-genre'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1057,6 +1062,16 @@ export interface ApiLiteraryGenreLiteraryGenre extends Schema.CollectionType {
     order: Attribute.Integer;
     slug_genres: Attribute.UID<'api::literary-genre.literary-genre', 'title'> &
       Attribute.Required;
+    sagases: Attribute.Relation<
+      'api::literary-genre.literary-genre',
+      'manyToMany',
+      'api::saga.saga'
+    >;
+    author: Attribute.Relation<
+      'api::literary-genre.literary-genre',
+      'manyToOne',
+      'api::author.author'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1173,6 +1188,11 @@ export interface ApiSagaSaga extends Schema.CollectionType {
       'api::author.author'
     >;
     books: Attribute.Relation<'api::saga.saga', 'oneToMany', 'api::book.book'>;
+    literary_genres: Attribute.Relation<
+      'api::saga.saga',
+      'manyToMany',
+      'api::literary-genre.literary-genre'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

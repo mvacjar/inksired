@@ -1,8 +1,7 @@
-import { Separator } from '@/components/Shared';
 import styles from './gridAuthors.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Label } from '@/components/Shared';
+import { Label, Separator } from '@/components/Shared';
 import { map, groupBy, partition } from 'lodash';
 import { CalcDiscountPrice } from '@/utils';
 

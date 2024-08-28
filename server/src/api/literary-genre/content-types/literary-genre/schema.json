@@ -30,6 +30,18 @@
       "type": "uid",
       "targetField": "title",
       "required": true
+    },
+    "sagases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::saga.saga",
+      "inversedBy": "literary_genres"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "literary_genres"
     }
   }
 }
