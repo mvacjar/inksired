@@ -67,16 +67,6 @@
   scroll-snap-align: start;
 }
 
-.bookCover {
-  max-width: 200px;
-  max-height: 300px;
-  border-radius: $border1;
-  opacity: 1;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  gap: 2rem;
-  box-shadow: 5px 5px 10px #866e5253;
-}
-
 .leftArrowWrapper,
 .rightArrowWrapper {
   position: absolute;

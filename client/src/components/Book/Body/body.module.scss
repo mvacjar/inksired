@@ -25,6 +25,10 @@
   width: 100vw;
 }
 
+.bookHeartContainer {
+  position: relative;
+}
+
 .bookCover {
   margin-bottom: 0rem;
   max-width: 200px;
@@ -80,9 +84,12 @@
   width: 100%;
 }
 
-.iconHeart {
-  background-color: $quaternary;
-  border-radius: 50%;
+.iconHeartContainer {
+  position: absolute;
+  bottom: 1.4rem;
+  left: 0.5rem;
+  background-color: #fffbefb0;
+  border-radius: $border2;
   padding: 0.3rem;
   transition: transform 0.1s ease-in-out;
   &:hover {
@@ -126,6 +133,10 @@
   gap: 1rem;
 }
 
+.title {
+  white-space: wrap;
+}
+
 .checkIcon {
   margin-right: 0.5rem;
 }
@@ -137,6 +148,7 @@
   background-color: #d3e1f6;
   padding: $paddingButton;
   border-radius: $border2;
+  white-space: nowrap;
 }
 
 .author,
@@ -185,7 +197,7 @@
 
 @media (max-width: 568px) {
   .bookDescriptionContainer {
-    padding: 2rem 2rem 2rem 3rem;
+    padding: 2rem;
   }
 
   .bookCover {
