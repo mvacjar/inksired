@@ -8,10 +8,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { WishListIcon } from '@/components/Shared';
 
 const book = new Book();
 
-export function CarouselBooks({ title, literaryGenresId, limit, genreId }) {
+export function CarouselBooks({
+  title,
+  literaryGenresId,
+  limit,
+  genreId,
+  onReload,
+}) {
   const [booksByGenre, setBooksByGenre] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -104,25 +111,33 @@ export function CarouselBooks({ title, literaryGenresId, limit, genreId }) {
                     onClick={() => handleImageClick(index)}
                     className={styles.bookContainer}
                   >
-                    <Link
-                      href={`/${book.attributes.slug_title}`}
-                      className={styles.book}
-                    >
-                      <div className={styles.imageContainer}>
-                        <Image
-                          src={book.attributes.cover.data.attributes.url}
-                          alt={`Image ${index + 1}`}
-                          width={200}
-                          height={300}
-                          className={styles.bookCover}
+                    <div className={styles.heartContainer}>
+                      <Link
+                        href={`/${book.attributes.slug_title}`}
+                        className={styles.book}
+                      >
+                        <div className={styles.imageContainer}>
+                          <Image
+                            src={book.attributes.cover.data.attributes.url}
+                            alt={`Image ${index + 1}`}
+                            width={200}
+                            height={300}
+                            className={styles.bookCover}
+                          />
+                          {discount > 0 && (
+                            <Label.Discount className={styles.discount}>
+                              {`-${discount}%`}
+                            </Label.Discount>
+                          )}
+                        </div>
+                      </Link>
+                      <div className={styles.iconHeart}>
+                        <WishListIcon
+                          bookId={book.id}
+                          removeCallBack={onReload}
                         />
-                        {discount > 0 && (
-                          <Label.Discount className={styles.discount}>
-                            {`-${discount}%`}
-                          </Label.Discount>
-                        )}
                       </div>
-                    </Link>
+                    </div>
                     <div className={styles.infoContainer}>
                       <h2 className={styles.titleBook}>
                         {book.attributes.title}

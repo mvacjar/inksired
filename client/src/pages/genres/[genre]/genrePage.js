@@ -6,7 +6,6 @@ import { GridBooks, Separator, Pagination } from '@/components/Shared';
 
 export default function genrePage(props) {
   const { books, genres, pagination } = props;
-  console.log(pagination);
 
   const existProducts = size(books) > 0;
 

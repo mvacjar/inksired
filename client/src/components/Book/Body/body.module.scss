@@ -25,10 +25,6 @@
   width: 100vw;
 }
 
-.bookHeartContainer {
-  position: relative;
-}
-
 .bookCover {
   margin-bottom: 0rem;
   max-width: 200px;
@@ -79,14 +75,18 @@
 
 .btnContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
 }
 
 .iconHeartContainer {
+  position: relative;
+}
+
+.iconHeart {
   position: absolute;
-  bottom: 1.4rem;
+  bottom: 2.2rem;
   left: 0.5rem;
   background-color: #fffbefb0;
   border-radius: $border2;
@@ -114,6 +114,34 @@
   &:active {
     transform: scale(0.95);
   }
+}
+
+// Prices
+
+.priceContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+  gap: 0.5rem;
+}
+
+.originalPrice {
+  font-size: $small;
+  color: #717070;
+  text-decoration: line-through;
+}
+
+.discountedPrice {
+  font-size: $h6;
+  color: $accent;
+  font-weight: bolder;
+}
+
+.regularPrice {
+  font-weight: bolder;
+  font-size: 0.9rem;
+  font-size: $h6;
 }
 
 // Description
@@ -190,8 +218,17 @@
   .bookDescriptionContainer {
     flex-direction: column;
   }
+
   .bookContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
+    margin-bottom: 2.5rem;
+  }
+
+  .btnContainer {
+    justify-content: center;
   }
 }
 

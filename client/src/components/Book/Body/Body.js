@@ -1,5 +1,6 @@
 import styles from './body.module.scss';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Label } from '@/components/Shared';
 import { WishListIcon } from '@/components/Shared';
 import CheckIcon from '@mui/icons-material/Check';
@@ -16,9 +17,13 @@ export function Body(props) {
     finalPrice,
   } = props;
 
+  console.log('props', bookInfo);
   const hasSagaNumber = bookInfo.order_in_saga !== 0;
 
-  // console.log('props', props);
+  const validOriginalPrice =
+    typeof originalPrice === 'number' && !isNaN(originalPrice);
+  const validDiscount = typeof discount === 'number' && !isNaN(discount);
+  const validFinalPrice = typeof finalPrice === 'number' && !isNaN(finalPrice);
 
   return (
     <>
@@ -27,7 +32,7 @@ export function Body(props) {
         className={styles.bookDescriptionContainer}
       >
         <div className={styles.bookContainer}>
-          <div>
+          <div className={styles.iconHeartContainer}>
             <Image
               src={cover}
               alt={alt}
@@ -36,21 +41,23 @@ export function Body(props) {
               height={300}
               className={styles.bookCover}
             />
-            {discount > 0 && (
+            {validDiscount && discount > 0 && (
               <Label.Discount className={styles.discount}>
                 {`-${discount}%`}
               </Label.Discount>
             )}
-            {bookInfo.discount > 0 && (
+            {validOriginalPrice && (
               <div className={styles.priceContainer}>
-                {bookInfo.discount > 0 ? (
+                {validDiscount && discount > 0 ? (
                   <>
                     <span className={styles.originalPrice}>
                       {originalPrice.toFixed(2)}€
                     </span>
-                    <span className={styles.discountedPrice}>
-                      {finalPrice.toFixed(2)}€
-                    </span>
+                    {validFinalPrice && (
+                      <span className={styles.discountedPrice}>
+                        {finalPrice.toFixed(2)}€
+                      </span>
+                    )}
                   </>
                 ) : (
                   <span className={styles.regularPrice}>
@@ -59,11 +66,11 @@ export function Body(props) {
                 )}
               </div>
             )}
-          </div>
-          <div className={styles.btnContainer}>
             <div className={styles.iconHeart}>
               <WishListIcon bookId={bookId} />
             </div>
+          </div>
+          <div className={styles.btnContainer}>
             <button className={styles.buyBtn}>Add to bag</button>
           </div>
         </div>
@@ -76,22 +83,32 @@ export function Body(props) {
               stock
             </div>
           </div>
-          <p className={styles.author}>
-            {bookInfo.authors.data[0].attributes.name_author}
-          </p>
+          <Link
+            href={`/authors/${bookInfo.authors.data[0].attributes.author_slug}`}
+          >
+            <h3 className={styles.author}>
+              {bookInfo.authors.data[0].attributes.name_author}
+            </h3>
+          </Link>
           <div className={styles.sagaContainer}>
-            <div className={styles.saga}>{sagaTitle}</div>
+            <Link href={`/sagas/${bookInfo.sagas.data.attributes.saga_name}`}>
+              <div className={styles.saga}>{sagaTitle}</div>
+            </Link>
             <p className={styles.sagaOrder}>
               {hasSagaNumber ? `#${bookInfo.order_in_saga}` : ''}
             </p>
           </div>
 
           <p className={styles.synopsis}>{bookInfo.synopsis}</p>
+
           <div className={styles.genresContainer}>
             {bookInfo.literary_genres.data.map((genre) => (
-              <p key={genre.id} className={styles.genres}>
-                #{genre.attributes.title}{' '}
-              </p>
+              <Link
+                key={genre.id}
+                href={`/genres/${genre.attributes.slug_genres}`}
+              >
+                <p className={styles.genres}>#{genre.attributes.title} </p>
+              </Link>
             ))}
           </div>
         </div>

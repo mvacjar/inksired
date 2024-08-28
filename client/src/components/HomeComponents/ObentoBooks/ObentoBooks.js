@@ -3,11 +3,12 @@ import { Book } from '@/api';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { WishListIcon } from '@/components/Shared';
 
 const book = new Book();
 
 export function ObentoBooks(props) {
-  const { title, limit = 10, literaryGenresId = null } = props;
+  const { title, limit = 10, literaryGenresId = null, bookId } = props;
   const [latestBooks, setLatestBooks] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -42,15 +43,20 @@ export function ObentoBooks(props) {
               style={{ position: 'relative' }}
               className={styles[`image${index + 1}`]}
             >
-              <Link href={`/${book.attributes.slug_title}`}>
-                <Image
-                  src={book.attributes.cover.data.attributes.url}
-                  alt={`Image ${index + 1}`}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  className={styles[`image${index + 1}`]}
-                />
-              </Link>
+              <div className={styles.heartContainer}>
+                <Link href={`/${book.attributes.slug_title}`}>
+                  <Image
+                    src={book.attributes.cover.data.attributes.url}
+                    alt={`Image ${index + 1}`}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    className={styles[`image${index + 1}`]}
+                  />
+                </Link>
+                <div className={styles.iconHeart}>
+                  <WishListIcon bookId={bookId} />
+                </div>
+              </div>
             </div>
           ))}
         </div>

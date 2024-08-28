@@ -1,14 +1,16 @@
 import styles from './noveltyBooks.module.scss';
 import { useState, useEffect } from 'react';
 import { Book } from '@/api';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { Separator } from '@/components/Shared';
+import { Label } from '@/components/Shared';
+import { WishListIcon } from '@/components/Shared';
 
 const bookCtrl = new Book();
 
-export function NoveltyBooks() {
+export function NoveltyBooks(props) {
+  const { originalPrice, discount, finalPrice } = props;
   const [saveLastBook, setSaveLastBook] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -63,6 +65,10 @@ export function NoveltyBooks() {
                 const isNext =
                   index === (activeIndex + 1) % saveLastBook.length;
                 const isBehind = !isActive && !isPrev && !isNext;
+                const originalPrice = book.attributes.price;
+                const discount = book.attributes.discount;
+                const finalPrice =
+                  originalPrice - (originalPrice * discount) / 100;
 
                 return (
                   <div
@@ -85,12 +91,49 @@ export function NoveltyBooks() {
                     </div>
                     <Link href={`/${book.attributes.slug_title}`}>
                       <div className={styles.info}>
-                        <h3 className={styles.titleCover}>
-                          {book.attributes.title}
-                        </h3>
-                        <p className={styles.synopsis}>
-                          {book.attributes.synopsis}
-                        </p>
+                        <div className={styles.titleCoverContainer}>
+                          <h3 className={styles.titleCover}>
+                            {book.attributes.title}
+                          </h3>
+                        </div>
+                        <div className={styles.synopsisContainer}>
+                          <p className={styles.synopsis}>
+                            {book.attributes.synopsis}
+                          </p>
+                          <div className={styles.pricesContainer}>
+                            <div className={styles.discountContainer}>
+                              {discount && discount > 0 && (
+                                <Label.Discount className={styles.discount}>
+                                  {`-${discount}%`}
+                                </Label.Discount>
+                              )}
+                            </div>
+                            <div className={styles.priceContainer}>
+                              {originalPrice && (
+                                <div className={styles.priceContainer}>
+                                  {discount && discount > 0 ? (
+                                    <>
+                                      <span className={styles.originalPrice}>
+                                        {originalPrice.toFixed(2)}€
+                                      </span>
+                                      {finalPrice && (
+                                        <span
+                                          className={styles.discountedPrice}
+                                        >
+                                          {finalPrice.toFixed(2)}€
+                                        </span>
+                                      )}
+                                    </>
+                                  ) : (
+                                    <span className={styles.regularPrice}>
+                                      {originalPrice.toFixed(2)}€
+                                    </span>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </Link>
                   </div>

@@ -8,7 +8,7 @@ import { useAuth } from '@/hooks';
 const wishlistCtrl = new Wishlist();
 
 export function WishListIcon(props) {
-  const { bookId, removeCallback } = props;
+  const { bookId, removeCallBack } = props;
   const { user } = useAuth();
   const [hasWishlist, setHasWishlist] = useState(null);
 
@@ -34,9 +34,7 @@ export function WishListIcon(props) {
       await wishlistCtrl.delete(hasWishlist.id);
       setHasWishlist(false);
 
-      if (removeCallback) {
-        removeCallback();
-      }
+      if (removeCallBack) removeCallBack();
     } catch (error) {
       console.error(error);
     }

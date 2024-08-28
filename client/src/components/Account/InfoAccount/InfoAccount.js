@@ -1,6 +1,6 @@
 import styles from './infoAccount.module.scss';
 import Image from 'next/image';
-import { Settings, Address } from '@/components/Account';
+import { Settings, Address, Wishlist } from '@/components/Account';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
 import { DateTime } from 'luxon';
@@ -17,7 +17,11 @@ function MyOrders() {
 }
 
 function MyWishlist() {
-  return <div>Wishlist content goes here.</div>;
+  return (
+    <>
+      <Wishlist />
+    </>
+  );
 }
 
 function MyAddresses({ reload, onReload }) {
@@ -40,7 +44,7 @@ function MySettings() {
 }
 
 export default function InfoAccount() {
-  const [value, setValue] = useState(2);
+  const [value, setValue] = useState(1);
   const [reload, setReload] = useState(false);
   const isSmallScreen = useMediaQuery('(max-width:768px)');
   const { user } = useAuth();
