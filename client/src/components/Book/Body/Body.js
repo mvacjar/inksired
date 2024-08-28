@@ -19,6 +19,7 @@ export function Body(props) {
 
   console.log('props', bookInfo);
   const hasSagaNumber = bookInfo.order_in_saga !== 0;
+  const hasSaga = bookInfo.sagas?.data?.attributes?.saga_title ?? '';
 
   const validOriginalPrice =
     typeof originalPrice === 'number' && !isNaN(originalPrice);
@@ -84,15 +85,21 @@ export function Body(props) {
             </div>
           </div>
           <Link
-            href={`/authors/${bookInfo.authors.data[0].attributes.author_slug}`}
+            href={`/author/${bookInfo.authors.data[0].attributes.author_slug}`}
           >
             <h3 className={styles.author}>
               {bookInfo.authors.data[0].attributes.name_author}
             </h3>
           </Link>
           <div className={styles.sagaContainer}>
-            <Link href={`/sagas/${bookInfo.sagas.data.attributes.saga_name}`}>
-              <div className={styles.saga}>{sagaTitle}</div>
+            <Link href={`/saga/${bookInfo.sagas?.data?.attributes?.saga_name}`}>
+              <div className={styles.saga}>
+                {hasSaga ? (
+                  `${bookInfo.sagas?.data?.attributes?.saga_title}`
+                ) : (
+                  <p style={{ display: 'none' }}></p>
+                )}
+              </div>
             </Link>
             <p className={styles.sagaOrder}>
               {hasSagaNumber ? `#${bookInfo.order_in_saga}` : ''}
