@@ -232,6 +232,24 @@
   color: $quaternary;
 }
 
+@media (max-width: 1600px) {
+  .bookDescriptionContainer {
+    width: 89vw;
+  }
+}
+
+@media (max-width: 1300px) {
+  .bookDescriptionContainer {
+    width: 86vw;
+  }
+}
+
+@media (max-width: 1000px) {
+  .bookDescriptionContainer {
+    width: 82vw;
+  }
+}
+
 @media (max-width: 768px) {
   .bookDescriptionContainer {
     flex-direction: column;

@@ -11,7 +11,7 @@ export default function NavVertical() {
   const [openMenu, setOpenMenu] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
 
-  // Logic to keep wrap the navbar and move it then
+  // Logic to keep wrap the navbar
 
   const handleToggle = () => {
     setIsOpen((prev) => !prev);
