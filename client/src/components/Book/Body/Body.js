@@ -85,21 +85,28 @@ export function Body(props) {
           </div>
           <Link
             href={`/author/${bookInfo.authors.data[0].attributes.author_slug}`}
+            className={styles.authorContainer}
           >
             <h3 className={styles.author}>
               {bookInfo.authors.data[0].attributes.name_author}
             </h3>
           </Link>
-          <div className={styles.sagaContainer}>
+          <div className={styles.sagaWrapper}>
             <Link href={`/saga/${bookInfo.sagas?.data?.attributes?.saga_name}`}>
-              <div className={styles.saga}>
+              <div className={styles.sagaContainer}>
                 {hasSaga ? (
-                  `${bookInfo.sagas?.data?.attributes?.saga_title}`
+                  <>
+                    <span className={styles.sagaPretitle}>Saga:</span>{' '}
+                    <span className={styles.sagaTitle}>
+                      {bookInfo.sagas?.data?.attributes?.saga_title}
+                    </span>
+                  </>
                 ) : (
                   <p style={{ display: 'none' }}></p>
                 )}
               </div>
             </Link>
+
             <p className={styles.sagaOrder}>
               {hasSagaNumber ? `#${bookInfo.order_in_saga}` : ''}
             </p>

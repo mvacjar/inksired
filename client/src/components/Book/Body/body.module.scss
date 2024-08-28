@@ -57,7 +57,7 @@
 
 .originalPrice {
   font-size: $small;
-  color: #717070;
+  color: $quinquenary;
   text-decoration: line-through;
 }
 
@@ -128,7 +128,7 @@
 
 .originalPrice {
   font-size: $small;
-  color: #717070;
+  color: $quinquenary;
   text-decoration: line-through;
 }
 
@@ -179,23 +179,33 @@
   white-space: nowrap;
 }
 
+.authorContainer {
+  margin: 0;
+  padding: 0;
+}
+
 .author,
 .genres {
   color: $secondary;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
   &:hover {
     cursor: pointer;
     text-decoration: solid underline $secondary;
   }
 }
 
-.sagaContainer,
+.sagaWrapper,
 .saga {
   display: flex;
   flex-direction: row;
   gap: 0.4rem;
+  margin: 0;
+  padding: 0;
 }
 
-.saga {
+.sagaTitle {
   color: $secondary;
   &:hover {
     cursor: pointer;
@@ -203,8 +213,16 @@
   }
 }
 
+.sagaPretitle {
+  text-decoration: none;
+}
 .sagaOrder {
-  color: $secondary;
+  color: $quinquenary;
+}
+
+.synopsis {
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
 }
 
 .genresContainer {

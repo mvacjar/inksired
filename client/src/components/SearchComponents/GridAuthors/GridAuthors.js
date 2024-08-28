@@ -35,7 +35,7 @@ export function GridAuthors(props) {
             {hasBooksWithoutSaga && (
               <>
                 <div className={styles.titleBookscontainer}>
-                  <h2 className={styles.titleBooks}>Author's Books</h2>
+                  <h2 className={styles.titleBooks}>Standalone Books</h2>
                 </div>
 
                 {/* Render books without saga */}
@@ -146,6 +146,9 @@ export function GridAuthors(props) {
                             </Link>
                             <div className={styles.infoContainer}>
                               <h2 className={styles.titleBook}>
+                                <span className={styles.orderSaga}>
+                                  #{book.attributes.order_in_saga}
+                                </span>{' '}
                                 {book.attributes.title}
                               </h2>
                               <Link href={`/authors/${author.id}`}>

@@ -35,20 +35,6 @@
   }
 }
 
-.titleBookscontainer {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.titleBooks,
-.sagaTitle {
-  font-size: $h5;
-  margin: 0.5rem 0 0.5rem 1rem;
-  white-space: wrap;
-  text-shadow: 1px 3px 3px #2d2d2d61;
-}
-
 .booksContainer {
   display: flex;
   flex-wrap: wrap;
@@ -109,6 +95,9 @@
   white-space: wrap;
   margin-top: 10px;
 }
+.orderSaga {
+  color: $quinquenary;
+}
 
 .authorBook {
   font-size: $small;
@@ -127,7 +116,7 @@
 
 .originalPrice {
   font-size: $small;
-  color: #717070;
+  color: $quinquenary;
   text-decoration: line-through;
 }
 

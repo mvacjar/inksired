@@ -35,6 +35,10 @@
   align-items: center;
 }
 
+.orderSaga {
+  color: $quinquenary;
+}
+
 .titleBooks,
 .sagaTitle {
   font-size: $h5;
@@ -121,7 +125,7 @@
 
 .originalPrice {
   font-size: $small;
-  color: #717070;
+  color: $quinquenary;
   text-decoration: line-through;
 }
 
