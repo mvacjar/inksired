@@ -28,7 +28,7 @@ export function CarouselBooks({
   useEffect(() => {
     (async () => {
       try {
-        const response = await book.getLatestBooks({ limit, literaryGenresId });
+        const response = await book.obentoBooks({ limit, literaryGenresId });
         setBooksByGenre(response.data);
       } catch (error) {
         console.error(error);
@@ -77,8 +77,10 @@ export function CarouselBooks({
 
   return (
     <>
-      <div className={styles.titleContainer}>
-        <h3 className={styles.title}>{title}</h3>
+      <div>
+        <div className={styles.titleContainer}>
+          <h3 className={styles.title}>{title}</h3>
+        </div>
       </div>
       <div className={styles.booksWrapper}>
         <div className={styles.booksContent}>

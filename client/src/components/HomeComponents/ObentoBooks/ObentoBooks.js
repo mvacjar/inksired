@@ -15,7 +15,7 @@ export function ObentoBooks(props) {
   useEffect(() => {
     (async () => {
       try {
-        const response = await book.getLatestBooks({ limit, literaryGenresId });
+        const response = await book.obentoBooks({ limit, literaryGenresId });
         setLatestBooks(response.data);
       } catch (error) {
         console.error(error);

@@ -23,7 +23,7 @@ export class Book {
     }
   }
 
-  async getLatestBooks({ limit = 100, literaryGenresId = null }) {
+  async obentoBooks({ limit = 100, literaryGenresId = null }) {
     try {
       const pagination = `pagination[limit]=${limit}`;
       const sort = `sort[0]=publishedAt:desc`;

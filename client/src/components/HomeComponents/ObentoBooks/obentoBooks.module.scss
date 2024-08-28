@@ -28,11 +28,11 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  padding: 4rem 5rem;
+  padding: 4rem 0rem;
   margin: 0;
-  grid-gap: 1.5rem;
-  width: 85vw;
-  height: 75vh;
+  grid-gap: 2rem;
+  width: 95vw;
+  height: 100vh;
   grid-template-areas:
     'image1 image2 image3 image4 image5'
     'image1 image2 image3 image4 image5'
@@ -42,39 +42,39 @@
 
 .image1 {
   grid-area: image1;
-  top: 3rem;
+  top: 4rem;
 }
 .image2 {
   grid-area: image2;
 }
 .image3 {
   grid-area: image3;
-  top: 3rem;
+  top: 4rem;
 }
 .image4 {
   grid-area: image4;
 }
 .image5 {
   grid-area: image5;
-  top: 3rem;
+  top: 4rem;
 }
 .image6 {
   grid-area: image6;
-  top: 3rem;
+  top: 4rem;
 }
 .image7 {
   grid-area: image7;
 }
 .image8 {
   grid-area: image8;
-  top: 3rem;
+  top: 4rem;
 }
 .image9 {
   grid-area: image9;
 }
 .image10 {
   grid-area: image10;
-  top: 3rem;
+  top: 4rem;
 }
 
 .image1,
@@ -91,11 +91,6 @@
   position: relative;
 
   transition: transform 0.3s ease-in-out;
-
-  img {
-    object-fit: cover;
-    box-sizing: content-box;
-  }
 
   &:hover {
     position: absolute;
@@ -154,25 +149,6 @@
   }
 }
 
-// .iconHeart {
-//   position: absolute;
-//   bottom: 0rem;
-//   left: 0.5rem;
-//   background-color: #fffbefb0;
-//   border-radius: $border2;
-//   padding: 0.3rem;
-//   transition: transform 0.1s ease-in-out;
-//   z-index: 10;
-
-//   &:hover {
-//     cursor: pointer;
-//     transform: scale(1.05);
-//   }
-//   &:active {
-//     transform: scale(0.95);
-//   }
-// }
-
 // Prices
 
 .priceContainer {
@@ -206,98 +182,147 @@
     padding: 0rem 3rem;
   }
   .gridContainer {
-    width: 100vw;
-    height: 90vh;
-    grid-gap: 0.8rem;
-    grid-template-columns: repeat(4, 1fr);
+    width: 70vw;
+    height: 200vh;
+    padding: 4rem 0rem;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(6, 1fr);
     grid-template-areas:
-      'image1 image2 image7 image7'
-      'image1 image2 image7 image7'
-      'image1 image3 image6 image6'
-      'image4 image3 image6 image6'
-      'image9 image5 image5 image5'
-      'image9 image8 image10 image10';
+      'image1 image2 image3'
+      'image1 image2 image3'
+      'image4 image5 image6'
+      'image4 image5 image6'
+      'image7 image8 image9'
+      'image7 image8 image9';
   }
 
-  .image1,
-  .image2,
-  .image3,
-  .image4,
-  .image5,
-  .image6,
-  .image7,
-  .image8,
-  .image9,
+  .image1 {
+    grid-area: image1;
+    top: 4rem;
+  }
+  .image2 {
+    grid-area: image2;
+    top: 0rem;
+  }
+  .image3 {
+    grid-area: image3;
+    top: 4rem;
+  }
+  .image4 {
+    grid-area: image4;
+    top: 4rem;
+  }
+  .image5 {
+    grid-area: image5;
+    top: 0rem;
+  }
+  .image6 {
+    grid-area: image6;
+    top: 4rem;
+  }
+  .image7 {
+    grid-area: image7;
+    top: 4rem;
+  }
+  .image8 {
+    grid-area: image8;
+    top: 0rem;
+  }
+  .image9 {
+    grid-area: image9;
+    top: 4rem;
+  }
   .image10 {
-    &:hover {
-      width: 30vw;
-      height: 52vh;
-      box-sizing: content-box;
-    }
+    grid-area: image10;
+    top: 0rem;
   }
 }
 
 @media (max-width: 1000px) {
-  .image1,
-  .image2,
-  .image3,
-  .image4,
-  .image5,
-  .image6,
-  .image7,
-  .image8,
-  .image9,
-  .image10 {
-    &:hover {
-      width: 32vw;
-      height: 49vh;
-      box-sizing: content-box;
-    }
+  .gridContainer {
+    width: 90vw;
+    height: 200vh;
+    padding: 4rem 2rem;
   }
 }
 
 @media (max-width: 768px) {
-  .image1,
-  .image2,
-  .image3,
-  .image4,
-  .image5,
-  .image6,
-  .image7,
-  .image8,
-  .image9,
+  .gridContainer {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    padding: 4rem 2rem 4rem 3rem;
+    width: 80vw;
+    height: 200vh;
+    grid-template-areas:
+      'image1 image2'
+      'image1 image2'
+      'image3 image4'
+      'image3 image4'
+      'image5 image6'
+      'image5 image6'
+      'image7 image8'
+      'image7 image8'
+      'image9 image10'
+      'image9 image10';
+  }
+
+  .image1 {
+    grid-area: image1;
+    top: 4rem;
+  }
+  .image2 {
+    grid-area: image2;
+    top: 0rem;
+  }
+  .image3 {
+    grid-area: image3;
+    top: 0rem;
+    top: 4rem;
+  }
+  .image4 {
+    grid-area: image4;
+
+    top: 0rem;
+  }
+  .image5 {
+    grid-area: image5;
+    top: 0rem;
+    top: 4rem;
+  }
+  .image6 {
+    grid-area: image6;
+    top: 0rem;
+  }
+  .image7 {
+    grid-area: image7;
+    top: 0rem;
+    top: 4rem;
+  }
+  .image8 {
+    grid-area: image8;
+    top: 0rem;
+  }
+  .image9 {
+    grid-area: image9;
+    top: 0rem;
+    top: 4rem;
+  }
   .image10 {
-    &:hover {
-      width: 37vw;
-      height: 40vh;
-      box-sizing: content-box;
-    }
+    grid-area: image10;
+    top: 0rem;
   }
 }
 
 @media (max-width: 568px) {
-  .wrapper {
-    width: 100vw;
-  }
   .gridContainer {
-    padding: 2rem;
-  }
-
-  .image1,
-  .image2,
-  .image3,
-  .image4,
-  .image5,
-  .image6,
-  .image7,
-  .image8,
-  .image9,
-  .image10 {
-    &:hover {
-      width: 45vw;
-      height: 40vh;
-      box-sizing: content-box;
-    }
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    padding: 4rem 1rem 4rem 4rem;
+    width: 120vw;
+    height: 200vh;
   }
 }
