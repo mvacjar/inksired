@@ -28,11 +28,11 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  padding: 4rem 0rem;
+  padding: 8rem 0rem;
   margin: 0;
   grid-gap: 2rem;
-  width: 95vw;
-  height: 100vh;
+  width: 94vw;
+  height: 130vh;
   grid-template-areas:
     'image1 image2 image3 image4 image5'
     'image1 image2 image3 image4 image5'
@@ -42,39 +42,39 @@
 
 .image1 {
   grid-area: image1;
-  top: 4rem;
+  top: 8rem;
 }
 .image2 {
   grid-area: image2;
 }
 .image3 {
   grid-area: image3;
-  top: 4rem;
+  top: 8rem;
 }
 .image4 {
   grid-area: image4;
 }
 .image5 {
   grid-area: image5;
-  top: 4rem;
+  top: 8rem;
 }
 .image6 {
   grid-area: image6;
-  top: 4rem;
+  top: 8rem;
 }
 .image7 {
   grid-area: image7;
 }
 .image8 {
   grid-area: image8;
-  top: 4rem;
+  top: 8rem;
 }
 .image9 {
   grid-area: image9;
 }
 .image10 {
   grid-area: image10;
-  top: 4rem;
+  top: 8rem;
 }
 
 .image1,
@@ -182,9 +182,10 @@
     padding: 0rem 3rem;
   }
   .gridContainer {
-    width: 70vw;
-    height: 200vh;
-    padding: 4rem 0rem;
+    width: 75vw;
+    height: 160vh;
+    padding: 4rem 0rem 8rem 3.5rem;
+    gap: 2rem;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(6, 1fr);
     grid-template-areas:
@@ -198,7 +199,7 @@
 
   .image1 {
     grid-area: image1;
-    top: 4rem;
+    top: 8rem;
   }
   .image2 {
     grid-area: image2;
@@ -206,11 +207,11 @@
   }
   .image3 {
     grid-area: image3;
-    top: 4rem;
+    top: 8rem;
   }
   .image4 {
     grid-area: image4;
-    top: 4rem;
+    top: 8rem;
   }
   .image5 {
     grid-area: image5;
@@ -218,11 +219,11 @@
   }
   .image6 {
     grid-area: image6;
-    top: 4rem;
+    top: 8rem;
   }
   .image7 {
     grid-area: image7;
-    top: 4rem;
+    top: 8rem;
   }
   .image8 {
     grid-area: image8;
@@ -230,7 +231,7 @@
   }
   .image9 {
     grid-area: image9;
-    top: 4rem;
+    top: 8rem;
   }
   .image10 {
     grid-area: image10;
@@ -241,8 +242,7 @@
 @media (max-width: 1000px) {
   .gridContainer {
     width: 90vw;
-    height: 200vh;
-    padding: 4rem 2rem;
+    height: 150vh;
   }
 }
 
@@ -253,7 +253,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(10, 1fr);
     padding: 4rem 2rem 4rem 3rem;
-    width: 80vw;
+    width: 68vw;
     height: 200vh;
     grid-template-areas:
       'image1 image2'
