@@ -21,7 +21,7 @@ export function GridWishlist(props) {
           <div key={book.id} className={styles.bookContainer}>
             <div className={styles.bookLinkContainer}>
               <Link
-                href={`/${book.attributes.slug_title}`}
+                href={`/book/${book.attributes.slug_title}`}
                 className={styles.bookLink}
               >
                 <div className={styles.imageContainer}>

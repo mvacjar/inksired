@@ -51,7 +51,7 @@ export function GridAuthors(props) {
                     return (
                       <div key={book.id} className={styles.bookContainer}>
                         <Link
-                          href={`/${book.attributes.slug_title}`}
+                          href={`/book/${book.attributes.slug_title}`}
                           className={styles.book}
                         >
                           <div className={styles.imageContainer}>
@@ -124,7 +124,7 @@ export function GridAuthors(props) {
                         return (
                           <div key={book.id} className={styles.bookContainer}>
                             <Link
-                              href={`/${book.attributes.slug_title}`}
+                              href={`/book/${book.attributes.slug_title}`}
                               className={styles.book}
                             >
                               <div className={styles.imageContainer}>

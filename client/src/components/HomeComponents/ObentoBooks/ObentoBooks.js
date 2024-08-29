@@ -44,7 +44,7 @@ export function ObentoBooks(props) {
               className={styles[`image${index + 1}`]}
             >
               <div className={styles.heartContainer}>
-                <Link href={`/${book.attributes.slug_title}`}>
+                <Link href={`/book/${book.attributes.slug_title}`}>
                   <Image
                     src={book.attributes.cover.data.attributes.url}
                     alt={`Image ${index + 1}`}

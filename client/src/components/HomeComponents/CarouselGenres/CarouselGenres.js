@@ -82,7 +82,7 @@ export function CarouselGenres() {
             {map(genres, (genre) => (
               <Link
                 key={genre.id}
-                href={`/genres/${genre.attributes.slug_genres}`}
+                href={`/genre/${genre.attributes.slug_genres}`}
                 className={styles.carouselItem}
               >
                 {genre.attributes.title}

@@ -6,16 +6,8 @@ import { WishListIcon } from '@/components/Shared';
 import CheckIcon from '@mui/icons-material/Check';
 
 export function Body(props) {
-  const {
-    cover,
-    alt,
-    bookId,
-    sagaTitle,
-    bookInfo,
-    originalPrice,
-    discount,
-    finalPrice,
-  } = props;
+  const { cover, alt, bookId, bookInfo, originalPrice, discount, finalPrice } =
+    props;
 
   const hasSagaNumber = bookInfo.order_in_saga !== 0;
   const hasSaga = bookInfo.sagas?.data?.attributes?.saga_title ?? '';
@@ -118,7 +110,7 @@ export function Body(props) {
             {bookInfo.literary_genres.data.map((genre) => (
               <Link
                 key={genre.id}
-                href={`/genres/${genre.attributes.slug_genres}`}
+                href={`/genre/${genre.attributes.slug_genres}`}
               >
                 <p className={styles.genres}>#{genre.attributes.title} </p>
               </Link>
