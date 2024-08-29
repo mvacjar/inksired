@@ -6,6 +6,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { DateTime } from 'luxon';
 import { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -68,6 +69,9 @@ export default function InfoAccount() {
       },
       secondary: {
         main: '#947a65',
+      },
+      typography: {
+        fontFamily: 'ABeeZee, sans-serif',
       },
     },
   });

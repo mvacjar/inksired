@@ -2,37 +2,15 @@ import { useState, useEffect } from 'react';
 import styles from './navHorizontal.module.scss';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth, useCart } from '@/hooks';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Badge from '@mui/material/Badge';
 
 export default function NavHorizontal() {
   const { user } = useAuth();
+  const { total } = useCart();
   const router = useRouter();
   const [searchValue, setSearchValue] = useState('');
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [hidden, setHidden] = useState(false);
-
-  // Hide navbar on scroll
-
-  // const handleScroll = () => {
-  //   if (typeof window !== 'undefined') {
-  //     if (window.scrollY > lastScrollY && window.scrollY > 10) {
-  //       setHidden(true);
-  //     } else {
-  //       setHidden(false);
-  //     }
-  //     setLastScrollY(window.scrollY);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined') {
-  //     window.addEventListener('scroll', handleScroll);
-
-  //     return () => {
-  //       window.removeEventListener('scroll', handleScroll);
-  //     };
-  //   }
-  // }, [lastScrollY]);
 
   // Routing for icons
 
@@ -81,73 +59,93 @@ export default function NavHorizontal() {
     }
   };
 
+  // Theme colors for the badge
+
+  const customTheme = createTheme({
+    palette: {
+      primary: {
+        main: '#96503e',
+      },
+    },
+    typography: {
+      fontFamily: 'ABeeZee, sans-serif',
+    },
+  });
+
   return (
     <>
-      <nav className={styles.navbar}>
-        <div className={styles.imageWrapper}>
-          <div className={styles.narbarWrapper}>
-            <div className={styles.narbarContainer}>
-              <div className={styles.searchContainer}>
-                <form className={styles.searchForm} onSubmit={handleSearch}>
-                  <input
-                    id='searchBar'
-                    type='text'
-                    className={styles.searchInput}
-                    placeholder='Search...'
-                    value={searchValue}
-                    onChange={handleOnChange}
-                  />
-                  <div className={styles.searchIconWrapper}>
-                    <div className={styles.searchIconContainer}>
-                      <Image
-                        src='/images/xBlue.svg'
-                        width={20}
-                        height={20}
-                        alt='clear-icon'
-                        className={styles.xIcon}
-                        onClick={handleClearInput}
-                        title='Delete'
-                      />
-                      <button type='submit' className={styles.searchButton}>
+      <ThemeProvider theme={customTheme}>
+        <nav className={styles.navbar}>
+          <div className={styles.imageWrapper}>
+            <div className={styles.narbarWrapper}>
+              <div className={styles.narbarContainer}>
+                <div className={styles.searchContainer}>
+                  <form className={styles.searchForm} onSubmit={handleSearch}>
+                    <input
+                      id='searchBar'
+                      type='text'
+                      className={styles.searchInput}
+                      placeholder='Search...'
+                      value={searchValue}
+                      onChange={handleOnChange}
+                    />
+                    <div className={styles.searchIconWrapper}>
+                      <div className={styles.searchIconContainer}>
                         <Image
-                          src='/images/search.svg'
-                          width={21}
-                          height={21}
-                          alt='search-icon'
-                          className={styles.searchIcon}
-                          title='Search'
+                          src='/images/xBlue.svg'
+                          width={20}
+                          height={20}
+                          alt='clear-icon'
+                          className={styles.xIcon}
+                          onClick={handleClearInput}
+                          title='Delete'
                         />
+                        <button type='submit' className={styles.searchButton}>
+                          <Image
+                            src='/images/search.svg'
+                            width={21}
+                            height={21}
+                            alt='search-icon'
+                            className={styles.searchIcon}
+                            title='Search'
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div className={styles.cartIconContainer}>
+                  {user ? (
+                    <Badge badgeContent={total} color='primary'>
+                      <Image
+                        src='/images/cart.svg'
+                        width={45}
+                        height={45}
+                        alt='cart-icon'
+                        className={styles.cartIcon}
+                        onClick={toCart}
+                        title='Shopping Cart'
+                      />
+                    </Badge>
+                  ) : (
+                    <div className={styles.buttonsContainer}>
+                      <button className={styles.signInButton} onClick={toLogin}>
+                        Sign In
+                      </button>
+                      <button
+                        className={styles.signUpButton}
+                        onClick={toSignUp}
+                      >
+                        Sign Up
                       </button>
                     </div>
-                  </div>
-                </form>
-              </div>
-              <div className={styles.cartIconContainer}>
-                {user ? (
-                  <Image
-                    src='/images/cart.svg'
-                    width={45}
-                    height={45}
-                    alt='cart-icon'
-                    className={styles.cartIcon}
-                    onClick={toCart}
-                    title='Shopping Cart'
-                  />
-                ) : (
-                  <div className={styles.buttonsContainer}>
-                    <button className={styles.signInButton} onClick={toLogin}>
-                      Sign In
-                    </button>
-                    <button className={styles.signUpButton} onClick={toSignUp}>
-                      Sign Up
-                    </button>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </ThemeProvider>
     </>
   );
 }

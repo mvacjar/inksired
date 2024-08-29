@@ -8,3 +8,4 @@ export * from './author';
 export * from './saga';
 export * from './icon';
 export * from './wishlist';
+export * from './cart';

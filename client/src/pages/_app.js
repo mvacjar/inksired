@@ -1,12 +1,14 @@
 import '@/scss/globals.scss';
 
-import { AuthProvider } from '@/contexts/AuthContext';
+import { AuthProvider, CartProvider } from '@/contexts';
 
 export default function App(props) {
   const { Component, pageProps } = props;
   return (
     <AuthProvider>
-      <Component {...pageProps} />
+      <CartProvider>
+        <Component {...pageProps} />
+      </CartProvider>
     </AuthProvider>
   );
 }

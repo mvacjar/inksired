@@ -2,14 +2,13 @@ import styles from './home.module.scss';
 import Head from 'next/head';
 import { useAuth } from '@/hooks';
 import { BasicLayout } from '@/layouts';
-import CarouselGenres from '@/components/HomeComponents/CarouselGenres/CarouselGenres';
+import { HomeComponents } from '@/components/HomeComponents';
 import {
   Separator,
   BarInfo,
   CarouselBooks,
   BannerAd,
 } from '@/components/Shared';
-import { HomeComponents } from '@/components/HomeComponents';
 import Footer from '@/components/Footer/Footer';
 
 export default function HomePage() {

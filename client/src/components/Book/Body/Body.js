@@ -1,13 +1,26 @@
+import { useState } from 'react';
 import styles from './body.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Label } from '@/components/Shared';
 import { WishListIcon } from '@/components/Shared';
 import CheckIcon from '@mui/icons-material/Check';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import { useCart } from '@/hooks';
 
 export function Body(props) {
   const { cover, alt, bookId, bookInfo, originalPrice, discount, finalPrice } =
     props;
+  const [loading, setLoading] = useState(false);
+  const { addCart } = useCart();
+  const addCartWrapper = () => {
+    setLoading(true);
+    addCart(bookId);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  };
 
   const hasSagaNumber = bookInfo.order_in_saga !== 0;
   const hasSaga = bookInfo.sagas?.data?.attributes?.saga_title ?? '';
@@ -63,7 +76,17 @@ export function Body(props) {
             </div>
           </div>
           <div className={styles.btnContainer}>
-            <button className={styles.buyBtn}>Add to bag</button>
+            <button
+              className={`${styles.buyBtn} ${loading ? styles.loading : ''}`}
+              onClick={addCartWrapper}
+              disabled={loading}
+            >
+              {loading ? (
+                <CircularProgress size={20} thickness={4} />
+              ) : (
+                'Add to bag'
+              )}
+            </button>
           </div>
         </div>
 
