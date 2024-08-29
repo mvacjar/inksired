@@ -1,0 +1,76 @@
+@import '@/scss/index.scss';
+
+.basketBooks {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bookCover {
+  max-width: 100px;
+  max-height: 130px;
+  border-radius: $border1;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  gap: 2rem;
+  box-shadow: 5px 5px 10px #866e5253;
+}
+
+.bookInfoWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 50%;
+  padding-top: 0.5rem;
+}
+
+.booksInfo {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-evenly;
+}
+
+.title {
+  font-size: $h6;
+}
+
+.sagaContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+}
+
+.saga {
+  color: $secondary;
+}
+
+.sagaOrder  {
+  color: $quinquenary;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.originalPrice {
+  font-size: $small;
+  color: $quinquenary;
+  text-decoration: line-through;
+}
+
+.discountedPrice {
+  font-size: $h6;
+  color: $accent;
+  font-weight: bolder;
+}
+
+.regularPrice {
+  font-weight: bolder;
+  font-size: 0.9rem;
+  font-size: $h6;
+}

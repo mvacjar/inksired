@@ -3,7 +3,7 @@ import { BasicLayout, HeaderCart } from '@/layouts';
 import Footer from '@/components/Footer/Footer';
 
 export function CartLayout(props) {
-  const { children } = props;
+  const { children, books } = props;
 
   return (
     <>
@@ -15,7 +15,7 @@ export function CartLayout(props) {
           justifyContent: 'center',
         }}
       >
-        <HeaderCart />
+        <HeaderCart books={books} />
       </div>
       <Separator height={100} />
       <div>{children}</div>

@@ -9,8 +9,10 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CheckIcon from '@mui/icons-material/Check';
+import { Cart } from '@/components/Cart';
 
-export function HeaderCart() {
+export function HeaderCart(props) {
+  const { books } = props;
   const router = useRouter();
   const { query } = router;
   const initialStep = parseInt(query.step, 10) || 0;
@@ -26,7 +28,6 @@ export function HeaderCart() {
   const [skipped, setSkipped] = useState(new Set());
   const [showFinishMessage, setShowFinishMessage] = useState(false);
 
-  // Update url query param
   useEffect(() => {
     router.push({
       pathname: router.pathname,
@@ -47,7 +48,6 @@ export function HeaderCart() {
     }
 
     if (activeStep === steps.length - 1) {
-      // Do not set the active step; this is handled by `handleFinish`
       setShowFinishMessage(true);
     } else {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -59,14 +59,12 @@ export function HeaderCart() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  // Function to handle timeout and redirection
   const handleFinish = () => {
     setTimeout(() => {
       router.push('/');
     }, 5000);
   };
 
-  // Custom theme
   const customTheme = createTheme({
     palette: {
       primary: {
@@ -137,16 +135,15 @@ export function HeaderCart() {
                 </>
               ) : (
                 <>
-                  <Typography sx={{ mt: 2, mb: 1 }}>
-                    {activeStep === 0 &&
-                      'This is the Checkout step. Here you can review your cart and proceed to payment.'}
+                  <Box sx={{ mt: 2, mb: 1 }}>
+                    {activeStep === 0 && <Cart.Checkout books={books} />}
                     {activeStep === 1 &&
                       'This is the Payment step. Enter your payment information here.'}
                     {activeStep === 2 &&
                       'This is the Confirmation step. Review your order and confirm.'}
                     {activeStep === 3 &&
                       'All steps completed - you are finished'}
-                  </Typography>
+                  </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                     {!showFinishMessage && (
                       <>
