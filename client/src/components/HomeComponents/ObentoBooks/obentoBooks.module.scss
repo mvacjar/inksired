@@ -89,6 +89,8 @@
 .image10 {
   border-radius: $border2;
   position: relative;
+  min-width: 100px;
+  min-height: 250px;
 
   transition: transform 0.3s ease-in-out;
 
@@ -182,7 +184,7 @@
     padding: 0rem 3rem;
   }
   .gridContainer {
-    width: 75vw;
+    width: 85vw;
     height: 160vh;
     padding: 4rem 0rem 8rem 3.5rem;
     gap: 2rem;
@@ -253,7 +255,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(10, 1fr);
     padding: 4rem 2rem 4rem 3rem;
-    width: 68vw;
+    width: 75vw;
     height: 200vh;
     grid-template-areas:
       'image1 image2'
@@ -322,7 +324,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(10, 1fr);
     padding: 4rem 1rem 4rem 4rem;
-    width: 120vw;
-    height: 200vh;
+    width: 90vw;
+    height: 160vh;
   }
 }
