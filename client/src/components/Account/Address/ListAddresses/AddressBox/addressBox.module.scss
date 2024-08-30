@@ -11,11 +11,12 @@
   background-color: $tertiary;
   border-radius: $border2;
   box-sizing: border-box;
-  border: 2px solid transparent;
   white-space: wrap;
   min-width: 23rem;
+  box-shadow: 2px 2px 10px rgba(81, 81, 81, 0.286);
+  transition: transform 0.3s ease, border 0.3s ease;
   &:hover {
-    border: 2px solid $quaternary;
+    border: 2px solid $primary;
   }
 }
 
@@ -38,7 +39,7 @@
   justify-content: center;
   background-color: $secondary;
   border-top-right-radius: $border2;
-  transition: background-color 0.3s ease, transform 0.3s ease; // Añadir transición
+  transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
     background-color: $accent;

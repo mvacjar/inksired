@@ -9,6 +9,7 @@ export function NavCart() {
 
   const toBack = () => {
     router.back();
+    router.reload();
   };
 
   return (

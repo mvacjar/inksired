@@ -1,6 +1,5 @@
 import styles from './summary.module.scss';
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { forEach } from 'lodash';
 import { CalcDiscountPrice } from '@/utils';
@@ -9,7 +8,8 @@ export default function Summary(props) {
   const { books, handleNext } = props;
   const router = useRouter();
   const [totals, setTotals] = useState(null);
-  const deliveryPrice = 5;
+  const deliveryPrice = 5.0;
+  const formattedDeliveryPrice = parseFloat(deliveryPrice.toFixed(2));
 
   useEffect(() => {
     let totals = { original: 0, discount: 0, price: 0 };
@@ -24,7 +24,7 @@ export default function Summary(props) {
       totals = {
         original: totals.original + price * quantity,
         discount: totals.discount + (price - finalPrice) * quantity,
-        price: totals.price + deliveryPrice + finalPrice * quantity,
+        price: totals.price + formattedDeliveryPrice + finalPrice * quantity,
       };
     });
 
@@ -52,7 +52,9 @@ export default function Summary(props) {
             </div>
             <div className={styles.summaryItem3}>
               <span className={styles.summaryLabel}>Delivery:</span>
-              <span className={styles.summaryValue}>{deliveryPrice} €</span>
+              <span className={styles.summaryValue}>
+                {formattedDeliveryPrice} €
+              </span>
             </div>
             <div className={styles.summaryItem4}>
               <span className={styles.summaryLabelTotal}>Total:</span>

@@ -81,19 +81,28 @@ export function HeaderCart(props) {
     },
   });
 
-  // Render Condicional basado en activeStep
   const renderStepContent = (stepIndex) => {
     switch (stepIndex) {
       case 0:
         return <Checkout books={books} handleNext={handleNext} />;
       case 1:
-        return <Payment handleNext={handleNext} handleBack={handleBack} />;
-      case 2:
-        return <Confirmation handleNext={handleNext} handleBack={handleBack} />;
-      case 3:
         return (
-          <Processing handleFinish={handleFinish} handleBack={handleBack} />
+          <Payment
+            books={books}
+            handleNext={handleNext}
+            handleBack={handleBack}
+          />
         );
+      case 2:
+        return (
+          <Confirmation
+            books={books}
+            handleFinish={handleFinish}
+            handleBack={handleBack}
+          />
+        );
+      case 3:
+        return <Processing books={books} />;
       default:
     }
   };
