@@ -1,7 +1,7 @@
 @import '@/scss/index.scss';
 
 .paymentTitle {
-  margin-top: 3rem;
+  margin: 3rem 0 2rem;
 }
 
 .addressContainer {
@@ -14,7 +14,7 @@
 .addressInfo {
   flex: 1 1 48%;
   width: 50%;
-  margin-top: 2rem;
+  margin-top: rem;
   padding: 3rem 2rem 3rem 3rem;
   background-color: $tertiary;
   border-radius: $border2;

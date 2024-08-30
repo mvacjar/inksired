@@ -4,6 +4,12 @@ import { useEffect, useState } from 'react';
 import { forEach } from 'lodash';
 import { CalcDiscountPrice } from '@/utils';
 import Addresses from './Addresses/Addresses';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import { ENV } from '@/utils';
+import { PaymentC } from './PaymentC';
+
+const stripeInit = loadStripe(ENV.STRIPE_TOKEN);
 
 export function Payment(props) {
   const [totals, setTotals] = useState(null);
@@ -36,56 +42,30 @@ export function Payment(props) {
 
   return (
     <>
-      <article className={styles.paymentContainer}>
-        <section>
-          <Addresses
-            addressSelected={addressSelected}
-            setAddressSelected={setAddressSelected}
-          />
-        </section>
-        <section className={styles.sectionContainer}>
+      <Elements stripe={stripeInit}>
+        <article className={styles.paymentContainer}>
+          <section>
+            <Addresses
+              addressSelected={addressSelected}
+              setAddressSelected={setAddressSelected}
+            />
+          </section>
           {addressSelected && (
             <>
-              <h2 className={styles.title}>Payment</h2>
-              <div className={styles.summaryContainer}>
-                <div className={styles.summaryItem1}>
-                  <span className={styles.summaryLabel}>Original price:</span>
-                  <span className={styles.summaryValue}>
-                    {totals.original.toFixed(2)} €
-                  </span>
-                </div>
-                <div className={styles.summaryItem2}>
-                  <span className={styles.summaryLabel}>Discount:</span>
-                  <span className={styles.summaryValue}>
-                    {totals.discount.toFixed(2)} €
-                  </span>
-                </div>
-                <div className={styles.summaryItem3}>
-                  <span className={styles.summaryLabel}>Delivery:</span>
-                  <span className={styles.summaryValue}>
-                    {formattedDeliveryPrice} €
-                  </span>
-                </div>
-                <div className={styles.summaryItem4}>
-                  <span className={styles.summaryLabelTotal}>Total:</span>
-                  <span className={styles.summaryValueTotal}>
-                    {totals.price.toFixed(2)} €
-                  </span>
-                </div>
-              </div>
+              <PaymentC books={books} addressSelected={addressSelected} />
             </>
           )}
-        </section>
-        <Separator height={50} />
-        <div className={styles.buttonContainer}>
-          <button className={styles.button} onClick={handleBack}>
-            Back
-          </button>
-          <button className={styles.button} onClick={handleNext}>
-            Next
-          </button>
-        </div>
-      </article>
+          <Separator height={50} />
+          <div className={styles.buttonContainer}>
+            <button className={styles.button} onClick={handleBack}>
+              Back
+            </button>
+            <button className={styles.button} onClick={handleNext}>
+              Next
+            </button>
+          </div>
+        </article>
+      </Elements>
     </>
   );
 }
