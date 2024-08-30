@@ -35,6 +35,14 @@
   }
 }
 
+.titleBooks,
+.sagaTitle {
+  font-size: $h5;
+  margin: 0.5rem 0 0.5rem 1rem;
+  white-space: wrap;
+  text-shadow: 1px 3px 3px #2d2d2d61;
+}
+
 .booksContainer {
   display: flex;
   flex-wrap: wrap;

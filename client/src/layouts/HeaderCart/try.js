@@ -10,9 +10,8 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Checkout } from '@/components/Cart/Checkout';
 import { Payment } from '@/components/Cart/Payment';
 import { Confirmation } from '@/components/Cart/Confirmation';
-import { Processing } from '@/components/Cart/Processing';
 
-export function HeaderCart(props) {
+export function Try(props) {
   const { books } = props;
   const { query } = router;
   const [activeStep, setActiveStep] = useState(0);
@@ -99,7 +98,7 @@ export function HeaderCart(props) {
 
   return (
     <ThemeProvider theme={customTheme}>
-      <Box sx={{ width: '100%', width: '80%' }}>
+      <Box sx={{ width: '100%' }}>
         <Stepper activeStep={activeStep}>
           {steps.map((step, index) => {
             const stepProps = {};
@@ -121,6 +120,7 @@ export function HeaderCart(props) {
           </Typography>
         ) : (
           <>
+            <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
             {renderStepContent(activeStep)}
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Button

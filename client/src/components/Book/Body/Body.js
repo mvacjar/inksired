@@ -6,7 +6,6 @@ import { Label } from '@/components/Shared';
 import { WishListIcon } from '@/components/Shared';
 import CheckIcon from '@mui/icons-material/Check';
 import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import { useCart } from '@/hooks';
 
 export function Body(props) {

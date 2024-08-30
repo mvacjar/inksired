@@ -1,13 +1,14 @@
 import { Separator } from '@/components/Shared';
-import { BasicLayout, HeaderCart } from '@/layouts';
 import Footer from '@/components/Footer/Footer';
+import { NavCart } from '@/components/Navbars/Cart/NavCart';
+import { HeaderCart } from '../HeaderCart';
 
 export function CartLayout(props) {
   const { children, books } = props;
 
   return (
     <>
-      <BasicLayout />
+      <NavCart />
       <Separator height={200} />
       <div
         style={{

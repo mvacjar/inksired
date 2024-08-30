@@ -1,4 +1,5 @@
 import Basket from './Basket/Basket';
+import Resume from './Summary/Summary';
 import styles from './checkout.module.scss';
 
 export function Checkout(props) {
@@ -10,7 +11,7 @@ export function Checkout(props) {
           <Basket books={books} />
         </div>
         <div className={styles.resume}>
-          <h1>Resume</h1>
+          <Resume />
         </div>
       </article>
     </>
