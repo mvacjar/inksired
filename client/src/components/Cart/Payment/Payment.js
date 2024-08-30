@@ -7,7 +7,7 @@ import Addresses from './Addresses/Addresses';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { ENV } from '@/utils';
-import { PaymentC } from './PaymentC';
+import { PaymentSumary } from './PaymentSummary';
 
 const stripeInit = loadStripe(ENV.STRIPE_TOKEN);
 
@@ -52,7 +52,7 @@ export function Payment(props) {
           </section>
           {addressSelected && (
             <>
-              <PaymentC books={books} addressSelected={addressSelected} />
+              <PaymentSumary books={books} addressSelected={addressSelected} />
             </>
           )}
           <Separator height={50} />
@@ -60,7 +60,11 @@ export function Payment(props) {
             <button className={styles.button} onClick={handleBack}>
               Back
             </button>
-            <button className={styles.button} onClick={handleNext}>
+            <button
+              className={styles.button}
+              disable={!addressSelected}
+              onClick={handleNext}
+            >
               Next
             </button>
           </div>
