@@ -1,9 +1,9 @@
 import Basket from './Basket/Basket';
-import Resume from './Summary/Summary';
+import Summary from './Summary/Summary';
 import styles from './checkout.module.scss';
 
 export function Checkout(props) {
-  const { books } = props;
+  const { books, handleNext } = props;
   return (
     <>
       <article className={styles.checkoutContainer}>
@@ -11,7 +11,7 @@ export function Checkout(props) {
           <Basket books={books} />
         </div>
         <div className={styles.resume}>
-          <Resume />
+          <Summary books={books} handleNext={handleNext} />
         </div>
       </article>
     </>

@@ -40,4 +40,20 @@ export class Cart {
 
     return count;
   }
+
+  changeQuantity(bookId, quantity) {
+    const books = this.getAll();
+    const objIndex = books.findIndex((book) => book.id === bookId);
+
+    books[objIndex].quantity = quantity;
+
+    localStorage.setItem(ENV.CART, JSON.stringify(books));
+  }
+
+  delete(bookId) {
+    const books = this.getAll();
+    const updateBooks = books.filter((book) => book.id !== bookId);
+
+    localStorage.setItem(ENV.CART, JSON.stringify(updateBooks));
+  }
 }

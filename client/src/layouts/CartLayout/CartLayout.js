@@ -9,7 +9,7 @@ export function CartLayout(props) {
   return (
     <>
       <NavCart />
-      <Separator height={200} />
+      <Separator height={250} />
       <div
         style={{
           display: 'flex',
@@ -18,7 +18,7 @@ export function CartLayout(props) {
       >
         <HeaderCart books={books} />
       </div>
-      <Separator height={100} />
+      <Separator height={50} />
       <div>{children}</div>
       <div
         style={{
@@ -26,7 +26,6 @@ export function CartLayout(props) {
           justifyContent: 'center',
         }}
       >
-        <Separator height={100} />
         <Footer />
       </div>
     </>

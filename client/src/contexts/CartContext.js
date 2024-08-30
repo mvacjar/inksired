@@ -19,6 +19,16 @@ export function CartProvider(props) {
     refreshTotalCart();
   };
 
+  const changeQuantityItem = (bookId, quantity) => {
+    cartCtrl.changeQuantity(bookId, quantity);
+    refreshTotalCart();
+  };
+
+  const deleteItem = (bookId) => {
+    cartCtrl.delete(bookId);
+    refreshTotalCart();
+  };
+
   const refreshTotalCart = () => {
     setTotal(cartCtrl.count());
     setCart(cartCtrl.getAll());
@@ -28,9 +38,9 @@ export function CartProvider(props) {
     cart,
     total,
     addCart,
-    deleteItem: () => {},
+    deleteItem: deleteItem,
     deleteAllItems: () => {},
-    changeQuantityItem: () => {},
+    changeQuantityItem: changeQuantityItem,
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;

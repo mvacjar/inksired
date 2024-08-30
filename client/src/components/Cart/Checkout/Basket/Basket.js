@@ -10,14 +10,24 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useCart } from '@/hooks';
 
 export default function Basket(props) {
   const { books } = props;
-  const [numberQ, setNumberQ] = useState(1);
+  const { changeQuantityItem, deleteItem } = useCart();
 
-  const handleChange = (event) => {
-    setNumberQ(event.target.value);
-  };
+  const options = [
+    { key: 1, text: '1', value: 1 },
+    { key: 2, text: '2', value: 2 },
+    { key: 3, text: '3', value: 3 },
+    { key: 4, text: '4', value: 4 },
+    { key: 5, text: '5', value: 5 },
+    { key: 6, text: '6', value: 6 },
+    { key: 7, text: '7', value: 7 },
+    { key: 8, text: '8', value: 8 },
+    { key: 9, text: '9', value: 9 },
+    { key: 10, text: '10', value: 10 },
+  ];
 
   const theme = createTheme({
     palette: {
@@ -55,6 +65,8 @@ export default function Basket(props) {
           const originalPrice = book.attributes.price;
           const discount = book.attributes.discount;
           const finalPrice = CalcDiscountPrice(originalPrice, discount);
+
+          const firstValue = book.quantity;
 
           return (
             <div className={styles.basketBooks} key={book.id}>
@@ -110,56 +122,62 @@ export default function Basket(props) {
                   </div>
                 </div>
                 <div className={styles.quantity}>
-                  <ThemeProvider theme={theme}>
-                    <Box
-                      sx={{
-                        minWidth: 40,
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                        alignItems: 'flex-start',
-                        gap: '1rem',
-                      }}
-                      size='small'
-                      options={[]}
-                      value={null}
-                    >
-                      <FormControl
+                  <div>
+                    <ThemeProvider theme={theme}>
+                      <Box
                         sx={{
-                          m: 1,
-                          minWidth: 35,
+                          minWidth: 40,
+                          display: 'flex',
+                          flexDirection: 'row',
+                          justifyContent: 'center',
+                          alignItems: 'flex-start',
+                          gap: '1rem',
                         }}
                         size='small'
                       >
-                        <Select
-                          value={numberQ}
-                          onChange={handleChange}
-                          displayEmpty
-                          sx={{ padding: '4px 10px' }}
+                        <FormControl
+                          sx={{
+                            m: 1,
+                            minWidth: 35,
+                          }}
+                          size='small'
                         >
-                          {Array.from({ length: 10 }, (_, i) => (
-                            <MenuItem key={i + 1} value={i + 1}>
-                              {i + 1}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </FormControl>
-                      <DeleteIcon
-                        sx={(theme) => ({
-                          mt: 1,
-                          color: theme.palette.primary.main,
-                          cursor: 'pointer',
-                          transition: 'transform 0.3s',
-                          '&:hover': {
-                            transform: 'scale(1.2)',
-                          },
-                          '&:active': {
-                            transform: 'scale(1)',
-                          },
-                        })}
-                      />
-                    </Box>
-                  </ThemeProvider>
+                          <Select
+                            value={firstValue}
+                            onChange={(event) => {
+                              changeQuantityItem(book.id, event.target.value);
+                            }}
+                            displayEmpty
+                            sx={{ padding: '4px 10px' }}
+                          >
+                            {options.map((option) => (
+                              <MenuItem key={option.key} value={option.value}>
+                                {option.text}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                      </Box>
+                    </ThemeProvider>
+                  </div>
+                  <div>
+                    <DeleteIcon
+                      sx={(theme) => ({
+                        mt: 1,
+                        color: theme.palette.primary.main,
+                        cursor: 'pointer',
+                        marginRight: '1rem',
+                        transition: 'transform 0.3s',
+                        '&:hover': {
+                          transform: 'scale(1.2)',
+                        },
+                        '&:active': {
+                          transform: 'scale(1)',
+                        },
+                      })}
+                      onClick={() => deleteItem(book.id)}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

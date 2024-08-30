@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Checkout } from '@/components/Cart/Checkout';
@@ -86,13 +85,15 @@ export function HeaderCart(props) {
   const renderStepContent = (stepIndex) => {
     switch (stepIndex) {
       case 0:
-        return <Checkout books={books} />;
+        return <Checkout books={books} handleNext={handleNext} />;
       case 1:
-        return <Payment />;
+        return <Payment handleNext={handleNext} handleBack={handleBack} />;
       case 2:
-        return <Confirmation />;
+        return <Confirmation handleNext={handleNext} handleBack={handleBack} />;
       case 3:
-        return <Processing />;
+        return (
+          <Processing handleFinish={handleFinish} handleBack={handleBack} />
+        );
       default:
     }
   };
@@ -120,27 +121,7 @@ export function HeaderCart(props) {
             email.
           </Typography>
         ) : (
-          <>
-            {renderStepContent(activeStep)}
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-              <Button
-                color='inherit'
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{ mr: 1 }}
-              >
-                Back
-              </Button>
-              <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleNext}>
-                {activeStep === steps.length - 1 ? (
-                  <div onClick={handleFinish}>Finish</div>
-                ) : (
-                  'Next'
-                )}
-              </Button>
-            </Box>
-          </>
+          <>{renderStepContent(activeStep)}</>
         )}
       </Box>
     </ThemeProvider>

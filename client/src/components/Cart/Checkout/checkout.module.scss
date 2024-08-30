@@ -3,14 +3,7 @@
 .checkoutContainer {
   display: flex;
   width: 100%;
-
-  .basket {
-    width: 70%;
-  }
-
-  .resume {
-    width: 30%;
-  }
+  flex-direction: column;
 }
 
 @media (max-width: 968px) {
