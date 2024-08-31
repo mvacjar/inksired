@@ -52,20 +52,17 @@ export function Payment(props) {
           </section>
           {addressSelected && (
             <>
-              <PaymentSumary books={books} addressSelected={addressSelected} />
+              <PaymentSumary
+                books={books}
+                addressSelected={addressSelected}
+                handleNext={handleNext}
+              />
             </>
           )}
           <Separator height={50} />
           <div className={styles.buttonContainer}>
             <button className={styles.button} onClick={handleBack}>
               Back
-            </button>
-            <button
-              className={styles.button}
-              disable={!addressSelected}
-              onClick={handleNext}
-            >
-              Next
             </button>
           </div>
         </article>

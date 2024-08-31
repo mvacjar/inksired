@@ -1,27 +1,47 @@
 import styles from './paymentSummary.module.scss';
 import { useEffect, useState } from 'react';
-import { forEach, map } from 'lodash';
+import CircularProgress from '@mui/material/CircularProgress';
+import { forEach, set } from 'lodash';
 import { CalcDiscountPrice } from '@/utils';
+import { useRouter } from 'next/router';
+import { useStripe, useElements } from '@stripe/react-stripe-js';
 import { CardElement } from '@stripe/react-stripe-js';
-import { useAuth, useCart } from '@/hooks';
+import { useAuth } from '@/hooks';
 import { Cart } from '@/api';
 
+const cartCtrl = new Cart();
+
 export function PaymentSumary(props) {
+  const { books, addressSelected, handleNext } = props;
   const [total, setTotal] = useState(null);
-  const { books, addressSelected } = props;
+  const [loading, setLoading] = useState(false);
+  const [circularProgress, setCircularProgress] = useState(false);
+  const [isCardComplete, setIsCardComplete] = useState(false);
+
   const deliveryPrice = 5.0;
   const formattedDeliveryPrice = parseFloat(deliveryPrice.toFixed(2));
+  const stripe = useStripe();
+  const elements = useElements();
+  const { user } = useAuth();
+  const router = useRouter();
 
   const cardStyles = {
     style: {
       base: {
-        color: '#fffbef',
+        color: '#2d2d2d',
         fontSize: '1rem',
         '::placeholder': {
-          color: '#fffbef',
+          color: '#717070',
         },
       },
     },
+  };
+
+  const handleCircularProgress = () => {
+    setCircularProgress(true);
+    setTimeout(() => {
+      setCircularProgress(false);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -36,6 +56,48 @@ export function PaymentSumary(props) {
     });
     setTotal(total.toFixed(2));
   }, [books]);
+
+  const handleCardChange = (event) => {
+    setIsCardComplete(event.complete);
+  };
+
+  const onPay = async () => {
+    setLoading(true);
+
+    if (!stripe || !elements) {
+      setLoading(false);
+      return;
+    }
+
+    const cardElement = elements.getElement(CardElement);
+    const result = await stripe.createToken(cardElement);
+
+    if (result.error) {
+      console.error(result.error.message);
+      setLoading(false);
+    } else {
+      try {
+        const response = await cartCtrl.paymentCart(
+          result.token,
+          books,
+          user.id,
+          addressSelected
+        );
+
+        if (response.status === 200) {
+          setLoading(false);
+        } else {
+          console.error('Error in payment');
+        }
+      } catch (error) {
+        console.error('Error in payment', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
+  if (!total) return null;
 
   return (
     <section className={styles.sectionContainer}>
@@ -73,8 +135,32 @@ export function PaymentSumary(props) {
         </div>
       </div>
       <div className={styles.card}>
-        <CardElement options={cardStyles} />
+        <CardElement options={cardStyles} onChange={handleCardChange} />{' '}
       </div>
+
+      <button
+        //   className={`${styles.button} ${loading ? styles.loading : ''} ${
+        //     circularProgress ? styles.loading : ''
+        //   }`}
+        //   disabled={
+        //     !addressSelected || circularProgress || !isCardComplete || loading
+        //   }
+        //   onClick={onPay || handleNext || handleCircularProgress}
+        // >
+        className={`${styles.button} ${loading ? styles.loading : ''} ${
+          circularProgress ? styles.loading : ''
+        }`}
+        disabled={
+          !addressSelected || circularProgress || !isCardComplete || loading
+        }
+        onClick={onPay}
+      >
+        {loading || circularProgress ? (
+          <CircularProgress size={20} thickness={4} />
+        ) : (
+          'Pay'
+        )}
+      </button>
     </section>
   );
 }

@@ -17,15 +17,15 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "total_payment": {
+    "totalPayment": {
       "type": "decimal",
       "required": true
     },
-    "id_payment": {
+    "idPayment": {
       "type": "string",
       "required": false
     },
-    "shipping_address": {
+    "addressShipping": {
       "type": "json",
       "required": true
     },

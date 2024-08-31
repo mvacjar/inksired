@@ -1107,9 +1107,9 @@ export interface ApiOrderOrder extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    total_payment: Attribute.Decimal & Attribute.Required;
-    id_payment: Attribute.String;
-    shipping_address: Attribute.JSON & Attribute.Required;
+    totalPayment: Attribute.Decimal & Attribute.Required;
+    idPayment: Attribute.String;
+    addressShipping: Attribute.JSON & Attribute.Required;
     products: Attribute.JSON & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
