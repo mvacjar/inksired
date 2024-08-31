@@ -4,15 +4,14 @@ module.exports = [
   "strapi::cors",
   "strapi::poweredBy",
   "strapi::query",
-  // {
-  //   name: "strapi::body",
-  //   config: {
-  //     patchKoa: true,
-  //     multipart: true,
-  //     includeUnparsed: true,
-  //   },
-  // },
-  { name: "strapi::body", config: { includeUnparsed: true } },
+  {
+    name: "strapi::body",
+    config: {
+      jsonLimit: "1mb",
+      formLimit: "1mb",
+      textLimit: "1mb",
+    },
+  },
   "strapi::session",
   "strapi::favicon",
   "strapi::public",
