@@ -6,8 +6,6 @@ export async function getServerSideProps(context) {
   const { page = 1 } = query;
   const { genre } = params;
 
-  console.log('slug_genre:', genre);
-
   const genreCtrl = new LiteraryGenres();
   const responseGenre = await genreCtrl.getBySlug(genre);
 

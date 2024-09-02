@@ -25,7 +25,6 @@ export function ChooseIcon(props) {
     const fetchIcons = async () => {
       try {
         const result = await iconCtrl.getAllIcons();
-        console.log('Icons fetched:', result.data);
         setIcons(result.data);
 
         const initialIcon = result.data.find((icon) => icon.id === user.icon);
@@ -45,7 +44,6 @@ export function ChooseIcon(props) {
     const fetchChosenIcon = async () => {
       try {
         const response = await iconCtrl.getAllIcons(user.id);
-        console.log('Icon chosen response:', response.data);
 
         const chosenIcon = response.data.find((icon) => icon.id === user.icon);
         setIconChosen(chosenIcon || null);

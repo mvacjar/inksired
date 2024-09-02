@@ -1,17 +1,22 @@
 import styles from './saga.module.scss';
 import { BasicLayout } from '@/layouts';
-import { Separator } from '@/components/Shared';
+import { Separator, Seo } from '@/components/Shared';
 import Footer from '@/components/Footer/Footer';
+import { SagaBody } from '@/components/Saga';
 
 export default function SagasPage(props) {
-  console.log('props', props);
+  const { saga } = props;
+
   return (
     <>
-      <Seo title='Sagas' />
-      <div className={styles.bodyBook}>
-        <BasicLayout />
-        <Separator height={150} />
-        <div className={styles.bodyContainer}></div>
+      <Seo
+        title={saga.attributes.saga_title}
+        description={saga.attributes.description}
+      />
+      <BasicLayout />
+      <div className={styles.bodySagaContainer}>
+        <Separator height={200} />
+        <SagaBody.Body saga={saga} />
         <Separator height={50} />
         <div className={styles.footerContainer}>
           <Footer />

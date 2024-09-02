@@ -14,7 +14,6 @@ export class Cart {
     } else {
       const book = books[objectIndex];
       books[objectIndex].quantity = book.quantity + 1;
-      console.log(books[objectIndex].quantity);
     }
 
     localStorage.setItem(ENV.CART, JSON.stringify(books));

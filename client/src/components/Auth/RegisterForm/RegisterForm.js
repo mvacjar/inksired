@@ -19,7 +19,6 @@ export default function RegisterForm() {
     onSubmit: async (values) => {
       try {
         const result = await authCtrl.register(values);
-        console.log('User registered', result);
         router.push('/join/sign-in');
       } catch (error) {
         console.error('Error registering user:', error);

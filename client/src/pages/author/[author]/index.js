@@ -8,7 +8,6 @@ export async function getServerSideProps(context) {
 
   const authorCtrl = new Author();
   const responseAuthor = await authorCtrl.getAuthorBySlug(author);
-  console.log(responseAuthor);
 
   return {
     props: {

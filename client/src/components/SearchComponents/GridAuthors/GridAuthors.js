@@ -111,6 +111,10 @@ export function GridAuthors(props) {
                       <h3 className={styles.sagaTitle}>
                         {`Saga: ${sagaTitle}`}
                       </h3>
+                      {/* Render saga description once */}
+                      <p>
+                        {books[0].attributes.sagas.data.attributes.description}
+                      </p>
                     </div>
                     <section className={styles.booksContainer}>
                       {books.map((book, index) => {
@@ -148,7 +152,8 @@ export function GridAuthors(props) {
                               <h2 className={styles.titleBook}>
                                 <span className={styles.orderSaga}>
                                   #{book.attributes.order_in_saga}
-                                </span>{' '}
+                                </span>
+                                &nbsp;
                                 {book.attributes.title}
                               </h2>
                               <Link href={`/authors/${author.id}`}>

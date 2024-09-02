@@ -18,7 +18,6 @@ export function Wishlist() {
       try {
         const response = await wishlistCtrl.getAll(user.id);
         setWishlist(response);
-        console.log('wishlist', response);
       } catch (error) {
         console.error(error);
       }

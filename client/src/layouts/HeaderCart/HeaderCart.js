@@ -26,7 +26,6 @@ export function HeaderCart(props) {
       pathname: router.pathname,
       query: { ...query, step: activeStep + 1 },
     });
-    console.log('Active Step:', activeStep + 1);
   }, [activeStep]);
 
   const isStepSkipped = (step) => {

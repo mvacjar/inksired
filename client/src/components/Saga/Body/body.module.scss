@@ -1,34 +1,23 @@
 @import '@/scss/index.scss';
 
-.infoTextContainer {
+.bodyContainer {
+  display: flex;
+  width: 80%;
+  padding: 0 1rem;
   margin-left: 2rem;
 }
 
-.wrapper {
+.authorContainer {
   display: flex;
+  flex-direction: row;
+}
+
+.booksContainer {
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  margin: 0;
-  &:hover .gridItem:not(:hover) .bookCover {
-    opacity: 0.7;
-  }
-}
-
-.backgroundImage {
-  margin: 0;
-}
-
-.gridItem {
-  position: relative;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  opacity: 1;
-
-  &:hover {
-    .bookCover {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-  }
+  gap: 1rem;
+  width: 100%;
 }
 
 .bookContainer {
@@ -68,28 +57,27 @@
   flex-direction: column;
 }
 
-.orderTitle {
+.titleOrder {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-}
-
-.orderBook {
-  color: $quinquenary;
 }
 
 .titleBook {
   font-size: $h6;
   white-space: wrap;
   margin-top: 10px;
-  line-height: 1;
 }
 
-.author {
+.orderSaga {
+  color: $quinquenary;
+}
+
+.authorBook {
   font-size: $small;
   color: $primary;
-  font-weight: bolder;
+
   &:hover {
     text-decoration: underline;
   }
@@ -117,4 +105,10 @@
   font-weight: bolder;
   font-size: 0.9rem;
   font-size: $h6;
+}
+
+@media (max-width: 768px) {
+  .bodyContainer {
+    margin-left: 3rem;
+  }
 }

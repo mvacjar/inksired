@@ -8,7 +8,6 @@ export async function getServerSideProps(context) {
 
   const sagaCtrl = new Saga();
   const response = await sagaCtrl.getSagaBySlug(saga);
-  console.log(response);
 
   return { props: { saga: response } };
 }

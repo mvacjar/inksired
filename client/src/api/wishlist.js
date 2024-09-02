@@ -73,14 +73,13 @@ export class Wishlist {
   async getAll(userId) {
     try {
       const filters = `filters[user][id][$eq]=${userId}`;
-      const populate = 'populate[0]=book&populate[1]=book.cover';
+      const populate =
+        'populate[0]=book.sagas&populate[1]=book.cover&populate[2]=book.authors';
       const urlParams = `${filters}&${populate}`;
 
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.WISHLIST}?${urlParams}`;
       const response = await authFetch(url);
       const result = await response.json();
-
-      console.log('Response result:', result);
 
       if (response.status !== 200) throw result;
 

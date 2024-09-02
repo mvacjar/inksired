@@ -67,16 +67,31 @@
   flex-direction: column;
 }
 
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
 .titleBook {
   font-size: $h6;
-  white-space: wrap;
-  margin-top: 10px;
+  white-space: normal;
+}
+
+.orderBook {
+  color: $quinquenary;
+  height: auto;
 }
 
 .authorBook {
-  font-size: $small;
+  font-size: $h6;
   color: $primary;
+}
 
+.author,
+.sagaTitle {
+  color: $quaternary;
+  font-weight: bold;
   &:hover {
     text-decoration: underline;
   }

@@ -10,9 +10,6 @@ export class Icon {
 
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ICONS}?${urlParams}`;
 
-      // Log the URL to the console
-      console.log('Fetching icons from URL:', url);
-
       const response = await authFetch(url, {
         method: 'GET',
         headers: {

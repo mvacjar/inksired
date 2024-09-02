@@ -15,7 +15,6 @@ export function CarouselGenres() {
   const carouselRef = useRef(null);
 
   // Get data
-
   useEffect(() => {
     (async () => {
       try {
@@ -28,7 +27,6 @@ export function CarouselGenres() {
   }, []);
 
   // Arrow visibility
-
   useEffect(() => {
     const handleScroll = () => {
       const carousel = carouselRef.current;

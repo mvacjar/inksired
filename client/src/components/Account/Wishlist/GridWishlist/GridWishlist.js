@@ -12,10 +12,15 @@ export function GridWishlist(props) {
     <section className={styles.gridContainer}>
       {map(wishlist, (item) => {
         const book = item.attributes.book.data;
-
+        console.log(book);
         const originalPrice = book.attributes.price;
         const discount = book.attributes.discount;
         const finalPrice = CalcDiscountPrice(originalPrice, discount);
+
+        // Extraer el título y el nombre de la saga
+        const saga = book.attributes.sagas?.data?.attributes;
+        const sagaTitle = saga?.saga_title || 'Unknown Saga';
+        const sagaName = saga?.saga_name;
 
         return (
           <div key={book.id} className={styles.bookContainer}>
@@ -44,8 +49,31 @@ export function GridWishlist(props) {
               </div>
             </div>
             <div className={styles.infoContainer}>
-              <h2 className={styles.titleBook}>{book.attributes.title}</h2>
-              <h2 className={styles.authorBook}>{book.attributes.author}</h2>
+              <div className={styles.titleContainer}>
+                <h2 className={styles.titleBook}>
+                  <span className={styles.orderBook}>
+                    #{book.attributes.order_in_saga}&nbsp;
+                  </span>
+                  {book.attributes.title}
+                </h2>
+              </div>
+              <h2 className={styles.authorBook}>
+                {book.attributes.authors.data.map((author) => (
+                  <Link
+                    key={author.id}
+                    href={`/author/${author.attributes.author_slug}`}
+                  >
+                    <p className={styles.author}>
+                      {author.attributes.name_author}
+                    </p>
+                  </Link>
+                ))}
+              </h2>
+              {sagaName && (
+                <Link href={`/saga/${sagaName}`} className={styles.sagaLink}>
+                  <p className={styles.sagaTitle}>{sagaTitle}</p>
+                </Link>
+              )}
               <div className={styles.priceContainer}>
                 {discount > 0 ? (
                   <>

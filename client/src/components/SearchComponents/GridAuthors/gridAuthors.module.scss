@@ -42,8 +42,8 @@
 
 .titleBooks,
 .sagaTitle {
-  font-size: $h5;
-  margin: 0.5rem 0 0.5rem 1rem;
+  font-size: $h4;
+  margin: 0.5rem 0 0.5rem 0rem;
   white-space: wrap;
   text-shadow: 1px 3px 3px #2d2d2d61;
 }
@@ -62,9 +62,13 @@
 }
 
 .bookContainer {
-  margin: 1rem 0 1rem 1rem;
+  margin: 1rem 1rem 4rem 0rem;
   z-index: 10;
   max-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .bookCover {
@@ -101,6 +105,9 @@
 .infoContainer {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: centet;
 }
 
 .titleBook {

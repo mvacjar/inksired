@@ -5,12 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Separator } from '@/components/Shared';
 import { Label } from '@/components/Shared';
-import { WishListIcon } from '@/components/Shared';
 
 const bookCtrl = new Book();
 
 export function NoveltyBooks(props) {
-  const { originalPrice, discount, finalPrice } = props;
   const [saveLastBook, setSaveLastBook] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
 

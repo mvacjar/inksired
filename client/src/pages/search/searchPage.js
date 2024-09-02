@@ -2,7 +2,7 @@ import styles from './searchPage.module.scss';
 import { useEffect } from 'react';
 import { size } from 'lodash';
 import { BasicLayout } from '@/layouts';
-import { Pagination, Separator } from '@/components/Shared';
+import { Pagination, Separator, Seo } from '@/components/Shared';
 import Footer from '@/components/Footer/Footer';
 import { SearchComponents } from '@/components/SearchComponents';
 

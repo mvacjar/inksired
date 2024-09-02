@@ -5,15 +5,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export function GridSagas({ sagas }) {
-  console.log('Sagas en GridSagas:', sagas);
-
   return (
     <>
       {sagas &&
         sagas.map((saga, sagaIndex) => {
-          console.log('Saga:', saga);
-
           const books = saga.attributes.books.data || [];
+          const authors = saga.attributes.authors?.data || [];
 
           return (
             <div
@@ -21,10 +18,28 @@ export function GridSagas({ sagas }) {
               className={styles.sagaContainer}
             >
               <div className={styles.infoTextContainer}>
+                {/* Renderizar el título de la saga */}
                 <h1 className={styles.sagaTitle}>
                   Saga: {saga.attributes.saga_title}
                 </h1>
-                <h3 className={styles.sagaAuthor}>{saga.attributes.author}</h3>
+
+                {/* Mapear y mostrar los autores de la saga */}
+                <h3 className={styles.sagaAuthor}>
+                  {authors.map((author, authorIndex) => (
+                    <Link
+                      key={author.id}
+                      href={`/author/${author.attributes.author_slug}`}
+                      className={styles.authorLink}
+                    >
+                      <span className={styles.authorName}>
+                        {author.attributes.name_author}
+                        {authorIndex < authors.length - 1 ? ', ' : ''}
+                      </span>
+                    </Link>
+                  ))}
+                </h3>
+
+                <p>{saga.attributes.description}</p>
               </div>
               <Separator height={50} />
               <div className={styles.wrapper}>
@@ -61,12 +76,27 @@ export function GridSagas({ sagas }) {
                         </div>
                       </Link>
                       <div className={styles.infoContainer}>
-                        <h2 className={styles.titleBook}>
-                          {book.attributes.title}
-                        </h2>
-                        <h2 className={styles.authorBook}>
-                          {book.attributes.author}
-                        </h2>
+                        <div className={styles.orderTitle}>
+                          <h2 className={styles.titleBook}>
+                            <span className={styles.orderBook}>
+                              #{book.attributes.order_in_saga}&nbsp;
+                            </span>
+                            {book.attributes.title}
+                          </h2>
+                        </div>
+                        <p className={styles.authorBook}>
+                          {book.attributes.authors?.data.map((author) => (
+                            <Link
+                              key={author.id}
+                              href={`/author/${author.attributes.author_slug}`}
+                              className={styles.authorLink}
+                            >
+                              <h2 className={styles.author}>
+                                {author.attributes.name_author}
+                              </h2>
+                            </Link>
+                          ))}
+                        </p>
                         <div className={styles.priceContainer}>
                           {discount > 0 ? (
                             <>

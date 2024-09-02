@@ -9,6 +9,8 @@ import Link from 'next/link';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { WishListIcon } from '@/components/Shared';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const book = new Book();
 
@@ -75,6 +77,16 @@ export function CarouselBooks({
     };
   }, []);
 
+  useEffect(() => {
+    AOS.init({
+      offset: 200,
+      duration: 1000,
+      easing: 'ease-in-sine',
+    });
+
+    AOS.refresh();
+  }, []);
+
   return (
     <>
       <div>
@@ -112,6 +124,8 @@ export function CarouselBooks({
                     key={book.id}
                     onClick={() => handleImageClick(index)}
                     className={styles.bookContainer}
+                    data-aos='fade-left'
+                    data-aos-duration='1000'
                   >
                     <div className={styles.heartContainer}>
                       <Link

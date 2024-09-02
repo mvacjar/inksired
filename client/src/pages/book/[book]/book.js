@@ -7,7 +7,6 @@ import { CalcDiscountPrice } from '@/utils';
 
 export default function BookPage(props) {
   const { book } = props;
-  console.log(book);
   const cover = book.attributes.cover;
   const originalPrice = book.attributes.price;
   const discount = book.attributes.discount;
