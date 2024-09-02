@@ -43,7 +43,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         description: `User ID: ${idUser}`,
       });
 
-      // Creación de los datos de la orden
+      // Create order data
       const data = {
         products,
         user: idUser,
@@ -52,7 +52,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         addressShipping,
       };
 
-      // Validación y creación de la orden en la base de datos
+      // Validation and creation of the order
       const model = strapi.contentType("api::order.order");
       const validData = await strapi.entityValidator.validateEntityCreation(
         model,
@@ -62,10 +62,9 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         .query("api::order.order")
         .create({ data: validData });
 
-      // Retornar la entrada creada
+      //Return the order
       return entry;
     } catch (error) {
-      // Manejo de errores
       ctx.throw(500, error.message || "An error occurred during payment.");
     }
   },

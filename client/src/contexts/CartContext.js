@@ -29,6 +29,11 @@ export function CartProvider(props) {
     refreshTotalCart();
   };
 
+  const deleteAllItems = () => {
+    cartCtrl.deleteAll();
+    refreshTotalCart();
+  };
+
   const refreshTotalCart = () => {
     setTotal(cartCtrl.count());
     setCart(cartCtrl.getAll());
@@ -38,9 +43,9 @@ export function CartProvider(props) {
     cart,
     total,
     addCart,
-    deleteItem: deleteItem,
-    deleteAllItems: () => {},
-    changeQuantityItem: changeQuantityItem,
+    deleteItem,
+    deleteAllItems,
+    changeQuantityItem,
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;

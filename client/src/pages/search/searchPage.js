@@ -19,6 +19,7 @@ export default function searchPage(props) {
 
   return (
     <>
+      <Seo title='Search' />
       <BasicLayout />
       <Separator height={150} />
       <div className={styles.containerBody}>

@@ -1,11 +1,7 @@
 import styles from './author.module.scss';
 import { BasicLayout } from '@/layouts';
 import Footer from '@/components/Footer/Footer';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Label, Separator } from '@/components/Shared';
-import { map, groupBy, partition } from 'lodash';
-import { CalcDiscountPrice } from '@/utils';
+import { Separator, Seo } from '@/components/Shared';
 import { Author } from '@/components/HomeComponents/Author';
 
 export default function AuthorPage(props) {
@@ -13,6 +9,7 @@ export default function AuthorPage(props) {
 
   return (
     <>
+      <Seo title={author.attributes.name_author} />
       <div className={styles.bodyBook}>
         <BasicLayout />
         <Separator height={150} />

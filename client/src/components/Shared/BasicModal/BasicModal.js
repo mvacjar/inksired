@@ -3,10 +3,11 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 const styleTitle = {
-  color: '#fffbef',
+  color: '#2d2d2d',
   textAlign: 'center',
   fontFamily: 'Bangla MN',
-  pb: 0,
+  fontSize: '2rem',
+  pb: 2,
   pt: 2,
 };
 
@@ -16,12 +17,15 @@ const styleModal = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '50%',
-  bgcolor: '#96503e',
-  color: '#6687b6',
+  bgcolor: '#e1c2a3',
+  color: '#2d2d2d',
   border: 'none',
   borderRadius: 3,
   boxShadow: 14,
-  p: 3,
+  pt: 4,
+  pb: 4,
+  pl: 6,
+  pr: 6,
   '@media (max-width: 768px)': {
     width: '80%',
   },

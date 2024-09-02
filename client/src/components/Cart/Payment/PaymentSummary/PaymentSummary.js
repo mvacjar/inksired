@@ -6,7 +6,7 @@ import { CalcDiscountPrice } from '@/utils';
 import { useRouter } from 'next/router';
 import { useStripe, useElements } from '@stripe/react-stripe-js';
 import { CardElement } from '@stripe/react-stripe-js';
-import { useAuth } from '@/hooks';
+import { useAuth, useCart } from '@/hooks';
 import { Cart } from '@/api';
 
 const cartCtrl = new Cart();
@@ -17,6 +17,7 @@ export function PaymentSumary(props) {
   const [loading, setLoading] = useState(false);
   const [circularProgress, setCircularProgress] = useState(false);
   const [isCardComplete, setIsCardComplete] = useState(false);
+  const { deleteAllItems } = useCart();
 
   const deliveryPrice = 5.0;
   const formattedDeliveryPrice = parseFloat(deliveryPrice.toFixed(2));
@@ -85,16 +86,22 @@ export function PaymentSumary(props) {
         );
 
         if (response.status === 200) {
-          setLoading(false);
+          deleteAllItems();
         } else {
           console.error('Error in payment');
         }
       } catch (error) {
         console.error('Error in payment', error);
-      } finally {
-        setLoading(false);
       }
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
+  };
+
+  const handlePayAndNext = async () => {
+    await onPay();
+    handleNext();
   };
 
   if (!total) return null;
@@ -139,21 +146,13 @@ export function PaymentSumary(props) {
       </div>
 
       <button
-        //   className={`${styles.button} ${loading ? styles.loading : ''} ${
-        //     circularProgress ? styles.loading : ''
-        //   }`}
-        //   disabled={
-        //     !addressSelected || circularProgress || !isCardComplete || loading
-        //   }
-        //   onClick={onPay || handleNext || handleCircularProgress}
-        // >
         className={`${styles.button} ${loading ? styles.loading : ''} ${
           circularProgress ? styles.loading : ''
         }`}
         disabled={
           !addressSelected || circularProgress || !isCardComplete || loading
         }
-        onClick={onPay}
+        onClick={handlePayAndNext}
       >
         {loading || circularProgress ? (
           <CircularProgress size={20} thickness={4} />

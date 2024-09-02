@@ -41,7 +41,7 @@ export function JoinLayout(props) {
           </div>
           <div onClick={toHome}>
             <Image
-              src='/images/x.svg'
+              src='/images/xBeige.svg'
               alt='Logo light'
               width={17}
               height={17}

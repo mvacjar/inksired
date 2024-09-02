@@ -9,7 +9,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Checkout } from '@/components/Cart/Checkout';
 import { Payment } from '@/components/Cart/Payment';
 import { Confirmation } from '@/components/Cart/Confirmation';
-import { Processing } from '@/components/Cart/Processing';
 
 export function HeaderCart(props) {
   const { books } = props;
@@ -20,7 +19,6 @@ export function HeaderCart(props) {
     { number: 1, title: 'Checkout' },
     { number: 2, title: 'Payment' },
     { number: 3, title: 'Confirmation' },
-    { number: 4, title: 'Processing' },
   ];
 
   useEffect(() => {
@@ -48,12 +46,6 @@ export function HeaderCart(props) {
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleFinish = () => {
-    setTimeout(() => {
-      router.push('/');
-    }, 7000);
   };
 
   // Theme for the stepper
@@ -94,16 +86,7 @@ export function HeaderCart(props) {
           />
         );
       case 2:
-        return (
-          <Confirmation
-            books={books}
-            handleFinish={handleFinish}
-            handleBack={handleBack}
-          />
-        );
-      case 3:
-        return <Processing books={books} />;
-      default:
+        return <Confirmation />;
     }
   };
 
@@ -124,14 +107,7 @@ export function HeaderCart(props) {
             );
           })}
         </Stepper>
-        {activeStep === steps.length ? (
-          <Typography sx={{ mt: 2, mb: 1 }}>
-            Thank you so much for your order! We will send you a confirmation
-            email.
-          </Typography>
-        ) : (
-          <>{renderStepContent(activeStep)}</>
-        )}
+        {renderStepContent(activeStep)}
       </Box>
     </ThemeProvider>
   );

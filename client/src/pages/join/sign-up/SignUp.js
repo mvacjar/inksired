@@ -1,11 +1,12 @@
 import styles from './sign-up.module.scss';
-
+import { Seo } from '@/components/Shared';
 import { JoinLayout } from '../../../layouts/JoinLayout';
 import RegisterForm from '@/components/Auth/RegisterForm/RegisterForm';
 
 export default function SignUpPage() {
   return (
     <>
+      <Seo title='Sign Up' />
       <JoinLayout>
         <main className={styles.wrapperSign}>
           <section className={styles.containerSignUp}>

@@ -2,7 +2,7 @@ import styles from './genrePage.module.scss';
 import { size } from 'lodash';
 import { BasicLayout } from '@/layouts';
 import Footer from '@/components/Footer/Footer';
-import { GridBooks, Separator, Pagination } from '@/components/Shared';
+import { GridBooks, Separator, Pagination, Seo } from '@/components/Shared';
 
 export default function genrePage(props) {
   const { books, genres, pagination } = props;
@@ -11,6 +11,7 @@ export default function genrePage(props) {
 
   return (
     <>
+      <Seo title={genres.attributes.title} />
       <div className={styles.basicLayout}>
         <BasicLayout />
       </div>

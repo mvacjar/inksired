@@ -1,5 +1,5 @@
 import { BasicLayout } from '@/layouts';
-import { Separator } from '@/components/Shared';
+import { Separator, Seo } from '@/components/Shared';
 import { BookBody } from '@/components/Book';
 import Footer from '@/components/Footer/Footer';
 import styles from './book.module.scss';
@@ -16,6 +16,10 @@ export default function BookPage(props) {
 
   return (
     <>
+      <Seo
+        title={book.attributes.title}
+        description={book.attributes.synopsis}
+      />
       <div className={styles.bodyBook}>
         <BasicLayout />
         <Separator height={150} />

@@ -57,6 +57,10 @@ export class Cart {
     localStorage.setItem(ENV.CART, JSON.stringify(updateBooks));
   }
 
+  deleteAll() {
+    localStorage.removeItem(ENV.CART);
+  }
+
   async paymentCart(token, products, idUser, address) {
     try {
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.PAYMENT_ORDER}`;

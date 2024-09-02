@@ -1,5 +1,4 @@
 import styles from './home.module.scss';
-import Head from 'next/head';
 import { useAuth } from '@/hooks';
 import { BasicLayout } from '@/layouts';
 import { HomeComponents } from '@/components/HomeComponents';
@@ -8,6 +7,7 @@ import {
   BarInfo,
   CarouselBooks,
   BannerAd,
+  Seo,
 } from '@/components/Shared';
 import Footer from '@/components/Footer/Footer';
 
@@ -25,12 +25,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Head>
-        <title>Inksired</title>
-        <meta name='description' content='Where characters come to life' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
+      <Seo />
 
       <main className={styles.bodyContainer}>
         <BasicLayout />

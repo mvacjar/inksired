@@ -13,6 +13,7 @@ export const ENV = {
     ICONS: 'profile-icons',
     WISHLIST: 'wishlists',
     PAYMENT_ORDER: 'payment-order',
+    ORDER: 'orders',
   },
   TOKEN: 'token',
   CART: 'cart',

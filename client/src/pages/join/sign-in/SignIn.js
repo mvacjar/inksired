@@ -2,10 +2,12 @@ import styles from './sign-in.module.scss';
 import { JoinLayout } from '../../../layouts/JoinLayout';
 import Link from 'next/link';
 import LoginForm from '@/components/Auth/LoginForm/LoginForm';
+import { Seo } from '@/components/Shared';
 
 export default function SignInPage() {
   return (
     <>
+      <Seo title='Sign In' />
       <JoinLayout>
         <main className={styles.wrapperSign}>
           <section className={styles.containerSignIn}>

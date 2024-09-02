@@ -7,6 +7,7 @@ export default function SagasPage(props) {
   console.log('props', props);
   return (
     <>
+      <Seo title='Sagas' />
       <div className={styles.bodyBook}>
         <BasicLayout />
         <Separator height={150} />

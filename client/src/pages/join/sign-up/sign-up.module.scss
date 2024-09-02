@@ -36,7 +36,7 @@
 }
 
 .paragraph {
-  color: $secondary;
+  color: $text;
   line-height: 2;
   max-width: 32vw;
   overflow-y: scroll;
@@ -97,9 +97,8 @@
 
   .paragraph {
     line-height: 1.5;
-    overflow-y: scroll;
     min-width: 55vw;
-    max-height: 10vh;
+    max-height: 15vh;
     font-size: $small;
   }
 }

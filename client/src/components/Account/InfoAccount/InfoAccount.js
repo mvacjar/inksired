@@ -1,25 +1,31 @@
 import styles from './infoAccount.module.scss';
 import Image from 'next/image';
-import { Settings, Address, Wishlist } from '@/components/Account';
+import { Settings, Address, Wishlist, Orders } from '@/components/Account';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
 import { DateTime } from 'luxon';
 import { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import { Separator } from '@/components/Shared';
 // import {ChooseIcon } from '@/components/Account/Icon/ChooseIcon';
 
 function MyOrders() {
-  return <div>My orders content goes here.</div>;
+  <Separator height={50} />;
+  return (
+    <>
+      <Orders />
+    </>
+  );
 }
 
 function MyWishlist() {
   return (
     <>
+      <Separator height={50} />
       <Wishlist />
     </>
   );
@@ -28,6 +34,7 @@ function MyWishlist() {
 function MyAddresses({ reload, onReload }) {
   return (
     <>
+      <Separator height={50} />
       <Address.NewAddress onReload={onReload} />
       <Address.ListAddresses reload={reload} onReload={onReload} />
     </>
@@ -37,6 +44,7 @@ function MyAddresses({ reload, onReload }) {
 function MySettings() {
   return (
     <>
+      <Separator height={50} />
       <Settings.ChangeName />
       <Settings.ChangeEmail />
       <Settings.ChangePassword />
@@ -45,7 +53,7 @@ function MySettings() {
 }
 
 export default function InfoAccount() {
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(0);
   const [reload, setReload] = useState(false);
   const isSmallScreen = useMediaQuery('(max-width:768px)');
   const { user } = useAuth();

@@ -1,9 +1,8 @@
 import { CartLayout } from '@/layouts';
-import { useRouter } from 'next/router';
 import { useCart } from '@/hooks';
 import { useEffect, useState } from 'react';
 import { Book } from '@/api';
-import { HeaderCart } from '@/layouts';
+import { Seo } from '@/components/Shared';
 
 const bookCtrl = new Book();
 
@@ -35,6 +34,7 @@ export default function CartPage() {
 
   return (
     <div>
+      <Seo title='Cart' />
       <CartLayout books={books} />
     </div>
   );
