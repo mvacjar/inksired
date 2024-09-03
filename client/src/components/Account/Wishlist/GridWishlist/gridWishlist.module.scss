@@ -3,7 +3,7 @@
 .gridContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   &:hover .gridItem:not(:hover) .bookCover {
     opacity: 0.7;
   }

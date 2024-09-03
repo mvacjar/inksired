@@ -27,11 +27,13 @@ export function CarouselBooks({
   const [showRightArrow, setShowRightArrow] = useState(false);
   const carouselRef = useRef(null);
 
+  // Fetch books by genre
   useEffect(() => {
     (async () => {
       try {
         const response = await book.obentoBooks({ limit, literaryGenresId });
         setBooksByGenre(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -42,6 +44,7 @@ export function CarouselBooks({
     setActiveIndex(index);
   };
 
+  // Arrow visibility
   useEffect(() => {
     const handleScroll = () => {
       const carousel = carouselRef.current;
@@ -49,7 +52,7 @@ export function CarouselBooks({
       const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
 
       setShowLeftArrow(scrollLeft > 0);
-      setShowRightArrow(scrollLeft < maxScrollLeft - 1);
+      setShowRightArrow(scrollLeft < maxScrollLeft - 0.8);
     };
 
     const updateArrowVisibility = () => {
@@ -77,6 +80,7 @@ export function CarouselBooks({
     };
   }, []);
 
+  // AOS
   useEffect(() => {
     AOS.init({
       offset: 200,
@@ -119,6 +123,14 @@ export function CarouselBooks({
                 const originalPrice = book.attributes.price;
                 const discount = book.attributes.discount;
                 const finalPrice = CalcDiscountPrice(originalPrice, discount);
+
+                const sagaAttributes =
+                  book.attributes.sagas?.data?.attributes || {};
+                const sagaTitle = sagaAttributes.saga_title ?? '';
+                const sagaName = sagaAttributes.saga_name || '';
+
+                const authors = book.attributes.authors?.data || [];
+
                 return (
                   <div
                     key={book.id}
@@ -158,9 +170,41 @@ export function CarouselBooks({
                       <h2 className={styles.titleBook}>
                         {book.attributes.title}
                       </h2>
-                      <h2 className={styles.authorBook}>
-                        {book.attributes.author}
-                      </h2>
+
+                      <div className={styles.authorsContainer}>
+                        {authors.length > 0
+                          ? authors.map((author) => (
+                              <Link
+                                key={author.id}
+                                href={`/author/${author.attributes.author_slug}`}
+                                className={styles.authorLink}
+                              >
+                                <h3 className={styles.author}>
+                                  {author.attributes.name_author}
+                                </h3>
+                              </Link>
+                            ))
+                          : 'Unknown Author'}
+                      </div>
+
+                      <div className={styles.sagaContainer}>
+                        {sagaName && (
+                          <>
+                            <span className={styles.sagaOrder}>
+                              #{book.attributes.order_in_saga}&nbsp;
+                            </span>
+                            <Link
+                              href={`/saga/${sagaName}`}
+                              className={styles.sagaLink}
+                            >
+                              <span className={styles.sagaTitle}>
+                                {sagaTitle}
+                              </span>
+                            </Link>
+                          </>
+                        )}
+                      </div>
+
                       <div className={styles.priceContainer}>
                         {discount > 0 ? (
                           <>

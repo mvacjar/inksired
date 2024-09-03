@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Label, Separator } from '@/components/Shared';
 import { map, groupBy, partition } from 'lodash';
 import { CalcDiscountPrice } from '@/utils';
+import { WishListIcon } from '@/components/Shared';
 
 export function GridAuthors(props) {
   const { authors } = props;
@@ -67,6 +68,9 @@ export function GridAuthors(props) {
                                 {`-${discount}%`}
                               </Label.Discount>
                             )}
+                            <div className={styles.iconHeart}>
+                              <WishListIcon bookId={book.id} />
+                            </div>
                           </div>
                         </Link>
                         <div className={styles.infoContainer}>
@@ -146,6 +150,9 @@ export function GridAuthors(props) {
                                     {`-${discount}%`}
                                   </Label.Discount>
                                 )}
+                                <div className={styles.iconHeart}>
+                                  <WishListIcon bookId={book.id} />
+                                </div>
                               </div>
                             </Link>
                             <div className={styles.infoContainer}>

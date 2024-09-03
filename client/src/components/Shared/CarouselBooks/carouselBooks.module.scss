@@ -47,6 +47,8 @@
   overflow-y: hidden;
 }
 
+// Carousel
+
 .carouselItems {
   width: 90vw;
   display: flex;
@@ -85,6 +87,8 @@
   }
 }
 
+// Heart Icon
+
 .heartContainer {
   position: relative;
 }
@@ -105,6 +109,8 @@
     transform: scale(0.95);
   }
 }
+
+// Cover
 
 .bookContainer {
   margin: 1rem 0 1rem 2rem;
@@ -138,6 +144,8 @@
   }
 }
 
+// Book's data
+
 .infoContainer {
   display: flex;
   flex-direction: column;
@@ -149,14 +157,28 @@
   margin-top: 10px;
 }
 
-.authorBook {
-  font-size: $small;
+.author {
+  font-size: 0.8rem;
   color: $primary;
 
   &:hover {
     text-decoration: underline;
   }
 }
+
+.sagaOrder {
+  color: $quinquenary;
+}
+
+.sagaTitle {
+  color: $secondary;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Prices
 
 .priceContainer {
   display: flex;

@@ -3,6 +3,7 @@ import { CalcDiscountPrice } from '@/utils';
 import { Label, Separator } from '@/components/Shared';
 import Image from 'next/image';
 import Link from 'next/link';
+import { WishListIcon } from '@/components/Shared';
 
 export function GridSagas({ sagas }) {
   return (
@@ -73,6 +74,9 @@ export function GridSagas({ sagas }) {
                               {`-${discount}%`}
                             </Label.Discount>
                           )}
+                          <div className={styles.iconHeart}>
+                            <WishListIcon bookId={book.id} />
+                          </div>
                         </div>
                       </Link>
                       <div className={styles.infoContainer}>

@@ -58,7 +58,6 @@ export default function InfoAccount() {
   const isSmallScreen = useMediaQuery('(max-width:768px)');
   const { user } = useAuth();
   const router = useRouter();
-  // console.log(user);
 
   const onReload = () => setReload((prevState) => !prevState);
 

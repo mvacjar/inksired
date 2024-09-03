@@ -1,5 +1,7 @@
 @import '@/scss/index.scss';
 
+// Page title
+
 .namecontainer {
   display: flex;
   justify-content: center;
@@ -28,6 +30,8 @@
     height: 40%;
   }
 }
+
+// Grid
 
 .titleBookscontainer {
   display: flex;
@@ -60,6 +64,8 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
   opacity: 1;
 }
+
+// Image Book
 
 .bookContainer {
   margin: 1rem 1rem 4rem 0rem;
@@ -102,6 +108,8 @@
   }
 }
 
+// Book's data
+
 .infoContainer {
   display: flex;
   flex-direction: column;
@@ -117,13 +125,15 @@
 }
 
 .authorBook {
-  font-size: $small;
+  font-size: 0.8rem;
   color: $primary;
 
   &:hover {
     text-decoration: underline;
   }
 }
+
+// Prices
 
 .priceContainer {
   display: flex;
@@ -147,4 +157,27 @@
   font-weight: bolder;
   font-size: 0.9rem;
   font-size: $h6;
+}
+
+// Heart
+
+.iconHeartContainer {
+  position: relative;
+}
+
+.iconHeart {
+  position: absolute;
+  bottom: 1rem;
+  left: 0.5rem;
+  background-color: #fffbefc4;
+  border-radius: $border2;
+  padding: 0.3rem;
+  transition: transform 0.1s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
 }
