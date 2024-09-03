@@ -17,7 +17,8 @@ export class User {
 
   async updateMe(userId, data) {
     try {
-      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.USERS}/${userId}`;
+      const populate = `populate[0]=icon.icon`;
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.USERS}/${userId}?${populate}`;
       const params = {
         method: 'PUT',
         headers: {

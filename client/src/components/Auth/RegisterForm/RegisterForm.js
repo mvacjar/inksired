@@ -1,21 +1,26 @@
 import styles from './RegisterForm.module.scss';
 import Link from 'next/link';
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import {
   initialValues,
   validationSchema,
 } from '@/components/Auth/RegisterForm/RegisterForm.form';
-import { Auth } from '@/api';
+import { Auth, Icon } from '@/api';
 
 const authCtrl = new Auth();
+const iconCtrl = new Icon();
 
 export default function RegisterForm() {
   const router = useRouter();
+
+  // Formik setup
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
-    validationOnChange: false,
+    validateOnChange: false,
     onSubmit: async (values) => {
       try {
         const result = await authCtrl.register(values);
@@ -32,11 +37,73 @@ export default function RegisterForm() {
     },
   });
 
+  // Fetch list of icons
+  const [icons, setIcons] = useState(null);
+  const [selectedIconUrl, setSelectedIconUrl] = useState(null);
+
+  useEffect(() => {
+    const fetchIcons = async () => {
+      try {
+        const resultIcon = await iconCtrl.getAllIcons();
+        setIcons(resultIcon.data);
+        console.log('Icons:', resultIcon.data);
+      } catch (error) {
+        console.error('Error fetching icons:', error);
+      }
+    };
+
+    fetchIcons();
+  }, []);
+
   return (
     <>
       <article className={styles.formSignUpContainer}>
         <h1 className={styles.textPopUp}>Sign Up</h1>
         <form className={styles.formContainer} onSubmit={formik.handleSubmit}>
+          <div className={styles.selectContainer}>
+            <select
+              className={styles.select}
+              name='icon'
+              value={formik.values.icon}
+              onChange={(e) => {
+                formik.handleChange(e);
+                const selectedIcon = icons.find(
+                  (icon) => icon.id === parseInt(e.target.value)
+                );
+
+                setSelectedIconUrl(
+                  selectedIcon
+                    ? selectedIcon.attributes.icon.data.attributes.url
+                    : null
+                );
+              }}
+              onBlur={formik.handleBlur}
+            >
+              <option className={styles.placeholder}>Select an icon</option>
+              {icons &&
+                icons.map((icon) => (
+                  <option
+                    className={styles.option}
+                    key={icon.id}
+                    value={icon.id}
+                  >
+                    {icon.attributes.icon_name}
+                  </option>
+                ))}
+            </select>
+            {selectedIconUrl && (
+              <div className={styles.iconPreview}>
+                <Image
+                  src={selectedIconUrl}
+                  alt='Selected Icon'
+                  className={styles.iconImage}
+                  width={80}
+                  height={80}
+                />
+              </div>
+            )}
+          </div>
+
           <input
             name='username'
             type='text'

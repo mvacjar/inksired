@@ -53,7 +53,7 @@ function MySettings(reload, onReload) {
 }
 
 export default function InfoAccount() {
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(3);
   const [reload, setReload] = useState(false);
   const isSmallScreen = useMediaQuery('(max-width:768px)');
   const { user } = useAuth();
@@ -89,7 +89,7 @@ export default function InfoAccount() {
     <>
       <main className={styles.body}>
         <section className={styles.infoContainer}>
-          {user.icon.icon?.url ? (
+          {user.icon?.icon?.url ? (
             <Image
               src={user.icon.icon.url}
               alt={user.icon.id}
@@ -97,7 +97,7 @@ export default function InfoAccount() {
               height={100}
             />
           ) : (
-            <div>No icon selected</div>
+            ''
           )}
           <article className={styles.dataContainer}>
             <h1 className={styles.titleUsername}>{user.username}</h1>

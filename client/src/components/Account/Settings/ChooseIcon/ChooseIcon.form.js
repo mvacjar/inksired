@@ -1,13 +1,13 @@
 import * as Yup from 'yup';
 
-export function initialValues(image) {
+export function initialValues(icon) {
   return {
-    icon: image?.icon || '',
+    icon: icon,
   };
 }
 
 export function validationSchema() {
   return Yup.object().shape({
-    icon: Yup.string().required(true),
+    icon: Yup.mixed().required(true),
   });
 }

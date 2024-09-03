@@ -103,7 +103,7 @@ export default function NavVertical() {
                   height={35}
                   alt='icon-menu'
                   className={styles.icon}
-                  title='My Bookshelf'
+                  title='My Wishlist'
                 />
               ) : (
                 ''

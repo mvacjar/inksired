@@ -10,7 +10,7 @@ export class Icon {
 
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ICONS}?${urlParams}`;
 
-      const response = await authFetch(url, {
+      const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
