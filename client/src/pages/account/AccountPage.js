@@ -10,7 +10,7 @@ export default function AccountPage() {
       <BasicLayout />
       <Separator height={150} />
       <InfoAccount />
-      <Separator height={60} />
+      <Separator height={50} />
       <div
         style={{
           display: 'flex',
