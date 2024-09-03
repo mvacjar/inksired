@@ -1,16 +1,20 @@
 {
   "name": "server",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "description": "A Strapi application",
-  "scripts": {
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi",
-    "deploy": "strapi deploy"
+  "license": "MIT",
+  "author": {
+    "name": "A Strapi developer"
   },
-  "devDependencies": {},
+  "scripts": {
+    "build": "strapi build",
+    "deploy": "strapi deploy",
+    "develop": "strapi develop",
+    "lint": "eslint . ",
+    "start": "strapi start",
+    "strapi": "strapi"
+  },
   "dependencies": {
     "@strapi/plugin-cloud": "4.25.5",
     "@strapi/plugin-i18n": "4.25.5",
@@ -24,15 +28,12 @@
     "stripe": "^16.9.0",
     "styled-components": "5.3.3"
   },
-  "author": {
-    "name": "A Strapi developer"
-  },
-  "strapi": {
-    "uuid": "98cfff9f-9a5f-48f4-85ff-878e4214133d"
-  },
+  "devDependencies": {},
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "strapi": {
+    "uuid": "98cfff9f-9a5f-48f4-85ff-878e4214133d"
+  }
 }
