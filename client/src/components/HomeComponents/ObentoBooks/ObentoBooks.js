@@ -67,7 +67,7 @@ export function ObentoBooks(props) {
                   />
                 </Link>
                 <div className={styles.iconHeart}>
-                  <WishListIcon bookId={bookId} />
+                  <WishListIcon bookId={book.id} />
                 </div>
               </div>
             </div>

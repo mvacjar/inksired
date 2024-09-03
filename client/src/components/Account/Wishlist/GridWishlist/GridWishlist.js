@@ -12,12 +12,9 @@ export function GridWishlist(props) {
     <section className={styles.gridContainer}>
       {map(wishlist, (item) => {
         const book = item.attributes.book.data;
-        console.log(book);
         const originalPrice = book.attributes.price;
         const discount = book.attributes.discount;
         const finalPrice = CalcDiscountPrice(originalPrice, discount);
-
-        // Extraer el título y el nombre de la saga
         const saga = book.attributes.sagas?.data?.attributes;
         const sagaTitle = saga?.saga_title || 'Unknown Saga';
         const sagaName = saga?.saga_name;

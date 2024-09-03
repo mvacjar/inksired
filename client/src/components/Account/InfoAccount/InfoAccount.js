@@ -53,12 +53,12 @@ function MySettings(reload, onReload) {
 }
 
 export default function InfoAccount() {
-  const [value, setValue] = useState(3);
+  const [value, setValue] = useState(1);
   const [reload, setReload] = useState(false);
   const isSmallScreen = useMediaQuery('(max-width:768px)');
   const { user } = useAuth();
   const router = useRouter();
-  console.log(user);
+  // console.log(user);
 
   const onReload = () => setReload((prevState) => !prevState);
 

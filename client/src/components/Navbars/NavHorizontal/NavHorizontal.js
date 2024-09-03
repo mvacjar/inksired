@@ -114,28 +114,27 @@ export default function NavHorizontal() {
                     </div>
                   </form>
                 </div>
-                <div className={styles.cartIconContainer}>
+                <div>
                   {user ? (
-                    <Badge badgeContent={total} color='primary'>
-                      <Image
-                        src='/images/cart.svg'
-                        width={45}
-                        height={45}
-                        alt='cart-icon'
-                        className={styles.cartIcon}
-                        onClick={toCart}
-                        title='Shopping Cart'
-                      />
-                    </Badge>
+                    <div className={styles.cartIconContainer}>
+                      <Badge badgeContent={total} color='primary'>
+                        <Image
+                          src='/images/cart.svg'
+                          width={45}
+                          height={45}
+                          alt='cart-icon'
+                          className={styles.cartIcon}
+                          onClick={toCart}
+                          title='Shopping Cart'
+                        />
+                      </Badge>
+                    </div>
                   ) : (
-                    <div className={styles.buttonsContainer}>
-                      <button className={styles.signInButton} onClick={toLogin}>
+                    <div className={styles.buttonContainer}>
+                      <button className={styles.buttonIn} onClick={toLogin}>
                         Sign In
                       </button>
-                      <button
-                        className={styles.signUpButton}
-                        onClick={toSignUp}
-                      >
+                      <button className={styles.buttonUp} onClick={toSignUp}>
                         Sign Up
                       </button>
                     </div>

@@ -77,6 +77,38 @@
   }
 }
 
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.buttonIn,
+.buttonUp {
+  background-color: $background;
+  color: $primary;
+  border-radius: $border2;
+  font-size: $small;
+  border: 2px solid $primary;
+  margin-top: 0.8rem;
+  cursor: pointer;
+  padding: $paddingButton;
+  white-space: nowrap;
+  transition: transform ease 0.2s;
+  margin-right: 0.5rem;
+
+  &:hover {
+    transform: translateY(-2px);
+    color: $background;
+    background-color: $primary;
+    border: 2px solid $background;
+  }
+  &:active {
+    transform: translateY(-2px);
+  }
+}
+
 @media (max-width: 1300px) {
   .searchIconContainer {
     width: 16vw;
