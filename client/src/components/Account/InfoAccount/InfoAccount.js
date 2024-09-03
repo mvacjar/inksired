@@ -1,5 +1,4 @@
 import styles from './infoAccount.module.scss';
-import Image from 'next/image';
 import { Settings, Address, Wishlist, Orders } from '@/components/Account';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
@@ -11,7 +10,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { Separator } from '@/components/Shared';
-// import {ChooseIcon } from '@/components/Account/Icon/ChooseIcon';
+import Image from 'next/image';
 
 function MyOrders() {
   <Separator height={50} />;
@@ -41,23 +40,25 @@ function MyAddresses({ reload, onReload }) {
   );
 }
 
-function MySettings() {
+function MySettings(reload, onReload) {
   return (
     <>
       <Separator height={50} />
       <Settings.ChangeName />
       <Settings.ChangeEmail />
       <Settings.ChangePassword />
+      <Settings.ChooseIcon reload={reload} onReload={onReload} />
     </>
   );
 }
 
 export default function InfoAccount() {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(3);
   const [reload, setReload] = useState(false);
   const isSmallScreen = useMediaQuery('(max-width:768px)');
   const { user } = useAuth();
   const router = useRouter();
+  console.log(user);
 
   const onReload = () => setReload((prevState) => !prevState);
 
@@ -88,20 +89,22 @@ export default function InfoAccount() {
     <>
       <main className={styles.body}>
         <section className={styles.infoContainer}>
-          {/* <Image
-            className={styles.catImage}
-            src='/images/cat.png'
-            width={120}
-            height={120}
-            alt='cat'
-          /> */}
-          {/* {ChooseIcon reload={reload} onReload={onReload} /> */}
+          {user.icon.icon?.url ? (
+            <Image
+              src={user.icon.icon.url}
+              alt={user.icon.id}
+              width={100}
+              height={100}
+            />
+          ) : (
+            <div>No icon selected</div>
+          )}
           <article className={styles.dataContainer}>
             <h1 className={styles.titleUsername}>{user.username}</h1>
             <h3 className={styles.titleName}>Name: {user.name}</h3>
             <p>e-mail: {user.email}</p>
             <p>
-              Member since:{' '}
+              Member since:
               {DateTime.fromISO(user.createdAt, { locale: 'en' }).toFormat(
                 'dd MMMM yyyy'
               )}

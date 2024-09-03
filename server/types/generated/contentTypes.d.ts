@@ -1140,7 +1140,7 @@ export interface ApiProfileIconProfileIcon extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    icon: Attribute.Media<'images', true>;
+    icon: Attribute.Media<'images'>;
     icon_name: Attribute.String;
     user: Attribute.Relation<
       'api::profile-icon.profile-icon',

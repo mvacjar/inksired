@@ -3,7 +3,8 @@ import { ENV, authFetch } from '@/utils';
 export class User {
   async getMe() {
     try {
-      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.USERS_ME}`;
+      const populate = `populate[0]=icon.icon`;
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.USERS_ME}?${populate}`;
 
       const response = await authFetch(url);
       const result = await response.json();

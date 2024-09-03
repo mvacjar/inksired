@@ -17,6 +17,7 @@ export function ListAddresses(props) {
       try {
         const response = await addressCtrl.getAll(user.id);
         setAddresses(response.data);
+        onReload();
       } catch (error) {
         console.error('Error fetching addresses:', error);
       }
