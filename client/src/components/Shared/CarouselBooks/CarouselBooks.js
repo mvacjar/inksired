@@ -46,39 +46,33 @@ export function CarouselBooks({
 
   // Arrow visibility
   useEffect(() => {
-    const handleScroll = () => {
-      const carousel = carouselRef.current;
-      const scrollLeft = carousel.scrollLeft;
-      const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-
-      setShowLeftArrow(scrollLeft > 0);
-      setShowRightArrow(scrollLeft < maxScrollLeft - 0.8);
-    };
-
     const updateArrowVisibility = () => {
       const carousel = carouselRef.current;
       if (carousel) {
-        const isScrollable = carousel.scrollWidth > carousel.clientWidth;
-        setShowRightArrow(isScrollable);
-        handleScroll();
+        const scrollLeft = carousel.scrollLeft;
+        const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+        setShowLeftArrow(scrollLeft > 0);
+        setShowRightArrow(scrollLeft < maxScrollLeft - 1);
       }
     };
 
     const carousel = carouselRef.current;
     if (carousel) {
-      carousel.addEventListener('scroll', handleScroll);
+      // Check visibility on load
       updateArrowVisibility();
-    }
 
-    window.addEventListener('resize', updateArrowVisibility);
+      // Add event listeners
+      carousel.addEventListener('scroll', updateArrowVisibility);
+      window.addEventListener('resize', updateArrowVisibility);
+    }
 
     return () => {
       if (carousel) {
-        carousel.removeEventListener('scroll', handleScroll);
+        carousel.removeEventListener('scroll', updateArrowVisibility);
       }
       window.removeEventListener('resize', updateArrowVisibility);
     };
-  }, []);
+  }, [booksByGenre]);
 
   // AOS
   useEffect(() => {

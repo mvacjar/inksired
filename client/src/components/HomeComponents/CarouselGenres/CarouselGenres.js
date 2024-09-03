@@ -9,9 +9,9 @@ import { LiteraryGenres } from '@/api';
 const genresCtrl = new LiteraryGenres();
 
 export function CarouselGenres() {
-  const [genres, setGenres] = useState(null);
+  const [genres, setGenres] = useState([]);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
-  const [showRightArrow, setShowRightArrow] = useState(true);
+  const [showRightArrow, setShowRightArrow] = useState(false);
   const carouselRef = useRef(null);
 
   // Get data
@@ -30,11 +30,12 @@ export function CarouselGenres() {
   useEffect(() => {
     const handleScroll = () => {
       const carousel = carouselRef.current;
-      const scrollLeft = carousel.scrollLeft;
-      const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-
-      setShowLeftArrow(scrollLeft > 0);
-      setShowRightArrow(scrollLeft < maxScrollLeft - 1);
+      if (carousel) {
+        const scrollLeft = carousel.scrollLeft;
+        const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+        setShowLeftArrow(scrollLeft > 0);
+        setShowRightArrow(scrollLeft < maxScrollLeft - 1);
+      }
     };
 
     const updateArrowVisibility = () => {
@@ -48,11 +49,10 @@ export function CarouselGenres() {
 
     const carousel = carouselRef.current;
     if (carousel) {
-      carousel.addEventListener('scroll', handleScroll);
       updateArrowVisibility();
+      carousel.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', updateArrowVisibility);
     }
-
-    window.addEventListener('resize', updateArrowVisibility);
 
     return () => {
       if (carousel) {
@@ -60,45 +60,43 @@ export function CarouselGenres() {
       }
       window.removeEventListener('resize', updateArrowVisibility);
     };
-  }, []);
+  }, [genres]); // Depend on genres to update visibility after data load
 
   return (
-    <>
-      <div className={styles.genresWrapper}>
-        <div className={styles.genresContent}>
-          {showLeftArrow && (
-            <div className={styles.leftArrowWrapper}>
-              <div className={styles.leftArrowContainer}>
-                <ArrowBackIosIcon
-                  sx={{ color: '#2d2d2d', fontSize: 25 }}
-                  className={styles.leftArrow}
-                />
-              </div>
+    <div className={styles.genresWrapper}>
+      <div className={styles.genresContent}>
+        {showLeftArrow && (
+          <div className={styles.leftArrowWrapper}>
+            <div className={styles.leftArrowContainer}>
+              <ArrowBackIosIcon
+                sx={{ color: '#2d2d2d', fontSize: 25 }}
+                className={styles.leftArrow}
+              />
             </div>
-          )}
-          <div className={styles.carouselItems} ref={carouselRef}>
-            {map(genres, (genre) => (
-              <Link
-                key={genre.id}
-                href={`/genre/${genre.attributes.slug_genres}`}
-                className={styles.carouselItem}
-              >
-                {genre.attributes.title}
-              </Link>
-            ))}
           </div>
-          {showRightArrow && (
-            <div className={styles.rightArrowWrapper}>
-              <div className={styles.rightArrowContainer}>
-                <ArrowForwardIosIcon
-                  sx={{ color: '#2d2d2d', fontSize: 25 }}
-                  className={styles.rightArrow}
-                />
-              </div>
-            </div>
-          )}
+        )}
+        <div className={styles.carouselItems} ref={carouselRef}>
+          {map(genres, (genre) => (
+            <Link
+              key={genre.id}
+              href={`/genre/${genre.attributes.slug_genres}`}
+              className={styles.carouselItem}
+            >
+              {genre.attributes.title}
+            </Link>
+          ))}
         </div>
+        {showRightArrow && (
+          <div className={styles.rightArrowWrapper}>
+            <div className={styles.rightArrowContainer}>
+              <ArrowForwardIosIcon
+                sx={{ color: '#2d2d2d', fontSize: 25 }}
+                className={styles.rightArrow}
+              />
+            </div>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }
